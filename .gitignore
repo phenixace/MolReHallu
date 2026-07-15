@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.legacy
+.DS_Store
+
+# human-eval per-annotator outputs (personal; keep local)
+human_eval/claim_annotations_*.json
+human_eval/annotations*.json
+human_eval/samples.json
+human_eval/claim_reliability.json
+
+# figure PNG previews regenerate via make_nmi_figures.py; the PDF figures ship with the repo
+figures/*.png
