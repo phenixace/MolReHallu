@@ -544,23 +544,26 @@ def fig5_scratchpad() -> None:
     grad = sheet("R5_grad_enrichment")
     reg = sheet("R5_region_attention")
     models3 = [("Chem-R", "Chem-R"), ("Chem-R-Faithful", "Chem-R-Faithful"),
-               ("ChemDFM-R", "ChemDFM-R")]
-    fig = plt.figure(figsize=(nf.COL2, nf.COL2 * 0.64), layout="constrained")
-    gs = fig.add_gridspec(2, 2, height_ratios=[0.62, 1.0])
+               ("ChemDFM-R", "ChemDFM-R"), ("ether-0", "ether-0")]
+    fig = plt.figure(figsize=(nf.COL2, nf.COL2 * 0.74), layout="constrained")
+    gs = fig.add_gridspec(2, 2, height_ratios=[0.9, 1.0])
 
     # (a) token-saliency strips
     axa = fig.add_subplot(gs[0, :]); axa.set_axis_off()
     plabel(axa, "a")
     axa.set_title("Answer-saliency where each model proposes the reactant answer",
                   fontsize=7, fontweight="bold", loc="left", pad=2)
-    s1 = axa.inset_axes([0.0, 0.52, 1.0, 0.30])
+    s1 = axa.inset_axes([0.0, 0.70, 1.0, 0.19])
     _token_strip(s1, "Chem-R-Faithful", "retrosynthesis", "uspto_test_1",
                  "Chem-R-Faithful  —  drafts the reactants as partial SMILES fragments (each attended)",
                  region=(0.70, 1.0))
-    s2 = axa.inset_axes([0.0, 0.02, 1.0, 0.30])
+    s2 = axa.inset_axes([0.0, 0.39, 1.0, 0.19])
     _token_strip(s2, "ChemDFM-R", "retrosynthesis", "uspto_test_31",
                  "ChemDFM-R  —  proposes them in words and naming; no SMILES",
                  region=(0.55, 1.0))
+    s3 = axa.inset_axes([0.0, 0.08, 1.0, 0.19])
+    _token_strip(s3, "ether-0", "retrosynthesis", "uspto_test_76",
+                 "ether-0  —  also drafts the reactants as SMILES fragments")
     axa.legend(handles=[Rectangle((0, 0), 1, 1, color=C_SMILES),
                         Line2D([], [], color=C_FG, lw=1.4)],
                labels=["SMILES string", "FG token"],
@@ -571,11 +574,11 @@ def fig5_scratchpad() -> None:
     axb = fig.add_subplot(gs[1, 0])
     plabel(axb, "b")
     types = [("SMILES_frag", "SMILES"), ("FG_word", "FG word"), ("position_digit", "position")]
-    x = np.arange(len(types)); w = 0.26
+    x = np.arange(len(types)); w = 0.2
     for k, (raw, disp) in enumerate(models3):
         sub = grad[(grad.model == raw) & (grad.stratum == "all")]
         vals = [float(sub[sub.token_type == t]["enrichment"].iloc[0]) for t, _ in types]
-        bars = axb.bar(x + (k - 1) * w, vals, w, color=PAL[disp], label=SHORT[disp])
+        bars = axb.bar(x + (k - 1.5) * w, vals, w, color=PAL[disp], label=SHORT[disp])
         axb.bar_label(bars, fmt="%.1f", fontsize=4.4, padding=1)
     axb.axhline(1, color="0.3", ls=(0, (4, 3)), lw=0.6)
     axb.set_xticks(x); axb.set_xticklabels([l for _, l in types], fontsize=5.6)
@@ -586,7 +589,7 @@ def fig5_scratchpad() -> None:
     # (c) within-trace attention: SMILES vs FG
     axc = fig.add_subplot(gs[1, 1])
     plabel(axc, "c")
-    x = np.arange(3); w = 0.36
+    x = np.arange(len(models3)); w = 0.36
     smi = [float(reg[(reg.model == r) & (reg.stratum == "all") & (reg.region == "trace")]["attn_smiles"].iloc[0]) * 1e3
            for r, _ in models3]
     fgv = [float(reg[(reg.model == r) & (reg.stratum == "all") & (reg.region == "trace")]["attn_fg"].iloc[0]) * 1e3
