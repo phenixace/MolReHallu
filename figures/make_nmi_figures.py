@@ -125,7 +125,10 @@ def save(fig, stem: str) -> None:
 def fig2_widespread() -> None:
     d = sheet("Diagnosis_model_task")
     SURV5 = ["Chem-R", "Chem-R-Faithful", "ChemDFM-R", "ether-0", "DeepSeek-R1-Distill"]
-    d = d[d.model.isin(SURV5)]
+    # paper analyses the 12 generation+S2 tasks only (no classification/CLS tasks);
+    # restrict here so every per-model aggregate (SE, overall, ER, cp, length) is
+    # over the same 12-task universe as the panel-a heatmap.
+    d = d[d.model.isin(SURV5) & d.task.isin([t for t, _ in GEN12])]
 
     def agg(m, c):
         return float(d[d.model == m][c].mean())
@@ -162,7 +165,7 @@ def fig2_widespread() -> None:
     # (b) bubble: semantic entropy vs overall, size ~ ER
     axb = fig.add_subplot(gs[1, 0])
     plabel(axb, "b")
-    for m in SURVEY:
+    for m in SURV5:
         x, y, er = agg(m, "semantic_entropy"), agg(m, "overall"), agg(m, "ER")
         axb.scatter(x, y, s=er * 7 + 18, color=pc(m), alpha=0.85, edgecolor="white",
                     linewidth=0.6, zorder=3)
@@ -170,9 +173,9 @@ def fig2_widespread() -> None:
                      fontsize=5.2, color=pc(m))
     axb.set_xlabel("semantic entropy (confidence)")
     axb.set_ylabel("overall hallucination")
-    axb.set_xlim(0.78, 1.12)
-    axb.set_ylim(5, 52)
-    axb.text(0.97, 0.95, r"$r = -0.41$", transform=axb.transAxes, ha="right",
+    axb.set_xlim(0.99, 1.48)
+    axb.set_ylim(5, 55)
+    axb.text(0.97, 0.95, r"$r = -0.54$", transform=axb.transAxes, ha="right",
              va="top", fontsize=5.6, color=GRAYREF)
     title(axb, r"Confidence $\neq$ faithfulness")
 
