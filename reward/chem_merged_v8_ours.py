@@ -139,16 +139,18 @@ def compute_score(
                 verbose=True,
             )
             halluc = float(diag.get("overall_hallucination_score", 50.0))
+            er_score = float(diag.get("hallucination_scores", {}).get("ER_factual_fabrication", 100.0))
             n_ver, n_fab = _er_count(diag)
             acc = _accuracy_signal(task, diag, metadata, _answer_smiles(ans), inp)
             grounded = _grounded_term(diag)
         except Exception:
-            halluc, n_fab, acc, grounded = 100.0, 99, 0.0, 0.0
+            halluc, er_score, n_fab, acc, grounded = 100.0, 100.0, 99, 0.0, 0.0
 
         fmt = 1.0 if _FORMAT_PAT.search(ans.strip()) else 0.0
         anti = 1.0 - halluc / 100.0
-        # Decoupling-aware: pay accuracy only when the trace is clean (no fabrication).
-        acc_paid = acc if (not COUPLED or n_fab == 0) else 0.0
+        # Decoupling-aware: pay accuracy only when the trace is clean (ER == 0,
+        # incl. fabricated generic groups and molecular-class claims).
+        acc_paid = acc if (not COUPLED or er_score == 0) else 0.0
         # Thinking-length bonus (off unless LEN_BONUS>0); paid only on valid format.
         length = _think_len_term(ans) if fmt else 0.0
         overall = (W_FMT * fmt + W_ACC * acc_paid + W_ANTI * anti + W_GROUND * grounded
