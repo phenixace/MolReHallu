@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.join(BASE, "eval"))
 import attention_attribution as AA
 import attr_probe as AP   # categorize()
 
-OUT = os.path.join(BASE, "paper", "ChemR_Hallucination_ICLR", "data", "token_examples")
+OUT = os.path.join(BASE, "data", "token_examples")
 # (task, ER-mode): comparable set across models — SMILES-draft / fabricated-FG / retro / describe
 SPECS = [("cap2mol", "er0"), ("cap2mol", "erpos"), ("retrosynthesis", "er0"), ("mol2cap", "er0")]
 CAT_ORDER = ["SMILES_frag", "FG_word", "position_digit", "other_word", "punct", "space"]

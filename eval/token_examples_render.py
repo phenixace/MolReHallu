@@ -5,7 +5,7 @@ plain (its self-saliency is not meaningful). Run: python eval/token_examples_ren
 """
 import csv, html, json, os
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(BASE, "paper", "ChemR_Hallucination_ICLR", "data", "token_examples")
+OUT = os.path.join(BASE, "data", "token_examples")
 CATCOL = {"SMILES_frag": "#2c7fb8", "FG_word": "#e6550d", "position_digit": "#31a354"}
 REGION_LABEL = {"input": "INPUT (task prompt)", "trace": "REASONING TRACE (&lt;think&gt;)", "answer": "ANSWER"}
 

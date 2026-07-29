@@ -2,7 +2,7 @@
 (SMILES-fragment / FG-word / position-digit / other-word / punct). Verifies the "molecular
 scratchpad" narrative: which token TYPE in the reasoning the answer actually keys on, per model.
 grad×input is more principled than attention ("what the answer is sensitive to"). One fwd+bwd,
-no output_attentions. Output: eval/attn_out/gradattr_<model>.json.
+no output_attentions. Output: data/raw/gradattr_<model>.json.
 Usage: python eval/attr_probe.py --model Chem-R [--n_attn 200]
 """
 import argparse, json, os, re, sys
@@ -52,7 +52,7 @@ def main():
     ndoc = {s: 0 for s in STRATA}
     n = 0; skipped_long = 0; skipped_fmt = 0
     order = ["SMILES_frag", "FG_word", "position_digit", "other_word", "punct", "space"]
-    fn = os.path.join(BASE, "eval", "attn_out", f"gradattr_{args.model}.json")
+    fn = os.path.join(BASE, "data", "raw", f"gradattr_{args.model}.json")
 
     def frac(s):
         return {c: (mass[s][c] / ndoc[s] if ndoc[s] else 0.0) for c in order}

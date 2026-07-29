@@ -1,0 +1,43 @@
+==============================================================================
+(A) GRADIENT x INPUT saliency of ANSWER w.r.t. TRACE tokens  (full volume)
+    share = mean per-doc saliency share on that token type (sums to 1 across types)
+    enrich = share / token_frac  (>1 = more answer-sensitivity PER TOKEN than avg)
+==============================================================================
+
+### Chem-R   n=16103  (skipped long=3 fmt=1)
+    n_by_stratum: {'all': 16103, 'er0': 6541, 'erpos': 9562}
+  [all  ] n= 16103  SMIL:13.4%/2.48x  FG: 4.7%/0.77x  posi: 3.2%/1.60x  othe:41.3%/0.77x  punc:36.9%/1.13x  spac: 0.6%/1.12x
+  [er0  ] n=  6541  SMIL: 8.8%/2.23x  FG: 4.5%/0.80x  posi: 3.8%/1.57x  othe:42.4%/0.80x  punc:39.7%/1.16x  spac: 0.8%/1.08x
+  [erpos] n=  9562  SMIL:16.4%/2.59x  FG: 4.8%/0.76x  posi: 2.8%/1.62x  othe:40.6%/0.76x  punc:35.0%/1.10x  spac: 0.4%/1.16x
+
+### Chem-R-Faithful   n=16100  (skipped long=6 fmt=1)
+    n_by_stratum: {'all': 16100, 'er0': 14176, 'erpos': 1924}
+  [all  ] n= 16100  SMIL:17.8%/3.21x  FG: 4.6%/0.71x  posi: 3.1%/1.66x  othe:39.3%/0.73x  punc:34.8%/1.09x  spac: 0.4%/0.95x
+  [er0  ] n= 14176  SMIL:18.0%/3.20x  FG: 4.6%/0.71x  posi: 3.0%/1.65x  othe:39.4%/0.73x  punc:34.6%/1.08x  spac: 0.4%/0.99x
+  [erpos] n=  1924  SMIL:15.9%/3.35x  FG: 4.7%/0.74x  posi: 3.8%/1.70x  othe:39.0%/0.72x  punc:36.1%/1.12x  spac: 0.4%/0.79x
+
+### ChemDFM-R   n=16064  (skipped long=38 fmt=5)
+    n_by_stratum: {'all': 16064, 'er0': 10098, 'erpos': 5966}
+  [all  ] n= 16064  SMIL: 1.0%/1.24x  FG: 5.3%/0.86x  posi: 0.6%/1.37x  othe:53.2%/0.81x  punc:39.5%/1.49x  spac: 0.3%/1.42x
+  [er0  ] n= 10098  SMIL: 1.0%/1.28x  FG: 4.9%/0.83x  posi: 0.7%/1.28x  othe:53.1%/0.81x  punc:40.0%/1.50x  spac: 0.3%/1.36x
+  [erpos] n=  5966  SMIL: 1.0%/1.18x  FG: 6.1%/0.90x  posi: 0.5%/1.60x  othe:53.4%/0.82x  punc:38.7%/1.47x  spac: 0.2%/1.56x
+
+==============================================================================
+(B) REGION ATTENTION: answer -> attention mass, INPUT vs TRACE region  (full volume)
+    per-token mean attention to all / FG-word / SMILES-frag tokens in each region
+==============================================================================
+
+### Chem-R   region_attr n=16100
+  [all  ] n= 16100 | INPUT all=0.0045 FG=0.0043 SM=0.0059 | TRACE all=0.0001 FG=0.0001 SM=0.0008 | draft-copy=0.141
+  [er0  ] n=  6541 | INPUT all=0.0035 FG=0.0041 SM=0.0050 | TRACE all=0.0001 FG=0.0001 SM=0.0007 | draft-copy=0.133
+  [erpos] n=  9559 | INPUT all=0.0051 FG=0.0046 SM=0.0063 | TRACE all=0.0001 FG=0.0001 SM=0.0008 | draft-copy=0.146
+
+### Chem-R-Faithful   region_attr n=16098
+  [all  ] n= 16098 | INPUT all=0.0039 FG=0.0039 SM=0.0051 | TRACE all=0.0002 FG=0.0001 SM=0.0012 | draft-copy=0.221
+  [er0  ] n= 14174 | INPUT all=0.0040 FG=0.0039 SM=0.0051 | TRACE all=0.0002 FG=0.0001 SM=0.0012 | draft-copy=0.224
+  [erpos] n=  1924 | INPUT all=0.0032 FG=0.0042 SM=0.0046 | TRACE all=0.0002 FG=0.0001 SM=0.0014 | draft-copy=0.198
+
+### ChemDFM-R   region_attr n=16061
+  [all  ] n= 16061 | INPUT all=0.0046 FG=0.0058 SM=0.0055 | TRACE all=0.0004 FG=0.0010 SM=0.0008 | draft-copy=0.001
+  [er0  ] n= 10095 | INPUT all=0.0043 FG=0.0057 SM=0.0056 | TRACE all=0.0004 FG=0.0010 SM=0.0009 | draft-copy=0.001
+  [erpos] n=  5966 | INPUT all=0.0049 FG=0.0065 SM=0.0054 | TRACE all=0.0004 FG=0.0010 SM=0.0008 | draft-copy=0.001

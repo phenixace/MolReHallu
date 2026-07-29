@@ -21,7 +21,7 @@ ChemDFM-R):
     If the answer is decoupled from the CoT, wrong_cot/all_wrong_cot/drop_cot ~ 0 while
     wrong_input << 0. A CoT-faithful (e.g. process-trained) model shows the opposite.
 
-Output: a JSON per model under eval/attn_out/. Plot separately (make_figures).
+Output: a JSON per model under data/raw/. Plot separately (make_figures).
 Run on GPU (se_vllm env). Usage: python eval/attention_attribution.py --model Chem-R
 """
 import argparse
@@ -74,7 +74,7 @@ def _is_correct(task, d):
 
 def load_examples(model, task="cap2mol"):
     of = glob.glob(f"{BASE}/se_results/{model}/{task}/output.json")
-    df = glob.glob(f"{BASE}/results/{model}/{task}/*hallucination_details.jsonl")
+    df = glob.glob(f"{BASE}/data/results/{model}/{task}/*hallucination_details.jsonl")
     if not of or not df:
         return []
     items = json.load(open(of[0]))
@@ -487,8 +487,8 @@ def main():
     print(f"{args.model}: ALL tasks -> {len(clean)} clean-correct, {len(fabr)} fabricating-correct",
           flush=True)
 
-    od = os.path.join(BASE, "eval", "attn_out")
-    fn = os.path.join(od, f"{args.model}.json")
+    od = os.path.join(BASE, "data", "raw")
+    fn = os.path.join(od, f"region_{args.model}.json")
     if args.regions_only:
         out = json.load(open(fn)) if os.path.exists(fn) else {"model": args.model}
         reg = []
@@ -565,9 +565,9 @@ def main():
     out = {"model": args.model, "attn": attn, "perturb": pert,
            "matched": matched, "heatmap": heatmap, "region_attr": reg, "per_task": per_task,
            "n_clean": len(clean), "n_fabr": len(fabr)}
-    od = os.path.join(BASE, "eval", "attn_out")
+    od = os.path.join(BASE, "data", "raw")
     os.makedirs(od, exist_ok=True)
-    fn = os.path.join(od, f"{args.model}.json")
+    fn = os.path.join(od, f"region_{args.model}.json")
     json.dump(out, open(fn, "w"))
 
     def mean(xs):

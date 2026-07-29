@@ -5,7 +5,7 @@ different metric/aggregation (vs a smaller run). Output: verify_metric.txt
 """
 import json, os
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-AO = os.path.join(BASE, "eval", "attn_out")
+AO = os.path.join(BASE, "data", "raw")
 CONDS = ["syn_cot", "wrong_cot", "all_wrong_cot", "drop_cot", "swap_cot"]
 TRANSLATE = {"cap2mol", "mol2cap", "retrosynthesis"}
 

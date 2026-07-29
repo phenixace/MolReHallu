@@ -6,7 +6,7 @@ Run: python eval/pull_fullvol.py  (writes fullvol.txt and .md)
 """
 import json, os
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-AO = os.path.join(BASE, "eval", "attn_out")
+AO = os.path.join(BASE, "data", "raw")
 MODELS = ["Chem-R", "Chem-R-Faithful", "ChemDFM-R"]
 ORDER = ["SMILES_frag", "FG_word", "position_digit", "other_word", "punct", "space"]
 STRATA = ["all", "er0", "erpos"]
@@ -43,7 +43,7 @@ def mean(xs):
     return sum(xs) / len(xs) if xs else float("nan")
 region = {}
 for m in MODELS:
-    d = json.load(open(f"{AO}/{m}.json"))
+    d = json.load(open(f"{AO}/region_{m}.json"))
     reg = d.get("region_attr", [])
     region[m] = reg
     p(f"\n### {m}   region_attr n={len(reg)}")
@@ -68,7 +68,7 @@ print(txt)
 
 # ---------- machine-readable CSVs into the paper figure bundle ----------
 import csv
-PB = os.path.join(BASE, "paper", "ChemR_Hallucination_ICLR", "data", "token_examples")
+PB = os.path.join(BASE, "data", "token_examples")
 os.makedirs(PB, exist_ok=True)
 with open(os.path.join(PB, "r5_gradient.csv"), "w", newline="") as f:
     w = csv.writer(f); w.writerow(["model", "stratum", "n", "token_type", "saliency_share", "enrichment", "token_count"])

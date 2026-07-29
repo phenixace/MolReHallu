@@ -1,14 +1,25 @@
 """Assemble ALL figure/result raw data into one NMI-style Source Data workbook:
-paper/.../data/source_data.xlsx  — one sheet per figure/result, editable, submission-ready.
+data/source_data.xlsx  — one sheet per figure/result, editable, submission-ready.
 Sources: curated CSVs (diagnosis/ladder/mitigation/R5) + drift_<m>.json + condsent_<m>.json.
-Run: python eval/build_source_data.py
+Run: MOLREHALLU_REGEN=1 python eval/build_source_data.py
 """
 import glob, json, os
 import pandas as pd
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-D = os.path.join(BASE, "paper", "ChemR_Hallucination_ICLR", "data")
-AO = os.path.join(BASE, "eval", "attn_out")
+D = os.path.join(BASE, "data")
+AO = os.path.join(BASE, "data", "raw")
 XLSX = os.path.join(D, "source_data.xlsx")
+
+# Guard: this script REBUILDS data/source_data.xlsx in place, and it needs inputs the public
+# release does not ship (data/token_examples/*.csv, the full data/raw/ set). Run against the
+# released subset it would overwrite the submitted workbook with fewer, incomplete sheets.
+# It also writes at import time, so `import build_source_data` alone is destructive.
+if os.environ.get("MOLREHALLU_REGEN") != "1":
+    raise SystemExit(
+        "build_source_data.py rebuilds data/source_data.xlsx from the full evaluation tree, "
+        "which is not part of the public release. Refusing to run so the shipped workbook is "
+        "not overwritten with incomplete data. Set MOLREHALLU_REGEN=1 to override."
+    )
 
 # file-stem -> paper label (order = ladder order); exclude DeepSeek (unusable)
 LABEL = {"Llama-3.1-8B-Instruct-base": "base-a (pre-SFT)", "Chem-R-SFT": "SFT",

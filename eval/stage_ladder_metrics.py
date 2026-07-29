@@ -95,7 +95,7 @@ def mechanism_stats(model):
     hedge = abstain = 0
     positions = []
     for task in GEN_TASKS:
-        fs = glob.glob(f"{BASE}/results/{model}/{task}/*hallucination_details.jsonl")
+        fs = glob.glob(f"{BASE}/data/results/{model}/{task}/*hallucination_details.jsonl")
         if not fs:
             continue
         texts = txt_cache[task]
@@ -153,7 +153,7 @@ def main():
 
     if rows:
         import csv
-        outdir = os.path.join(BASE, "paper", "ChemR_Hallucination_ICLR", "data")
+        outdir = os.path.join(BASE, "data")
         os.makedirs(outdir, exist_ok=True)
         path = os.path.join(outdir, "stage_ladder.csv")
         with open(path, "w", newline="") as f:

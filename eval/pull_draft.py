@@ -6,7 +6,7 @@ Output: draft_result.txt
 """
 import json, os
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-AO = os.path.join(BASE, "eval", "attn_out")
+AO = os.path.join(BASE, "data", "raw")
 MODELS = ["Chem-R", "Chem-R-Faithful", "ChemDFM-R"]
 CONDS = ["all_wrong_cot", "mask_draft", "corrupt_draft", "swap_cot", "drop_cot"]
 TRANSLATE = {"cap2mol", "mol2cap", "retrosynthesis"}

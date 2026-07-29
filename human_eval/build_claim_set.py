@@ -95,8 +95,8 @@ def context_snippet(think, fg, width=280):
 
 def load(model, task):
     o = (glob.glob(f"{ROOT}/se_results/{model}/{task}/output.json")
-         or glob.glob(f"{ROOT}/results/{model}/{task}/output.json"))
-    d = glob.glob(f"{ROOT}/results/{model}/{task}/*hallucination_details.jsonl")
+         or glob.glob(f"{ROOT}/data/results/{model}/{task}/output.json"))
+    d = glob.glob(f"{ROOT}/data/results/{model}/{task}/*hallucination_details.jsonl")
     if not o or not d:
         return None, None
     O = {str(x["id"]): x for x in json.load(open(o[0]))}

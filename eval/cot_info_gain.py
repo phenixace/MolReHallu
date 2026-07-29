@@ -11,7 +11,7 @@ Thesis: fabrication (ER) concentrates where info_gain ~ 0 -- the CoT is not doin
 work, so it is free to confabulate and accuracy cannot see it. On tasks where the
 CoT carries real information gain (s2 constraint satisfaction) it is load-bearing.
 
-Output: eval/attn_out/infogain_<model>.json  (per-task H_free/H_noCoT/info_gain + ER)
+Output: data/raw/infogain_<model>.json  (per-task H_free/H_noCoT/info_gain + ER)
 Usage: python eval/cot_info_gain.py --model Chem-R [--n_samples 8] [--max_per_task 100]
 """
 import argparse
@@ -108,7 +108,7 @@ def main():
             continue
         items = json.load(open(of[0]))
         items = items if isinstance(items, list) else items.get("results", [])
-        df = glob.glob(f"{BASE}/results/{args.model}/{task}/*hallucination_details.jsonl")
+        df = glob.glob(f"{BASE}/data/results/{args.model}/{task}/*hallucination_details.jsonl")
         er_of = {}
         if df:
             for l in open(df[0]):
@@ -142,7 +142,7 @@ def main():
                        "ER": mean([r["er"] for r in rt])}
     out = {"model": args.model, "n_samples": args.n_samples,
            "per_task": per_task, "per_example": rows}
-    od = os.path.join(BASE, "eval", "attn_out")
+    od = os.path.join(BASE, "data", "raw")
     os.makedirs(od, exist_ok=True)
     fn = os.path.join(od, f"infogain_{args.model}.json")
     json.dump(out, open(fn, "w"))

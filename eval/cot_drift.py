@@ -21,7 +21,7 @@ normalized text for mol2cap). If reasoning is decoupled from the answer, the CoT
 conditions drift ~ as little as syn_cot; if re-coupled, they drift much more.
 
 Usage: python eval/cot_drift.py --model Chem-R [--tasks ...] [--max_per_task N]
-Output: eval/attn_out/drift_<model>.json
+Output: data/raw/drift_<model>.json
 """
 import argparse
 import glob
@@ -33,7 +33,6 @@ import sys
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BASE)
-sys.path.insert(0, os.path.join(BASE, "EasyR1-main", "examples", "reward_function"))
 import diagnose_hallucination as DH  # noqa: E402
 import prompts as P  # noqa: E402
 from s2_success import s2_success  # noqa: E402  official S2-TOMG success (constraint satisfaction)
@@ -303,7 +302,7 @@ def main():
         items = json.load(open(of[0]))
         items = items if isinstance(items, list) else items.get("results", [])
         # ER label per id (full set, NO filtering -- just for the ER-stratified stats)
-        df = glob.glob(f"{BASE}/results/{args.model}/{task}/*hallucination_details.jsonl")
+        df = glob.glob(f"{BASE}/data/results/{args.model}/{task}/*hallucination_details.jsonl")
         er_of = {}
         if df:
             for l in open(df[0]):
@@ -408,7 +407,7 @@ def main():
            "perf_vs_er": perf_vs_er, "abs_perf": abs_perf,
            "base_accuracy": (base_acc[0] / base_acc[1] if base_acc[1] else None),
            "n_examples": len(per_example), "per_example": per_example}
-    od = os.path.join(BASE, "eval", "attn_out")
+    od = os.path.join(BASE, "data", "raw")
     os.makedirs(od, exist_ok=True)
     fn = os.path.join(od, f"drift_{args.model}.json")
     json.dump(out, open(fn, "w"))

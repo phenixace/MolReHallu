@@ -20,7 +20,7 @@ import sys
 import numpy as np
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-for p in (BASE, os.path.join(BASE, "EasyR1-main", "examples", "reward_function")):
+for p in (BASE,):
     if p not in sys.path:
         sys.path.insert(0, p)
 
@@ -43,7 +43,7 @@ def _items(path):
 
 
 def details(model, task):
-    f = glob.glob(f"{BASE}/results/{model}/{task}/*hallucination_details.jsonl")
+    f = glob.glob(f"{BASE}/data/results/{model}/{task}/*hallucination_details.jsonl")
     if not f:
         return {}
     return {str(json.loads(l)["id"]): json.loads(l) for l in open(f[0])}
@@ -52,7 +52,7 @@ def details(model, task):
 def outputs(model, task):
     """{id: {answer, gt, question, metadata}} with S2 metadata merged from completions."""
     of = (glob.glob(f"{BASE}/se_results/{model}/{task}/output.json")
-          or glob.glob(f"{BASE}/results/{model}/{task}/output.json"))
+          or glob.glob(f"{BASE}/data/results/{model}/{task}/output.json"))
     if not of:
         return {}
     items = _items(of[0])

@@ -11,7 +11,7 @@ from matplotlib.cm import ScalarMappable
 from matplotlib.colors import LinearSegmentedColormap, Normalize
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-D = os.path.join(BASE, "paper", "ChemR_Hallucination_ICLR", "data")
+D = os.path.join(BASE, "data")
 FIG = os.path.join(D, "figures")
 EX = json.load(open(os.path.join(D, "token_examples", "token_examples.json")))
 NAVY, TEAL, BRICK, GREEN, MUT, INK, SEC = "#3C5488", "#00A087", "#E64B35", "#008300", "#898781", "#0b0b0b", "#52514e"

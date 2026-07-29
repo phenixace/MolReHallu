@@ -60,7 +60,7 @@ def run_pair(args):
         diag["task"] = task
         diag["model"] = model
         results.append(diag)
-    od = f"{ROOT}/results/{model}/{task}"
+    od = f"{ROOT}/data/results/{model}/{task}"
     os.makedirs(od, exist_ok=True)
     safe = model.replace("/", "_")
     with open(f"{od}/{safe}_{task}_hallucination_details.jsonl", "w") as f:
@@ -103,7 +103,7 @@ def run_pair(args):
 
 def main():
     outs = sorted(set(glob.glob(f"{ROOT}/se_results/*/*/output.json") +
-                      glob.glob(f"{ROOT}/results/*/*/output.json")))
+                      glob.glob(f"{ROOT}/data/results/*/*/output.json")))
     jobs, seen = [], set()
     for o in outs:
         parts = o.split("/")

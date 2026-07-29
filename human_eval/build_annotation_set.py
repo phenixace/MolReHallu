@@ -74,8 +74,8 @@ def spans_for(text, fgs, kind="red"):
 def load(model, taskdir):
     # output.json may live under se_results/ (our runs) or results/ (collaborator runs)
     o = (glob.glob(f"{ROOT}/se_results/{model}/{taskdir}/output.json")
-         or glob.glob(f"{ROOT}/results/{model}/{taskdir}/output.json"))
-    d = glob.glob(f"{ROOT}/results/{model}/{taskdir}/*hallucination_details.jsonl")
+         or glob.glob(f"{ROOT}/data/results/{model}/{taskdir}/output.json"))
+    d = glob.glob(f"{ROOT}/data/results/{model}/{taskdir}/*hallucination_details.jsonl")
     if not o or not d:
         return None, None
     O = {str(x["id"]): x for x in json.load(open(o[0]))}

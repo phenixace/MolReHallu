@@ -6,7 +6,7 @@ N answers from THREE prefixes and take the answer entropy (cluster by canonical 
   H_corrCoT: prompt + the CoT with every FG corrupted + answer-open
   info_gain_presence = H_noCoT  - H_realCoT   (>0 => HAVING a CoT lowers answer entropy)
   info_gain_content  = H_corrCoT - H_realCoT  (>0 => the CoT's CONTENT specifically does)
-Reuses cot_drift's markup-aware build_conditions / canon. Output eval/attn_out/condsent_<model>.json
+Reuses cot_drift's markup-aware build_conditions / canon. Output data/raw/condsent_<model>.json
 Usage: python eval/cot_condsent.py --model Chem-R [--n_samples 8] [--max_per_task N]
 """
 import argparse
@@ -65,7 +65,7 @@ def main():
         cot_pool = [c for c in (CD.extract_cot(s.get("answer", ""), mk) for s in items) if c and c.strip()]
         # ER label per id (to stratify swap analysis by clean ER=0 vs fabricating ER>0)
         import glob as _g
-        df = _g.glob(f"{BASE}/results/{args.model}/{task}/*hallucination_details.jsonl")
+        df = _g.glob(f"{BASE}/data/results/{args.model}/{task}/*hallucination_details.jsonl")
         er_of = {}
         if df:
             for l in open(df[0]):
@@ -135,7 +135,7 @@ def main():
                 "all": agg(rows) if rows else None}
     out = {"model": args.model, "n_samples": args.n_samples, "per_task": per_task,
            "er_split": er_split, "per_example": rows}
-    fn = os.path.join(BASE, "eval", "attn_out", f"condsent_{args.model}.json")
+    fn = os.path.join(BASE, "data", "raw", f"condsent_{args.model}.json")
     json.dump(out, open(fn, "w"))
     print(f"\n{args.model}: ig_presence / ig_content / ig_swap  (nats; >0 => that aspect of CoT lowers answer entropy)")
     print(f"{'subset':10s} {'n':>5s} {'igPRES':>7s} {'igCONT':>7s} {'igSWAP':>7s}")
