@@ -29,6 +29,18 @@ import sys
 from collections import defaultdict
 
 BASE = os.environ.get("MOLLM_PROJECT_DIR", os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# Guard: this script REWRITES data/stage_ladder.csv in place from the full diagnosed results
+# tree, which the public release does not ship. Run against the released subset it silently
+# drops the ladder rungs it cannot find and degrades the surviving row. It also writes at
+# module scope, so importing it is enough to do the damage.
+if os.environ.get("MOLREHALLU_REGEN") != "1":
+    raise SystemExit(
+        "stage_ladder_metrics.py rewrites data/stage_ladder.csv from the full diagnosed "
+        "results tree, which is not part of the public release. Refusing to run so the "
+        "shipped ladder data is not overwritten. Set MOLREHALLU_REGEN=1 to override."
+    )
+
 sys.path.insert(0, os.path.join(BASE, "eval"))
 import metrics as MX  # noqa: E402
 

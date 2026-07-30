@@ -22,8 +22,11 @@ if os.environ.get("MOLREHALLU_REGEN") != "1":
     )
 
 # file-stem -> paper label (order = ladder order); exclude DeepSeek (unusable)
-LABEL = {"Llama-3.1-8B-Instruct-base": "base-a (pre-SFT)", "Chem-R-SFT": "SFT",
-         "+process": "+process", "Chem-R-Faithful": "+coupled", "Chem-R": "Chem-R",
+# Keys are the data/raw/ FILENAME stems (release display tokens); values are the `model`
+# labels written into the workbook. Keep both in sync with data/raw/README.md — keying this
+# on the internal codenames instead silently drops the models whose file stem differs.
+LABEL = {"base-a": "base-a (pre-SFT)", "SFT": "SFT",
+         "process": "+process", "Chem-R-Faithful": "Chem-R-Faithful", "Chem-R": "Chem-R",
          "ChemDFM-R": "ChemDFM-R", "ether-0": "ether-0"}
 CONDS = ["syn_cot", "wrong_cot", "all_wrong_cot", "drop_cot", "swap_cot", "wrong_input"]
 COND_DESC = {"syn_cot": "synonym (control)", "wrong_cot": "1 FG-name corrupted",
@@ -82,7 +85,7 @@ def draft_frames():
     drafted SMILES (base_correct==1 & n_draft>0). Only the 3 models where it was run."""
     rows = []
     for stem, f in models_present("drift"):
-        if stem not in ("Chem-R", "Chem-R-Faithful", "ChemDFM-R"):
+        if stem not in ("Chem-R", "Chem-R-Faithful", "ChemDFM-R", "ether-0"):
             continue
         lab = LABEL[stem]; pe = json.load(open(f))["per_example"]
         bc = [e for e in pe if e.get("base_correct") == 1]

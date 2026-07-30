@@ -114,9 +114,12 @@ def _mid(lst):
     """middle-layer value of a per-layer attention list."""
     return lst[len(lst) // 2] if lst else None
 attn_rows = []
-for jf in sorted(glob.glob(f"{MX.BASE}/data/raw/*.json")):
+# Only region_*.json carry `perturb`/`matched`/`attn`; globbing all of data/raw/ would emit a
+# junk row per drift_/condsent_/gradattr_ file. Take the model label from the FILENAME (release
+# display token) — d["model"] still holds the internal training codename.
+for jf in sorted(glob.glob(f"{MX.BASE}/data/raw/region_*.json")):
     d = json.load(open(jf))
-    m = d["model"]
+    m = os.path.basename(jf)[len("region_"):-len(".json")]
     def pm(k):
         v = [p[k] for p in d.get("perturb", []) if p.get(k) is not None and p.get("task") in CAP]
         return (rnd(float(np.mean(v))), len(v)) if v else (None, 0)

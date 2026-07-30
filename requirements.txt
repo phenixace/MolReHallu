@@ -1,0 +1,37 @@
+# MolReHallu — dependency specification
+# Pins verified against the environment that produced the shipped figures and numbers
+# (Python 3.10). Install everything, or pick a tier below.
+
+# ---- tier 1: figures only ---------------------------------------------------
+# Reproduces all eight shipped PDFs/PNGs from data/source_data.xlsx.
+matplotlib==3.10.9
+numpy==1.26.4
+pandas==2.3.3
+openpyxl==3.1.5
+pillow==12.2.0
+
+# ---- tier 2: + the detector, metrics and the reward function ---------------
+# diagnose_hallucination / diagnose_multitask / eval/metrics.py / reward/
+rdkit==2026.3.2
+nltk==3.9.4
+tqdm==4.67.1
+selfies==2.2.0          # optional; diagnose_hallucination guards the import
+torch==2.5.1            # required even on CPU: eval/metrics.py -> s2_success -> s2_official_eval
+
+# ---- tier 3: + the GPU mechanism probes and the generation harness ---------
+# eval/{cot_drift,cot_condsent,cot_info_gain,attr_probe,attention_attribution,token_examples}.py
+transformers==4.46.3
+vllm==0.6.6.post1
+datasets==4.8.5         # optional; s2_official_eval guards the import
+accelerate==1.4.0
+scipy==1.15.3
+
+# ---- optional: eval/caption_metrics.py only -------------------------------
+rouge_score==0.1.2
+
+# Notes
+# * Do NOT also install rdkit-pypi; it shadows rdkit.
+# * The shipped PDFs embed DejaVuSans because Arial/Helvetica were absent on the build machine.
+#   figures/nature_figures.py requests Arial > Helvetica > DejaVu Sans, so on a machine with
+#   Arial installed the output is visually correct but will not be byte-identical to the shipped
+#   PDFs. Uninstall/hide Arial, or accept the font substitution.

@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
-"""Generate the NMI plotted main-display figures (Fig. 2-6) from Source Data.
+"""Generate the NMI plotted main-display figures from Source Data.
 
-Fig. 1 (conceptual framework + worked example) is drawn by hand by the authors
-and is intentionally NOT produced here.
+``main()`` produces every plotted figure shipped in this folder:
+fig1_measures, fig2_widespread, fig3_accuracy_gap, fig4_mechanism,
+fig_scratchpad (fig5), fig_draft (fig6), ed_fig1_ladder, ed_fig2_arena.
+
+Only the conceptual-framework schematic (fig1_framework) is drawn by hand by the
+authors and is not produced here; it is not shipped in this folder either.
 
 Design:
   * Nature artwork spec via ``nature_figures.py`` (5-7 pt fonts, 89/183 mm
@@ -474,7 +478,7 @@ def fig4_mechanism() -> None:
 
     # (c) for a functional-group word that appears in BOTH the input and the trace,
     #     what share of the answer's attention lands on each copy?  This reframes the
-    #     input/trace ratio (12x, 10x, 5x) as an intuitive 100%-split bar.
+    #     input/trace ratio (20x, 21x, 4x) as an intuitive 100%-split bar.
     axc = fig.add_subplot(gs[0, 2])
     plabel(axc, "c")
     order = [("Chem-R", "Chem-R"), ("Faithful", "Chem-R-Faithful"),
@@ -778,6 +782,7 @@ def ed_fig2_arena() -> None:
 
 
 def main() -> None:
+    fig1_measures()
     fig2_widespread()
     fig3_accuracy_gap()
     fig4_mechanism()

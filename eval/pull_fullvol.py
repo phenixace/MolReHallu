@@ -7,7 +7,7 @@ Run: python eval/pull_fullvol.py  (writes fullvol.txt and .md)
 import json, os
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AO = os.path.join(BASE, "data", "raw")
-MODELS = ["Chem-R", "Chem-R-Faithful", "ChemDFM-R"]
+MODELS = ["Chem-R", "Chem-R-Faithful", "ChemDFM-R", "ether-0"]
 ORDER = ["SMILES_frag", "FG_word", "position_digit", "other_word", "punct", "space"]
 STRATA = ["all", "er0", "erpos"]
 
