@@ -1,0 +1,51 @@
+Copyright (c) 2026 the MolReHallu authors
+
+SPDX-License-Identifier: CC-BY-4.0
+
+This work — the code, data, figures and documentation in this repository — is
+licensed under the Creative Commons Attribution 4.0 International License
+(CC BY 4.0).
+
+  Human-readable summary:  https://creativecommons.org/licenses/by/4.0/
+  Full legal code:         https://creativecommons.org/licenses/by/4.0/legalcode
+
+The full legal code at the URL above is incorporated into this LICENSE by
+reference and governs your use of this work. (It is referenced rather than
+transcribed here so that the authoritative wording is the one that applies; to
+vendor it, download it verbatim from the URL above and replace this file.)
+
+You are free to share and adapt this material for any purpose, including
+commercially, provided you give appropriate credit, provide a link to the
+license, and indicate if changes were made.
+
+
+ATTRIBUTION
+
+Please cite the accompanying paper. Until it has a DOI, cite this repository:
+
+  The MolReHallu authors. MolReHallu: structure-grounded diagnosis of reasoning
+  hallucination in chemical reasoning models. https://github.com/phenixace/MolReHallu
+
+
+THIRD-PARTY MATERIAL
+
+This license covers the authors' own contributions. It does not, and cannot,
+relicense third-party material that this work is derived from or that is
+distributed separately:
+
+  * The diagnosed model outputs in data/ were produced by running publicly
+    released models on public benchmarks. The prompts and reference answers
+    originate from ChEBI-20, USPTO-50k, MoleculeNet and S2-TOMG-Bench; the
+    generations originate from the evaluated models. Each remains subject to its
+    own upstream license and terms of use. No benchmark corpus is redistributed
+    here.
+  * The evaluated model weights are not distributed here. The public models are
+    obtained from their own repositories under their own licenses; the three
+    trained arms (Chem-R-Faithful, +process, Chem-R-SFT) are released separately.
+  * reward/chem_merged_v8_ours.py is written to plug into EasyR1/verl, which is
+    distributed under its own license and is not included here.
+
+NOTE ON SOFTWARE: Creative Commons does not recommend CC licenses for software,
+because they do not address patent rights or source-code distribution terms. If
+you need those guarantees for the code in this repository, contact the authors
+about an additional software license (e.g. MIT or Apache-2.0).

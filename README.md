@@ -33,6 +33,11 @@ reward (`reward/chem_merged_v8_ours.compute_score`, with `COUPLED=1`). The mecha
 the RL run are not re-runnable from this release — they need the full generation tree and, for
 the three trained arms, weights released separately.
 
+## License
+CC BY 4.0 (`SPDX-License-Identifier: CC-BY-4.0`) — see `LICENSE`. Share and adapt freely, including
+commercially, with attribution. Upstream benchmark corpora and model weights are not redistributed
+here and remain under their own licenses.
+
 ## Data version
 All numbers use the current (V8) detector. Chem-R cap2mol ER = 6.66; the decoupling
 figure/stats are on V8 (means 6.4 vs 6.8; 13% of responses right-yet-fabricating,

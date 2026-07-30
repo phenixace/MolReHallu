@@ -94,7 +94,9 @@ SHORT = {
     "DeepSeek-R1-Distill": "R1-Distill", "Chem-R-Faithful": "Faithful",
 }
 
-SURVEY = ["Chem-R", "ChemDFM-R", "ether-0", "DeepSeek-R1-Distill"]
+# The surveyed set is defined per figure as SURV5 (it includes Chem-R-Faithful); an older
+# 4-model SURVEY constant used to live here and is deliberately gone — reusing it silently
+# dropped Chem-R-Faithful from Fig. 2.
 GEN12 = [
     ("cap2mol", "cap2mol"), ("mol2cap", "mol2cap"), ("retrosynthesis", "retro"),
     ("s2_MolCustom_AtomNum", "MC-Atom"), ("s2_MolCustom_BondNum", "MC-Bond"),
