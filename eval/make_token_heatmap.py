@@ -13,6 +13,7 @@ from matplotlib.colors import LinearSegmentedColormap, Normalize
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 D = os.path.join(BASE, "data")
 FIG = os.path.join(D, "figures")
+os.makedirs(FIG, exist_ok=True)
 EX = json.load(open(os.path.join(D, "token_examples", "token_examples.json")))
 NAVY, TEAL, BRICK, GREEN, MUT, INK, SEC = "#3C5488", "#00A087", "#E64B35", "#008300", "#898781", "#0b0b0b", "#52514e"
 CMAP = LinearSegmentedColormap.from_list("att", ["#f4f6fa", "#a9bcd8", NAVY])
