@@ -17,13 +17,17 @@ This repo holds the essential code and the data results behind the figures.
   diagnosed evaluation tree, so it is gated behind `MOLREHALLU_REGEN=1` — see `data/SOURCE_DATA.md`).
 - `reward/chem_merged_v8_ours.py` — process reward for Chem-R-Faithful (format + accuracy +
   anti-hallucination + grounded; the **accuracy term is gated on ER=0**). Plugs into EasyR1/verl.
+- `training/` — the GRPO configs, submission scripts, dataset builders and the exact train/test
+  parquets for both runs, plus the three EasyR1 files that must be patched for the reward to be
+  dispatched per task at all. See `training/README.md`.
 - `figures/make_nmi_figures.py` (+ `nature_figures.py`) — regenerates the main figures from
   `data/`.  Reproduce:  `cd figures && python -c "import make_nmi_figures as m; m.main()"`.
 - `human_eval/` — per-claim reliability set builder, blind-annotation scorer, arena, κ.
 - `data/` — `source_data.xlsx` and CSVs (the plotted series), `SOURCE_DATA.md` (the bundle's
   own manifest), `DATA_INVENTORY.md` (which model was measured on which dataset, at what
   volume, in which experiment), `raw/` (the per-model JSONs the R2/R3/R5 sheets are computed
-  from), and `data/results/…` diagnosis details used by the figures.
+  from), `results/` (per-response diagnosis records) and `responses/` (the model generations,
+  both gzipped — `io_utils.py` reads them transparently).
 
 ## Reproducing
 `pip install -r requirements.txt` covers everything; the figure path alone needs only

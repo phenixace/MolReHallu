@@ -1,0 +1,90 @@
+data:
+  train_files: ./data/merged_4task/train.parquet
+  val_files: ./data/merged_4task/test.parquet
+  prompt_key: problem
+  answer_key: answer
+  task_key: task
+  max_prompt_length: 1024
+  max_response_length: 2048
+  rollout_batch_size: 256
+  val_batch_size: 512
+  format_prompt: ./examples/format_prompt/blank_format.jinja
+  override_chat_template: null
+  shuffle: true
+  seed: 1
+  filter_overlong_prompts: true
+
+algorithm:
+  adv_estimator: grpo
+  disable_kl: false
+  use_kl_loss: true
+  kl_penalty: low_var_kl
+  kl_coef: 1.0e-2
+
+worker:
+  actor:
+    global_batch_size: 128
+    micro_batch_size_per_device_for_update: 4
+    micro_batch_size_per_device_for_experience: 16
+    max_grad_norm: 1.0
+    padding_free: true
+    ulysses_sequence_parallel_size: 1
+    model:
+      model_path: weidawang/Chem-R-8B
+      enable_gradient_checkpointing: true
+      trust_remote_code: true
+      freeze_vision_tower: false
+    optim:
+      lr: 1.0e-6
+      weight_decay: 1.0e-2
+      strategy: adamw
+      lr_warmup_ratio: 0.0
+    fsdp:
+      enable_full_shard: true
+      enable_cpu_offload: false
+      enable_rank0_init: true
+    offload:
+      offload_params: true
+      offload_optimizer: true
+
+  rollout:
+    n: 5
+    temperature: 1.0
+    top_p: 0.99
+    gpu_memory_utilization: 0.6
+    enforce_eager: false
+    enable_chunked_prefill: false
+    tensor_parallel_size: 2
+    limit_images: 0
+    val_override_config:
+      temperature: 0.5
+      n: 1
+
+  ref:
+    fsdp:
+      enable_full_shard: true
+      enable_cpu_offload: true
+      enable_rank0_init: true
+    offload:
+      offload_params: false
+
+  reward:
+    reward_type: batch
+    reward_function: ./examples/reward_function/chem_merged_v8_ours.py:compute_score
+
+trainer:
+  total_epochs: 3
+  max_steps: null
+  project_name: mollm_hallucination
+  experiment_name: ChemR-GRPO-v8coupled-merged
+  logger: ["console"]
+  nnodes: 1
+  n_gpus_per_node: 4
+  val_freq: 25
+  val_before_train: true
+  val_only: false
+  val_generations_to_log: 5
+  save_freq: 25
+  save_limit: 3
+  save_checkpoint_path: ./checkpoints/chem-r-faithful
+  load_checkpoint_path: null
