@@ -8,8 +8,17 @@ the specific hypothesis that SFT installs obligatory fixed-slot generation:
 
   perf, ER, %ER=0                 -- via eval/metrics.py (official metrics)
   claims_per_resp                 -- mean # distinct claimed FGs / response
-  perclaim_fab_rate               -- sum(fabricated) / sum(claimed)  [claim-weighted]
-                                     the verbosity-invariant fabrication RATE
+  perclaim_fab_rate               -- fabricated / (verified + fabricated) over SPECIFIC groups
+                                     only (the six generic names are excluded from both
+                                     numerator and denominator), computed per task and then
+                                     averaged unweighted over tasks. This is the same quantity
+                                     eval/metrics.py reports as claim precision `cp`, so the
+                                     ladder's Chem-R rung equals the surveyed Chem-R value.
+                                     Generic groups ("ring", "aromatic_ring", ...) verify almost
+                                     always, so counting them would dilute the rate in favour of
+                                     verbose models -- the opposite of the verbosity-invariance
+                                     this metric is for. eval/metrics.py and the training reward
+                                     (reward/chem_merged_v8_ours.py::_er_count) both exclude them.
   hedge_rate                      -- frac of traces that hedge ("may/likely/appears/not sure")
   abstain_rate                    -- frac of traces that abstain ("cannot determine/unknown")
   fab_position                    -- mean normalized position (0=start,1=end) of the
@@ -42,7 +51,33 @@ if os.environ.get("MOLREHALLU_REGEN") != "1":
     )
 
 sys.path.insert(0, os.path.join(BASE, "eval"))
+sys.path.insert(0, BASE)
 import metrics as MX  # noqa: E402
+from diagnose_hallucination import GENERIC_FG_NAMES as GENERIC  # noqa: E402
+
+
+def _alias(label):
+    """Directory names for a rung: the release display name and its internal codename.
+    A diagnosed tree may be laid out under either, and silently skipping a rung whose
+    directory happens to use the other convention is how a ladder loses a stage."""
+    alts = [label]
+    readme = os.path.join(BASE, "data", "raw", "README.md")
+    if os.path.exists(readme):
+        for line in open(readme):
+            c = [x.strip().strip("`") for x in line.strip().strip("|").split("|")]
+            if len(c) < 3 or c[0].startswith(("-", ":", "display")):
+                continue
+            if label in (c[0], c[1], c[2]):        # filename token / display label / codename
+                alts += [x for x in (c[1], c[2], c[0]) if x and x not in alts]
+    return alts
+
+
+def _find(model, task):
+    for name in _alias(model):
+        fs = glob.glob(f"{BASE}/data/results/{name}/{task}/*hallucination_details.jsonl")
+        if fs:
+            return name, fs
+    return model, []
 
 # ladder order; skip silently if a model has no results yet
 LADDER = [
@@ -78,7 +113,11 @@ def _think_text(answer):
 
 def _load_text(model, task):
     """id -> think-segment text, from output.json."""
-    fs = glob.glob(f"{BASE}/se_results/{model}/{task}/output.json")
+    fs = []
+    for name in _alias(model):
+        fs = glob.glob(f"{BASE}/se_results/{name}/{task}/output.json")
+        if fs:
+            break
     if not fs:
         return {}
     o = json.load(open(fs[0]))
@@ -108,22 +147,28 @@ def _fab_position(think, fabricated_fgs):
 def mechanism_stats(model):
     txt_cache = {t: _load_text(model, t) for t in GEN_TASKS}
     n_resp = 0
-    claimed_tot = fab_tot = 0
+    claimed_tot = 0
     hedge = abstain = 0
     positions = []
+    per_task_rate = []          # specific-claim fabrication rate, one entry per task
     for task in GEN_TASKS:
-        fs = glob.glob(f"{BASE}/data/results/{model}/{task}/*hallucination_details.jsonl")
+        _, fs = _find(model, task)
         if not fs:
             continue
         texts = txt_cache[task]
+        ver_spec = fab_spec = 0
         for line in open(fs[0]):
             d = json.loads(line)
             er = d.get("details", {}).get("ER", {})
             claimed = er.get("claimed_fgs", []) or []
             fabricated = er.get("fabricated_fgs", []) or []
+            verified = er.get("verified_fgs")
+            if verified is None:
+                verified = [x for x in claimed if x not in set(fabricated)]
             n_resp += 1
             claimed_tot += len(claimed)
-            fab_tot += len(fabricated)
+            ver_spec += len([x for x in verified if x not in GENERIC])
+            fab_spec += len([x for x in fabricated if x not in GENERIC])
             think = texts.get(str(d.get("id")), "")
             if think:
                 if _HEDGE.search(think):
@@ -133,12 +178,14 @@ def mechanism_stats(model):
                 p = _fab_position(think, fabricated)
                 if p is not None:
                     positions.append(p)
+        if ver_spec + fab_spec:
+            per_task_rate.append(fab_spec / (ver_spec + fab_spec))
     if n_resp == 0:
         return None
     return {
         "n_resp": n_resp,
         "claims_per_resp": claimed_tot / n_resp,
-        "perclaim_fab_rate": (fab_tot / claimed_tot) if claimed_tot else 0.0,
+        "perclaim_fab_rate": (sum(per_task_rate) / len(per_task_rate)) if per_task_rate else 0.0,
         "hedge_rate": hedge / n_resp,
         "abstain_rate": abstain / n_resp,
         "fab_position": (sum(positions) / len(positions)) if positions else float("nan"),
@@ -157,7 +204,13 @@ def main():
             print(f"{label:22s}  <no results yet>")
             continue
         # official perf/ER over all 12 task variants (comparable across stages)
-        agg = MX.family_stats(model, GEN_TASKS) if hasattr(MX, "family_stats") else None
+        # metrics.py globs the model directory by name, so hand it the alias that actually
+        # has data -- otherwise perf/ER come back NaN for any rung whose directory uses the
+        # other naming convention, while the mechanism stats above succeed.
+        resolved = next((n for n in _alias(model)
+                         if glob.glob(f"{BASE}/data/results/{n}/{GEN_TASKS[0]}/*hallucination_details.jsonl")),
+                        model)
+        agg = MX.family_stats(resolved, GEN_TASKS) if hasattr(MX, "family_stats") else None
         perf = agg["perf"] if agg else float("nan")
         er = agg["ER"] if agg else float("nan")
         er0 = agg["pct_er0"] if agg else float("nan")

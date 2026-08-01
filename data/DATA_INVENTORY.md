@@ -50,11 +50,11 @@ Every rung is scored on the same task basis: unresolved (derived here by checkin
 
 | stage | model | internal codename | weights | n responses | performance | ER | %ER=0 | claims/resp | per-claim fab. |
 |---|---|---|---|---|---|---|---|---|---|
-| base-a (pre-SFT) | base-a (pre-SFT) | `Llama-3.1-8B-Instruct-base` | meta-llama/Llama-3.1-8B-Instruct | 16107 | 4.53 | 16.88 | 44.94 | 3.48 | 0.3465 |
-| SFT | SFT | `Chem-R-SFT` | <released separately: Chem-R SFT checkpoint> | 16107 | 42.32 | 11.61 | 38.29 | 6.01 | 0.2057 |
-| +process | +process | `Chem-R-v8` | <released separately: Chem-R process-reward variant> | 16107 | 51.72 | 2.43 | 81.72 | 6.51 | 0.0372 |
-| +coupled | Chem-R-Faithful | `Chem-R-v8-coupled` | <released separately: Chem-R-Faithful weights> | 16107 | 51.45 | 1.73 | 88.05 | 6.34 | 0.0257 |
-| off-the-shelf GRPO | Chem-R | `Chem-R` | weidawang/Chem-R-8B | 16107 | 50.09 | 10.60 | 40.63 | 6.05 | 0.1934 |
+| base-a (pre-SFT) | base-a (pre-SFT) | `Llama-3.1-8B-Instruct-base` | meta-llama/Llama-3.1-8B-Instruct | 16107 | 4.53 | 16.88 | 44.94 | 3.48 | 0.5182 |
+| SFT | SFT | `Chem-R-SFT` | <released separately: Chem-R SFT checkpoint> | 16107 | 42.32 | 11.61 | 38.29 | 6.01 | 0.2820 |
+| +process | +process | `Chem-R-v8` | <released separately: Chem-R process-reward variant> | 16107 | 51.72 | 2.43 | 81.72 | 6.51 | 0.0579 |
+| +coupled | Chem-R-Faithful | `Chem-R-v8-coupled` | <released separately: Chem-R-Faithful weights> | 16107 | 51.45 | 1.73 | 88.05 | 6.34 | 0.0435 |
+| off-the-shelf GRPO | Chem-R | `Chem-R` | weidawang/Chem-R-8B | 16107 | 50.09 | 10.60 | 40.63 | 6.05 | 0.2256 |
 
 ## 3. Diagnosis: performance and hallucination per model x task
 
