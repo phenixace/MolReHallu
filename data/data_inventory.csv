@@ -1,250 +1,240 @@
-experiment,model,task,task_family,dataset,dataset_file,reported_in_paper,n,performance,ER,overall_hallucination,pct_ER0,claim_precision,semantic_entropy,weights
-diagnosis,Chem-R,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,3300,41.0303,6.6632,11.4214,65.4848,88.9832,0.7371,weidawang/Chem-R-8B
-diagnosis,Chem-R,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,3300,40.309,7.1981,18.7028,50.9697,83.6722,2.3026,weidawang/Chem-R-8B
-diagnosis,Chem-R,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,5007,50.03,15.102,12.2893,12.3427,69.2755,0.4938,weidawang/Chem-R-8B
-diagnosis,Chem-R,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,500,14.4,19.2923,14.9737,37.6,56.1722,2.2743,weidawang/Chem-R-8B
-diagnosis,Chem-R,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,500,16.8,22.1665,24.5913,21.8,47.2429,2.2796,weidawang/Chem-R-8B
-diagnosis,Chem-R,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,500,44.0,12.4005,16.6781,41.0,76.193,2.272,weidawang/Chem-R-8B
-diagnosis,Chem-R,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,500,86.6,6.8137,8.0106,50.6,85.5825,1.4113,weidawang/Chem-R-8B
-diagnosis,Chem-R,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,500,91.2,5.8594,10.383,60.2,86.5827,0.4335,weidawang/Chem-R-8B
-diagnosis,Chem-R,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,500,67.2,2.6927,5.318,78.0,92.7399,0.1733,weidawang/Chem-R-8B
-diagnosis,Chem-R,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,500,94.4,10.1017,9.0699,40.8,80.416,1.376,weidawang/Chem-R-8B
-diagnosis,Chem-R,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,500,92.4,9.4161,10.2915,44.0,81.458,1.3338,weidawang/Chem-R-8B
-diagnosis,Chem-R,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,500,68.6,9.87,9.5274,42.6,80.9671,1.2927,weidawang/Chem-R-8B
-diagnosis,Chem-R,bace,classification,MoleculeNet,moleculenet/bace/bace.csv,False,152,0.0,4.8205,9.9551,71.0526,90.0356,0.2915,weidawang/Chem-R-8B
-diagnosis,Chem-R,bbbp,classification,MoleculeNet,moleculenet/bbbp/bbbp.csv,False,204,0.0,7.1057,11.5558,59.8039,84.4101,0.2711,weidawang/Chem-R-8B
-diagnosis,Chem-R,hiv,classification,MoleculeNet,moleculenet/hiv/hiv.csv,False,4113,0.0,9.5764,17.7029,53.5376,79.056,0.3988,weidawang/Chem-R-8B
-diagnosis,Chem-R,tox21,classification,MoleculeNet,moleculenet/tox21/tox21.csv,False,784,0.0,14.4055,18.7799,38.5204,73.4199,0.0391,weidawang/Chem-R-8B
-diagnosis,Chem-R,clintox,classification,MoleculeNet,moleculenet/clintox/clintox.csv,False,148,0.0,11.8797,5.5714,43.9189,77.1963,0.0722,weidawang/Chem-R-8B
-diagnosis,+process,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,3300,43.1515,2.3741,9.6989,84.4848,96.4284,,<released separately: Chem-R process-reward variant>
-diagnosis,+process,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,3300,41.6731,3.0022,17.0645,73.2727,93.5835,,<released separately: Chem-R process-reward variant>
-diagnosis,+process,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,5007,50.709,1.4442,8.5892,84.1821,97.3525,,<released separately: Chem-R process-reward variant>
-diagnosis,+process,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,500,7.8,7.6775,10.5726,71.0,84.296,,<released separately: Chem-R process-reward variant>
-diagnosis,+process,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,500,15.4,11.7297,17.5395,48.0,74.2958,,<released separately: Chem-R process-reward variant>
-diagnosis,+process,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,500,55.4,3.9733,11.4218,79.4,93.9648,,<released separately: Chem-R process-reward variant>
-diagnosis,+process,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,500,90.2,0.7454,5.7162,92.2,98.6861,,<released separately: Chem-R process-reward variant>
-diagnosis,+process,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,500,91.2,0.8158,8.8415,92.6,98.3037,,<released separately: Chem-R process-reward variant>
-diagnosis,+process,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,500,67.8,0.622,4.7444,92.0,98.7289,,<released separately: Chem-R process-reward variant>
-diagnosis,+process,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,500,99.0,0.9454,4.6637,91.4,98.3642,,<released separately: Chem-R process-reward variant>
-diagnosis,+process,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,500,93.2,0.9891,6.1433,90.2,98.086,,<released separately: Chem-R process-reward variant>
-diagnosis,+process,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,500,78.6,0.8432,4.9633,91.4,98.4121,,<released separately: Chem-R process-reward variant>
-diagnosis,Chem-R-Faithful,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,3300,42.3636,1.8119,9.1628,88.2424,97.2867,0.6645,<released separately: Chem-R-Faithful weights>
-diagnosis,Chem-R-Faithful,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,3300,41.4847,1.7079,16.8201,84.6667,96.2107,2.3026,<released separately: Chem-R-Faithful weights>
-diagnosis,Chem-R-Faithful,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,5007,49.9301,0.8137,8.6626,90.6531,98.4905,0.4059,<released separately: Chem-R-Faithful weights>
-diagnosis,Chem-R-Faithful,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,500,9.8,7.876,10.9019,73.6,88.0716,2.2785,<released separately: Chem-R-Faithful weights>
-diagnosis,Chem-R-Faithful,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,500,18.2,9.7076,16.8441,62.4,79.2318,2.2973,<released separately: Chem-R-Faithful weights>
-diagnosis,Chem-R-Faithful,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,500,53.2,3.7012,11.8524,80.8,94.293,2.2795,<released separately: Chem-R-Faithful weights>
-diagnosis,Chem-R-Faithful,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,500,93.0,0.3472,5.366,96.6,99.3502,0.7045,<released separately: Chem-R-Faithful weights>
-diagnosis,Chem-R-Faithful,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,500,93.8,0.6255,8.2333,94.0,98.7164,0.3731,<released separately: Chem-R-Faithful weights>
-diagnosis,Chem-R-Faithful,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,500,68.0,0.5025,4.5674,94.0,98.9997,0.1951,<released separately: Chem-R-Faithful weights>
-diagnosis,Chem-R-Faithful,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,500,98.4,0.4835,4.4285,95.6,99.1345,0.9081,<released separately: Chem-R-Faithful weights>
-diagnosis,Chem-R-Faithful,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,500,91.8,0.8327,5.9391,93.0,98.5915,0.9345,<released separately: Chem-R-Faithful weights>
-diagnosis,Chem-R-Faithful,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,500,77.8,0.2577,4.7984,97.4,99.4762,0.8632,<released separately: Chem-R-Faithful weights>
-diagnosis,ChemDFM-R,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,3300,48.4848,3.6125,9.2252,83.4242,94.1266,0.6366,OpenDFM/ChemDFM-R
-diagnosis,ChemDFM-R,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,3300,36.0645,7.3458,20.2485,54.8788,84.338,2.3026,OpenDFM/ChemDFM-R
-diagnosis,ChemDFM-R,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,5007,43.9984,9.0229,12.0766,48.7318,79.6038,0.4958,OpenDFM/ChemDFM-R
-diagnosis,ChemDFM-R,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,500,35.0,24.394,17.1552,49.2,86.385,1.3046,OpenDFM/ChemDFM-R
-diagnosis,ChemDFM-R,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,500,21.2,13.875,21.5302,59.4,68.5315,1.6381,OpenDFM/ChemDFM-R
-diagnosis,ChemDFM-R,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,500,41.4,5.3066,14.1568,75.6,95.5134,1.3631,OpenDFM/ChemDFM-R
-diagnosis,ChemDFM-R,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,500,62.2,3.3211,10.2829,77.2,90.6548,0.9166,OpenDFM/ChemDFM-R
-diagnosis,ChemDFM-R,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,500,62.2,2.2547,9.5244,84.6,92.9839,0.6015,OpenDFM/ChemDFM-R
-diagnosis,ChemDFM-R,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,500,69.0,2.353,6.9409,83.2,92.4272,0.3423,OpenDFM/ChemDFM-R
-diagnosis,ChemDFM-R,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,500,68.4,8.8634,9.6166,53.8,79.2936,1.5144,OpenDFM/ChemDFM-R
-diagnosis,ChemDFM-R,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,500,61.4,5.6803,10.5245,67.8,85.4615,1.4421,OpenDFM/ChemDFM-R
-diagnosis,ChemDFM-R,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,500,38.6,4.8263,10.0311,71.6,87.3794,1.2793,OpenDFM/ChemDFM-R
-diagnosis,ChemDFM-R,bace,classification,MoleculeNet,moleculenet/bace/bace.csv,False,152,0.0,5.5651,19.3519,69.0789,89.6208,0.0647,OpenDFM/ChemDFM-R
-diagnosis,ChemDFM-R,bbbp,classification,MoleculeNet,moleculenet/bbbp/bbbp.csv,False,204,0.0,6.3105,14.96,65.6863,88.3527,0.2156,OpenDFM/ChemDFM-R
-diagnosis,ChemDFM-R,hiv,classification,MoleculeNet,moleculenet/hiv/hiv.csv,False,4113,0.0,10.2343,3.6138,56.5281,83.3878,0.006,OpenDFM/ChemDFM-R
-diagnosis,ChemDFM-R,tox21,classification,MoleculeNet,moleculenet/tox21/tox21.csv,False,784,0.0,6.8557,17.205,66.3265,91.1488,0.0033,OpenDFM/ChemDFM-R
-diagnosis,ChemDFM-R,clintox,classification,MoleculeNet,moleculenet/clintox/clintox.csv,False,148,0.0,6.9978,4.3508,67.5676,88.2507,0.0392,OpenDFM/ChemDFM-R
-diagnosis,DeepSeek-R1-Distill,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,3300,0.7879,14.4182,25.7518,37.2424,74.4597,0.6137,
-diagnosis,DeepSeek-R1-Distill,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,3300,1.0673,20.0163,46.0635,10.7273,55.27,2.3026,
-diagnosis,DeepSeek-R1-Distill,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,5007,0.0,33.7844,54.9879,0.02,32.6459,0.5082,
-diagnosis,DeepSeek-R1-Distill,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,500,9.0,45.6262,65.6761,17.0,10.4429,1.0928,
-diagnosis,DeepSeek-R1-Distill,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,500,10.2,40.4049,63.5193,7.4,5.2582,0.7333,
-diagnosis,DeepSeek-R1-Distill,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,500,26.0,29.5849,51.241,15.0,48.8122,1.1629,
-diagnosis,DeepSeek-R1-Distill,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,500,6.2,19.5804,60.1857,5.8,57.667,0.5728,
-diagnosis,DeepSeek-R1-Distill,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,500,37.6,15.3184,43.2766,16.8,63.5214,0.9057,
-diagnosis,DeepSeek-R1-Distill,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,500,40.4,13.3819,38.5786,18.4,66.6949,1.0651,
-diagnosis,DeepSeek-R1-Distill,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,500,20.4,28.7977,53.4192,0.6,42.2231,1.3536,
-diagnosis,DeepSeek-R1-Distill,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,500,9.0,27.6892,56.5103,1.0,42.0251,1.2808,
-diagnosis,DeepSeek-R1-Distill,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,500,12.0,28.4515,52.7659,1.4,40.3535,1.4657,
-diagnosis,DeepSeek-R1-Distill,bace,classification,MoleculeNet,moleculenet/bace/bace.csv,False,152,0.0,13.8474,20.772,11.1842,68.6192,0.2427,
-diagnosis,DeepSeek-R1-Distill,bbbp,classification,MoleculeNet,moleculenet/bbbp/bbbp.csv,False,204,0.0,18.512,22.1275,10.2941,57.1655,0.4413,
-diagnosis,DeepSeek-R1-Distill,hiv,classification,MoleculeNet,moleculenet/hiv/hiv.csv,False,4113,0.0,26.2787,38.4157,3.7685,39.9173,0.2331,
-diagnosis,DeepSeek-R1-Distill,tox21,classification,MoleculeNet,moleculenet/tox21/tox21.csv,False,784,0.0,21.7206,26.4262,6.3776,52.0703,0.3511,
-diagnosis,DeepSeek-R1-Distill,clintox,classification,MoleculeNet,moleculenet/clintox/clintox.csv,False,148,0.0,21.1634,35.9768,4.7297,52.2201,0.1789,
-diagnosis,ether-0,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,3300,30.8485,8.2149,17.2841,64.3636,85.6996,1.1023,futurehouse/ether0
-diagnosis,ether-0,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,3300,0.1382,9.8384,49.9123,48.6667,74.5959,2.2798,futurehouse/ether0
-diagnosis,ether-0,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,5007,2.6763,13.4928,28.517,25.5642,71.6747,0.9137,futurehouse/ether0
-diagnosis,ether-0,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,500,54.2,37.262,31.3303,16.6,24.0049,1.3112,futurehouse/ether0
-diagnosis,ether-0,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,500,13.6,29.4469,37.341,19.0,25.0674,1.306,futurehouse/ether0
-diagnosis,ether-0,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,500,43.0,27.8612,32.6665,11.4,45.8238,1.4762,futurehouse/ether0
-diagnosis,ether-0,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,500,88.2,11.0506,12.1383,31.2,77.3397,0.8038,futurehouse/ether0
-diagnosis,ether-0,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,500,75.6,10.9757,16.6284,38.2,76.6456,0.826,futurehouse/ether0
-diagnosis,ether-0,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,500,78.8,6.009,8.1064,54.2,85.6112,0.366,futurehouse/ether0
-diagnosis,ether-0,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,500,95.6,21.9002,12.5485,7.6,58.9016,0.4691,futurehouse/ether0
-diagnosis,ether-0,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,500,47.8,20.1817,12.7158,11.2,60.3604,1.053,futurehouse/ether0
-diagnosis,ether-0,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,500,52.0,20.0887,14.0287,11.8,59.653,0.9872,futurehouse/ether0
-diagnosis,ether-0,bace,classification,MoleculeNet,moleculenet/bace/bace.csv,False,152,0.0,12.4038,35.3419,34.2105,67.6692,0.0087,futurehouse/ether0
-diagnosis,ether-0,bbbp,classification,MoleculeNet,moleculenet/bbbp/bbbp.csv,False,204,0.0,12.5373,33.27,36.7647,73.1057,0.0447,futurehouse/ether0
-diagnosis,ether-0,hiv,classification,MoleculeNet,moleculenet/hiv/hiv.csv,False,4113,0.0,14.7362,36.3209,34.5976,60.9675,0.1063,futurehouse/ether0
-diagnosis,ether-0,tox21,classification,MoleculeNet,moleculenet/tox21/tox21.csv,False,784,0.0,17.4528,35.6079,22.3214,60.7729,0.3835,futurehouse/ether0
-diagnosis,ether-0,clintox,classification,MoleculeNet,moleculenet/clintox/clintox.csv,False,148,0.0,16.3072,35.185,21.6216,65.6115,0.2335,futurehouse/ether0
-origin ladder (base-a (pre-SFT)),base-a (pre-SFT),cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,3300,0.2839420543711334,13.090968381149306,,47.72981821314724,,,meta-llama/Llama-3.1-8B-Instruct
-origin ladder (base-a (pre-SFT)),base-a (pre-SFT),mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,3300,0.2839420543711334,13.090968381149306,,47.72981821314724,,,meta-llama/Llama-3.1-8B-Instruct
-origin ladder (base-a (pre-SFT)),base-a (pre-SFT),retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,5007,0.2839420543711334,13.090968381149306,,47.72981821314724,,,meta-llama/Llama-3.1-8B-Instruct
-origin ladder (SFT),SFT,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,3300,34.50244084992786,10.054718704230206,,39.88110622899974,,,<released separately: Chem-R SFT checkpoint>
-origin ladder (SFT),SFT,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,3300,34.50244084992786,10.054718704230206,,39.88110622899974,,,<released separately: Chem-R SFT checkpoint>
-origin ladder (SFT),SFT,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,5007,34.50244084992786,10.054718704230206,,39.88110622899974,,,<released separately: Chem-R SFT checkpoint>
-origin ladder (+process),+process,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,3300,45.99132007340483,2.1515533729645897,,81.16653743430689,,,<released separately: Chem-R process-reward variant>
-origin ladder (+process),+process,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,3300,45.99132007340483,2.1515533729645897,,81.16653743430689,,,<released separately: Chem-R process-reward variant>
-origin ladder (+process),+process,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,5007,45.99132007340483,2.1515533729645897,,81.16653743430689,,,<released separately: Chem-R process-reward variant>
-origin ladder (+coupled),Chem-R-Faithful,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,3300,45.377749522106726,1.351713621090721,,88.26570173171362,,,<released separately: Chem-R-Faithful weights>
-origin ladder (+coupled),Chem-R-Faithful,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,3300,45.377749522106726,1.351713621090721,,88.26570173171362,,,<released separately: Chem-R-Faithful weights>
-origin ladder (+coupled),Chem-R-Faithful,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,5007,45.377749522106726,1.351713621090721,,88.26570173171362,,,<released separately: Chem-R-Faithful weights>
-origin ladder (off-the-shelf GRPO),Chem-R,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,3300,44.70748788497879,10.455585422589817,,38.43370379943138,,,weidawang/Chem-R-8B
-origin ladder (off-the-shelf GRPO),Chem-R,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,3300,44.70748788497879,10.455585422589817,,38.43370379943138,,,weidawang/Chem-R-8B
-origin ladder (off-the-shelf GRPO),Chem-R,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,5007,44.70748788497879,10.455585422589817,,38.43370379943138,,,weidawang/Chem-R-8B
-conditional entropy,+process,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,13567,,,,,,,<released separately: Chem-R process-reward variant>
-conditional entropy,+process,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,13567,,,,,,,<released separately: Chem-R process-reward variant>
-conditional entropy,+process,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,13567,,,,,,,<released separately: Chem-R process-reward variant>
-conditional entropy,+process,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,13567,,,,,,,<released separately: Chem-R process-reward variant>
-conditional entropy,+process,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,13567,,,,,,,<released separately: Chem-R process-reward variant>
-conditional entropy,+process,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,13567,,,,,,,<released separately: Chem-R process-reward variant>
-conditional entropy,+process,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,13567,,,,,,,<released separately: Chem-R process-reward variant>
-CoT / draft perturbation,+process,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,13567,,,,,,,<released separately: Chem-R process-reward variant>
-CoT / draft perturbation,+process,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,13567,,,,,,,<released separately: Chem-R process-reward variant>
-CoT / draft perturbation,+process,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,13567,,,,,,,<released separately: Chem-R process-reward variant>
-CoT / draft perturbation,+process,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,13567,,,,,,,<released separately: Chem-R process-reward variant>
-CoT / draft perturbation,+process,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,13567,,,,,,,<released separately: Chem-R process-reward variant>
-CoT / draft perturbation,+process,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,13567,,,,,,,<released separately: Chem-R process-reward variant>
-CoT / draft perturbation,+process,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,13567,,,,,,,<released separately: Chem-R process-reward variant>
-conditional entropy,Chem-R,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,13560,,,,,,,weidawang/Chem-R-8B
-conditional entropy,Chem-R,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,13560,,,,,,,weidawang/Chem-R-8B
-conditional entropy,Chem-R,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,13560,,,,,,,weidawang/Chem-R-8B
-conditional entropy,Chem-R,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,13560,,,,,,,weidawang/Chem-R-8B
-conditional entropy,Chem-R,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,13560,,,,,,,weidawang/Chem-R-8B
-conditional entropy,Chem-R,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,13560,,,,,,,weidawang/Chem-R-8B
-conditional entropy,Chem-R,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,13560,,,,,,,weidawang/Chem-R-8B
-CoT / draft perturbation,Chem-R,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,13560,,,,,,,weidawang/Chem-R-8B
-CoT / draft perturbation,Chem-R,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,13560,,,,,,,weidawang/Chem-R-8B
-CoT / draft perturbation,Chem-R,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,13560,,,,,,,weidawang/Chem-R-8B
-CoT / draft perturbation,Chem-R,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,13560,,,,,,,weidawang/Chem-R-8B
-CoT / draft perturbation,Chem-R,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,13560,,,,,,,weidawang/Chem-R-8B
-CoT / draft perturbation,Chem-R,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,13560,,,,,,,weidawang/Chem-R-8B
-CoT / draft perturbation,Chem-R,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,13560,,,,,,,weidawang/Chem-R-8B
-gradient x input saliency,Chem-R,(pooled),,(multiple),,True,16103,,,,,,,weidawang/Chem-R-8B
-region attention + Dlogp + matched-token,Chem-R,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,16100,,,,,,,weidawang/Chem-R-8B
-region attention + Dlogp + matched-token,Chem-R,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,16100,,,,,,,weidawang/Chem-R-8B
-region attention + Dlogp + matched-token,Chem-R,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,16100,,,,,,,weidawang/Chem-R-8B
-region attention + Dlogp + matched-token,Chem-R,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,16100,,,,,,,weidawang/Chem-R-8B
-region attention + Dlogp + matched-token,Chem-R,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,16100,,,,,,,weidawang/Chem-R-8B
-region attention + Dlogp + matched-token,Chem-R,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,16100,,,,,,,weidawang/Chem-R-8B
-region attention + Dlogp + matched-token,Chem-R,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,16100,,,,,,,weidawang/Chem-R-8B
-region attention + Dlogp + matched-token,Chem-R,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,16100,,,,,,,weidawang/Chem-R-8B
-region attention + Dlogp + matched-token,Chem-R,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,16100,,,,,,,weidawang/Chem-R-8B
-region attention + Dlogp + matched-token,Chem-R,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,16100,,,,,,,weidawang/Chem-R-8B
-region attention + Dlogp + matched-token,Chem-R,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,16100,,,,,,,weidawang/Chem-R-8B
-region attention + Dlogp + matched-token,Chem-R,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,16100,,,,,,,weidawang/Chem-R-8B
-conditional entropy,Chem-R-Faithful,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,13555,,,,,,,<released separately: Chem-R-Faithful weights>
-conditional entropy,Chem-R-Faithful,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,13555,,,,,,,<released separately: Chem-R-Faithful weights>
-conditional entropy,Chem-R-Faithful,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,13555,,,,,,,<released separately: Chem-R-Faithful weights>
-conditional entropy,Chem-R-Faithful,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,13555,,,,,,,<released separately: Chem-R-Faithful weights>
-conditional entropy,Chem-R-Faithful,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,13555,,,,,,,<released separately: Chem-R-Faithful weights>
-conditional entropy,Chem-R-Faithful,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,13555,,,,,,,<released separately: Chem-R-Faithful weights>
-conditional entropy,Chem-R-Faithful,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,13555,,,,,,,<released separately: Chem-R-Faithful weights>
-CoT / draft perturbation,Chem-R-Faithful,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,13555,,,,,,,<released separately: Chem-R-Faithful weights>
-CoT / draft perturbation,Chem-R-Faithful,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,13555,,,,,,,<released separately: Chem-R-Faithful weights>
-CoT / draft perturbation,Chem-R-Faithful,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,13555,,,,,,,<released separately: Chem-R-Faithful weights>
-CoT / draft perturbation,Chem-R-Faithful,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,13555,,,,,,,<released separately: Chem-R-Faithful weights>
-CoT / draft perturbation,Chem-R-Faithful,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,13555,,,,,,,<released separately: Chem-R-Faithful weights>
-CoT / draft perturbation,Chem-R-Faithful,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,13555,,,,,,,<released separately: Chem-R-Faithful weights>
-CoT / draft perturbation,Chem-R-Faithful,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,13555,,,,,,,<released separately: Chem-R-Faithful weights>
-gradient x input saliency,Chem-R-Faithful,(pooled),,(multiple),,True,16100,,,,,,,<released separately: Chem-R-Faithful weights>
-region attention + Dlogp + matched-token,Chem-R-Faithful,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,16098,,,,,,,<released separately: Chem-R-Faithful weights>
-region attention + Dlogp + matched-token,Chem-R-Faithful,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,16098,,,,,,,<released separately: Chem-R-Faithful weights>
-region attention + Dlogp + matched-token,Chem-R-Faithful,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,16098,,,,,,,<released separately: Chem-R-Faithful weights>
-region attention + Dlogp + matched-token,Chem-R-Faithful,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,16098,,,,,,,<released separately: Chem-R-Faithful weights>
-region attention + Dlogp + matched-token,Chem-R-Faithful,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,16098,,,,,,,<released separately: Chem-R-Faithful weights>
-region attention + Dlogp + matched-token,Chem-R-Faithful,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,16098,,,,,,,<released separately: Chem-R-Faithful weights>
-region attention + Dlogp + matched-token,Chem-R-Faithful,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,16098,,,,,,,<released separately: Chem-R-Faithful weights>
-region attention + Dlogp + matched-token,Chem-R-Faithful,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,16098,,,,,,,<released separately: Chem-R-Faithful weights>
-region attention + Dlogp + matched-token,Chem-R-Faithful,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,16098,,,,,,,<released separately: Chem-R-Faithful weights>
-region attention + Dlogp + matched-token,Chem-R-Faithful,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,16098,,,,,,,<released separately: Chem-R-Faithful weights>
-region attention + Dlogp + matched-token,Chem-R-Faithful,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,16098,,,,,,,<released separately: Chem-R-Faithful weights>
-region attention + Dlogp + matched-token,Chem-R-Faithful,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,16098,,,,,,,<released separately: Chem-R-Faithful weights>
-conditional entropy,ChemDFM-R,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,13451,,,,,,,OpenDFM/ChemDFM-R
-conditional entropy,ChemDFM-R,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,13451,,,,,,,OpenDFM/ChemDFM-R
-conditional entropy,ChemDFM-R,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,13451,,,,,,,OpenDFM/ChemDFM-R
-conditional entropy,ChemDFM-R,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,13451,,,,,,,OpenDFM/ChemDFM-R
-conditional entropy,ChemDFM-R,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,13451,,,,,,,OpenDFM/ChemDFM-R
-conditional entropy,ChemDFM-R,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,13451,,,,,,,OpenDFM/ChemDFM-R
-conditional entropy,ChemDFM-R,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,13451,,,,,,,OpenDFM/ChemDFM-R
-CoT / draft perturbation,ChemDFM-R,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,13451,,,,,,,OpenDFM/ChemDFM-R
-CoT / draft perturbation,ChemDFM-R,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,13451,,,,,,,OpenDFM/ChemDFM-R
-CoT / draft perturbation,ChemDFM-R,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,13451,,,,,,,OpenDFM/ChemDFM-R
-CoT / draft perturbation,ChemDFM-R,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,13451,,,,,,,OpenDFM/ChemDFM-R
-CoT / draft perturbation,ChemDFM-R,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,13451,,,,,,,OpenDFM/ChemDFM-R
-CoT / draft perturbation,ChemDFM-R,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,13451,,,,,,,OpenDFM/ChemDFM-R
-CoT / draft perturbation,ChemDFM-R,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,13451,,,,,,,OpenDFM/ChemDFM-R
-gradient x input saliency,ChemDFM-R,(pooled),,(multiple),,True,16064,,,,,,,OpenDFM/ChemDFM-R
-region attention + Dlogp + matched-token,ChemDFM-R,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,16061,,,,,,,OpenDFM/ChemDFM-R
-region attention + Dlogp + matched-token,ChemDFM-R,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,16061,,,,,,,OpenDFM/ChemDFM-R
-region attention + Dlogp + matched-token,ChemDFM-R,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,16061,,,,,,,OpenDFM/ChemDFM-R
-region attention + Dlogp + matched-token,ChemDFM-R,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,16061,,,,,,,OpenDFM/ChemDFM-R
-region attention + Dlogp + matched-token,ChemDFM-R,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,16061,,,,,,,OpenDFM/ChemDFM-R
-region attention + Dlogp + matched-token,ChemDFM-R,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,16061,,,,,,,OpenDFM/ChemDFM-R
-region attention + Dlogp + matched-token,ChemDFM-R,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,16061,,,,,,,OpenDFM/ChemDFM-R
-region attention + Dlogp + matched-token,ChemDFM-R,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,16061,,,,,,,OpenDFM/ChemDFM-R
-region attention + Dlogp + matched-token,ChemDFM-R,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,16061,,,,,,,OpenDFM/ChemDFM-R
-region attention + Dlogp + matched-token,ChemDFM-R,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,16061,,,,,,,OpenDFM/ChemDFM-R
-region attention + Dlogp + matched-token,ChemDFM-R,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,16061,,,,,,,OpenDFM/ChemDFM-R
-region attention + Dlogp + matched-token,ChemDFM-R,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,16061,,,,,,,OpenDFM/ChemDFM-R
-conditional entropy,SFT,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,13549,,,,,,,<released separately: Chem-R SFT checkpoint>
-conditional entropy,SFT,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,13549,,,,,,,<released separately: Chem-R SFT checkpoint>
-conditional entropy,SFT,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,13549,,,,,,,<released separately: Chem-R SFT checkpoint>
-conditional entropy,SFT,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,13549,,,,,,,<released separately: Chem-R SFT checkpoint>
-conditional entropy,SFT,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,13549,,,,,,,<released separately: Chem-R SFT checkpoint>
-conditional entropy,SFT,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,13549,,,,,,,<released separately: Chem-R SFT checkpoint>
-conditional entropy,SFT,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,13549,,,,,,,<released separately: Chem-R SFT checkpoint>
-CoT / draft perturbation,SFT,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,13549,,,,,,,<released separately: Chem-R SFT checkpoint>
-CoT / draft perturbation,SFT,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,13549,,,,,,,<released separately: Chem-R SFT checkpoint>
-CoT / draft perturbation,SFT,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,13549,,,,,,,<released separately: Chem-R SFT checkpoint>
-CoT / draft perturbation,SFT,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,13549,,,,,,,<released separately: Chem-R SFT checkpoint>
-CoT / draft perturbation,SFT,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,13549,,,,,,,<released separately: Chem-R SFT checkpoint>
-CoT / draft perturbation,SFT,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,13549,,,,,,,<released separately: Chem-R SFT checkpoint>
-CoT / draft perturbation,SFT,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,13549,,,,,,,<released separately: Chem-R SFT checkpoint>
-conditional entropy,base-a (pre-SFT),cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,7041,,,,,,,meta-llama/Llama-3.1-8B-Instruct
-conditional entropy,base-a (pre-SFT),mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,7041,,,,,,,meta-llama/Llama-3.1-8B-Instruct
-conditional entropy,base-a (pre-SFT),retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,7041,,,,,,,meta-llama/Llama-3.1-8B-Instruct
-CoT / draft perturbation,base-a (pre-SFT),cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,7041,,,,,,,meta-llama/Llama-3.1-8B-Instruct
-CoT / draft perturbation,base-a (pre-SFT),mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,7041,,,,,,,meta-llama/Llama-3.1-8B-Instruct
-CoT / draft perturbation,base-a (pre-SFT),retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,7041,,,,,,,meta-llama/Llama-3.1-8B-Instruct
-conditional entropy,ether-0,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,12973,,,,,,,futurehouse/ether0
-conditional entropy,ether-0,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,12973,,,,,,,futurehouse/ether0
-conditional entropy,ether-0,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,12973,,,,,,,futurehouse/ether0
-conditional entropy,ether-0,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,12973,,,,,,,futurehouse/ether0
-conditional entropy,ether-0,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,12973,,,,,,,futurehouse/ether0
-conditional entropy,ether-0,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,12973,,,,,,,futurehouse/ether0
-conditional entropy,ether-0,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,12973,,,,,,,futurehouse/ether0
-CoT / draft perturbation,ether-0,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,12973,,,,,,,futurehouse/ether0
-CoT / draft perturbation,ether-0,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,12973,,,,,,,futurehouse/ether0
-CoT / draft perturbation,ether-0,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,12973,,,,,,,futurehouse/ether0
-CoT / draft perturbation,ether-0,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,12973,,,,,,,futurehouse/ether0
-CoT / draft perturbation,ether-0,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,12973,,,,,,,futurehouse/ether0
-CoT / draft perturbation,ether-0,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,12973,,,,,,,futurehouse/ether0
-CoT / draft perturbation,ether-0,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,12973,,,,,,,futurehouse/ether0
-gradient x input saliency,ether-0,(pooled),,(multiple),,True,1500,,,,,,,futurehouse/ether0
-region attention + Dlogp + matched-token,ether-0,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,15386,,,,,,,futurehouse/ether0
-region attention + Dlogp + matched-token,ether-0,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,15386,,,,,,,futurehouse/ether0
-region attention + Dlogp + matched-token,ether-0,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,15386,,,,,,,futurehouse/ether0
-region attention + Dlogp + matched-token,ether-0,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,15386,,,,,,,futurehouse/ether0
-region attention + Dlogp + matched-token,ether-0,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,15386,,,,,,,futurehouse/ether0
-region attention + Dlogp + matched-token,ether-0,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,15386,,,,,,,futurehouse/ether0
-region attention + Dlogp + matched-token,ether-0,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,15386,,,,,,,futurehouse/ether0
-region attention + Dlogp + matched-token,ether-0,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,15386,,,,,,,futurehouse/ether0
-region attention + Dlogp + matched-token,ether-0,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,15386,,,,,,,futurehouse/ether0
-region attention + Dlogp + matched-token,ether-0,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,15386,,,,,,,futurehouse/ether0
-region attention + Dlogp + matched-token,ether-0,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,15386,,,,,,,futurehouse/ether0
-region attention + Dlogp + matched-token,ether-0,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,15386,,,,,,,futurehouse/ether0
+experiment,model,task,task_family,dataset,dataset_file,reported_in_paper,weights,n,perf,perf_er0,perf_erpos,pct_er0,overall,IR,IO,ER,EO,gc,cp,length,info,validity,tanimoto,semantic_entropy,claims_per_resp,perclaim_fab_rate,hedge_rate,abstain_rate,fab_position,n_conditions,base_accuracy,samples_per_response,n_matched_token,n_dlogp
+diagnosis,Chem-R,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,weidawang/Chem-R-8B,3300,41.0303,43.0819,37.1378,65.4848,11.4214,0.2218,6.6099,6.6632,22.55,3.6836,88.9832,2077.3152,1.7733,92.7879,0.757,0.7371,,,,,,,,,,
+diagnosis,Chem-R,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,weidawang/Chem-R-8B,3300,40.309,41.5631,39.0054,50.9697,18.7028,0.303,0.0,7.1981,48.1177,3.6788,83.6722,2513.6518,1.4635,100.0,,2.3026,,,,,,,,,,
+diagnosis,Chem-R,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,weidawang/Chem-R-8B,5007,50.03,51.9417,49.7608,12.3427,12.2893,0.0068,0.3462,15.102,24.1401,4.4761,69.2755,2325.0477,1.9252,99.281,,0.4938,,,,,,,,,,
+diagnosis,Chem-R,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,weidawang/Chem-R-8B,500,14.4,19.6809,11.2179,37.6,14.9737,0.026,9.44,19.2923,21.8125,1.174,56.1722,2227.484,0.5271,88.2,,2.2743,,,,,,,,,,
+diagnosis,Chem-R,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,weidawang/Chem-R-8B,500,16.8,17.4312,16.624,21.8,24.5913,0.008,16.8,22.1665,42.2013,1.268,47.2429,2371.234,0.5347,79.0,,2.2796,,,,,,,,,,
+diagnosis,Chem-R,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,weidawang/Chem-R-8B,500,44.0,42.9268,44.7458,41.0,16.6781,0.008,5.76,12.4005,34.6767,2.874,76.193,2279.532,1.2608,92.8,,2.272,,,,,,,,,,
+diagnosis,Chem-R,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,weidawang/Chem-R-8B,500,86.6,86.166,87.0445,50.6,8.0106,0.0,1.6,6.8137,16.8783,3.526,85.5825,2106.498,1.6739,98.0,,1.4113,,,,,,,,,,
+diagnosis,Chem-R,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,weidawang/Chem-R-8B,500,91.2,91.0299,91.4573,60.2,10.383,0.016,3.2,5.8594,23.188,3.162,86.5827,1827.654,1.7301,96.0,,0.4335,,,,,,,,,,
+diagnosis,Chem-R,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,weidawang/Chem-R-8B,500,67.2,62.0513,85.4545,78.0,5.318,0.016,0.48,2.6927,12.921,3.73,92.7399,1719.474,2.1693,99.4,,0.1733,,,,,,,,,,
+diagnosis,Chem-R,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,weidawang/Chem-R-8B,500,94.4,95.5882,93.5811,40.8,9.0699,0.0,1.12,10.1017,17.8982,3.17,80.416,2254.288,1.4062,98.6,,1.376,,,,,,,,,,
+diagnosis,Chem-R,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,weidawang/Chem-R-8B,500,92.4,94.5455,90.7143,44.0,10.2915,0.016,3.04,9.4161,20.5005,3.084,81.458,2124.678,1.4515,96.2,,1.3338,,,,,,,,,,
+diagnosis,Chem-R,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,weidawang/Chem-R-8B,500,68.6,66.1972,70.3833,42.6,9.5274,0.0,1.92,9.87,18.7988,3.148,80.9671,2224.282,1.4153,97.6,,1.2927,,,,,,,,,,
+diagnosis,Chem-R,bace,classification,MoleculeNet,moleculenet/bace/bace.csv,False,weidawang/Chem-R-8B,152,0.0,0.0,0.0,71.0526,9.9551,0.0,0.0,4.8205,25.0,3.3289,90.0356,2425.1382,1.3727,100.0,,0.2915,,,,,,,,,,
+diagnosis,Chem-R,bbbp,classification,MoleculeNet,moleculenet/bbbp/bbbp.csv,False,weidawang/Chem-R-8B,204,0.0,0.0,0.0,59.8039,11.5558,0.0,0.0,7.1057,27.9412,2.9461,84.4101,2393.3676,1.2309,100.0,,0.2711,,,,,,,,,,
+diagnosis,Chem-R,hiv,classification,MoleculeNet,moleculenet/hiv/hiv.csv,False,weidawang/Chem-R-8B,4113,0.0,0.0,0.0,53.5376,17.7029,0.0,0.0,9.5764,43.7394,2.3659,79.056,2378.8461,0.9946,100.0,,0.3988,,,,,,,,,,
+diagnosis,Chem-R,tox21,classification,MoleculeNet,moleculenet/tox21/tox21.csv,False,weidawang/Chem-R-8B,784,0.0,0.0,0.0,38.5204,18.7799,0.0,0.0,14.4055,43.3673,2.7411,73.4199,2385.6952,1.149,100.0,,0.0391,,,,,,,,,,
+diagnosis,Chem-R,clintox,classification,MoleculeNet,moleculenet/clintox/clintox.csv,False,weidawang/Chem-R-8B,148,0.0,0.0,0.0,43.9189,5.5714,0.0,0.0,11.8797,7.4324,2.7905,77.1963,2469.6757,1.1299,100.0,,0.0722,,,,,,,,,,
+diagnosis,+process,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,<released separately: Chem-R process-reward variant>,3300,43.1515,45.5165,30.2734,84.4848,9.6989,0.0185,4.7681,2.3741,22.3583,4.7861,96.4284,2149.7064,2.2264,94.2424,0.7628,,,,,,,,,,,
+diagnosis,+process,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,<released separately: Chem-R process-reward variant>,3300,41.6731,43.1174,37.7135,73.2727,17.0645,0.0227,0.0,3.0022,46.5466,4.8218,93.5835,2497.1658,1.9309,100.0,,,,,,,,,,,,
+diagnosis,+process,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,<released separately: Chem-R process-reward variant>,5007,50.709,52.5504,40.9091,84.1821,8.5892,0.0008,0.245,1.4442,23.3891,6.1322,97.3525,2290.5734,2.6772,99.5007,,,,,,,,,,,,
+diagnosis,+process,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,<released separately: Chem-R process-reward variant>,500,7.8,9.8592,2.7586,71.0,10.5726,0.006,7.04,7.6775,18.7961,1.868,84.296,2241.676,0.8333,91.2,,,,,,,,,,,,
+diagnosis,+process,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,<released separately: Chem-R process-reward variant>,500,15.4,17.9167,13.0769,48.0,17.5395,0.0,10.88,11.7297,33.9627,2.532,74.2958,2387.466,1.0605,86.4,,,,,,,,,,,,
+diagnosis,+process,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,<released separately: Chem-R process-reward variant>,500,55.4,63.9798,22.3301,79.4,11.4218,0.0,4.8,3.9733,26.3005,4.702,93.9648,2328.18,2.0196,94.0,,,,,,,,,,,,
+diagnosis,+process,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,<released separately: Chem-R process-reward variant>,500,90.2,91.3232,76.9231,92.2,5.7162,0.0,1.12,0.7454,14.9995,5.558,98.6861,2246.008,2.4746,98.6,,,,,,,,,,,,
+diagnosis,+process,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,<released separately: Chem-R process-reward variant>,500,91.2,92.0086,81.0811,92.6,8.8415,0.0,2.88,0.8158,22.6218,4.984,98.3037,1971.562,2.5279,96.4,,,,,,,,,,,,
+diagnosis,+process,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,<released separately: Chem-R process-reward variant>,500,67.8,66.9565,77.5,92.0,4.7444,0.0,0.16,0.622,12.9965,6.214,98.7289,1804.524,3.4436,99.8,,,,,,,,,,,,
+diagnosis,+process,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,<released separately: Chem-R process-reward variant>,500,99.0,99.5624,93.0233,91.4,4.6637,0.0,0.32,0.9454,12.4203,5.532,98.3642,2336.53,2.3676,99.6,,,,,,,,,,,,
+diagnosis,+process,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,<released separately: Chem-R process-reward variant>,500,93.2,94.0133,85.7143,90.2,6.1433,0.0,1.28,0.9891,15.9313,5.432,98.086,2327.32,2.334,98.4,,,,,,,,,,,,
+diagnosis,+process,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,<released separately: Chem-R process-reward variant>,500,78.6,78.9934,74.4186,91.4,4.9633,0.006,0.32,0.8432,13.3467,5.454,98.4121,2393.988,2.2782,99.6,,,,,,,,,,,,
+diagnosis,Chem-R-Faithful,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,<released separately: Chem-R-Faithful weights>,3300,42.3636,43.2005,36.0825,88.2424,9.1628,0.0188,4.5662,1.8119,21.38,4.5961,97.2867,2212.1152,2.0777,92.303,0.7684,0.6645,,,,,,,,,,
+diagnosis,Chem-R-Faithful,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,<released separately: Chem-R-Faithful weights>,3300,41.4847,42.7535,34.4788,84.6667,16.8201,0.0955,0.0,1.7079,46.7234,4.6779,96.2107,2680.0521,1.7454,100.0,,2.3026,,,,,,,,,,
+diagnosis,Chem-R-Faithful,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,<released separately: Chem-R-Faithful weights>,5007,49.9301,50.8262,41.2393,90.6531,8.6626,0.0,0.3728,0.8137,24.0139,6.0336,98.4905,2300.6265,2.6226,99.301,,0.4059,,,,,,,,,,
+diagnosis,Chem-R-Faithful,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,<released separately: Chem-R-Faithful weights>,500,9.8,10.0543,9.0909,73.6,10.9019,0.02,7.52,7.876,19.7197,1.772,88.0716,2241.744,0.7905,90.6,,2.2785,,,,,,,,,,
+diagnosis,Chem-R-Faithful,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,<released separately: Chem-R-Faithful weights>,500,18.2,19.5513,15.9574,62.4,16.8441,0.0,11.52,9.7076,32.963,2.434,79.2318,2355.81,1.0332,85.6,,2.2973,,,,,,,,,,
+diagnosis,Chem-R-Faithful,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,<released separately: Chem-R-Faithful weights>,500,53.2,63.1188,11.4583,80.8,11.8524,0.0,5.28,3.7012,27.4152,4.428,94.293,2354.23,1.8809,93.4,,2.2795,,,,,,,,,,
+diagnosis,Chem-R-Faithful,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,<released separately: Chem-R-Faithful weights>,500,93.0,93.1677,88.2353,96.6,5.366,0.008,0.8,0.3472,14.5084,5.504,99.3502,2323.032,2.3693,99.0,,0.7045,,,,,,,,,,
+diagnosis,Chem-R-Faithful,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,<released separately: Chem-R-Faithful weights>,500,93.8,94.0426,90.0,94.0,8.2333,0.008,2.24,0.6255,21.4736,4.922,98.7164,2081.258,2.3649,97.2,,0.3731,,,,,,,,,,
+diagnosis,Chem-R-Faithful,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,<released separately: Chem-R-Faithful weights>,500,68.0,67.234,80.0,94.0,4.5674,0.0,0.16,0.5025,12.5762,6.136,98.9997,1907.19,3.2173,99.8,,0.1951,,,,,,,,,,
+diagnosis,Chem-R-Faithful,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,<released separately: Chem-R-Faithful weights>,500,98.4,98.954,86.3636,95.6,4.4285,0.0,0.32,0.4835,12.078,5.498,99.1345,2334.76,2.3548,99.6,,0.9081,,,,,,,,,,
+diagnosis,Chem-R-Faithful,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,<released separately: Chem-R-Faithful weights>,500,91.8,92.043,88.5714,93.0,5.9391,0.0,1.28,0.8327,15.4593,5.18,98.5915,2360.328,2.1946,98.4,,0.9345,,,,,,,,,,
+diagnosis,Chem-R-Faithful,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,<released separately: Chem-R-Faithful weights>,500,77.8,78.2341,61.5385,97.4,4.7984,0.0,0.32,0.2577,13.296,5.318,99.4762,2411.368,2.2054,99.6,,0.8632,,,,,,,,,,
+diagnosis,ChemDFM-R,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,OpenDFM/ChemDFM-R,3300,48.4848,48.6378,47.7148,83.4242,9.2252,0.0,4.5439,3.6125,20.4006,2.2582,94.1266,989.8209,2.2814,97.0909,0.7899,0.6366,,,,,,,,,,
+diagnosis,ChemDFM-R,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,OpenDFM/ChemDFM-R,3300,36.0645,35.9028,36.2612,54.8788,20.2485,0.0,0.597,7.3458,52.0164,3.0612,84.338,925.8345,3.3064,99.4545,,2.3026,,,,,,,,,,
+diagnosis,ChemDFM-R,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,OpenDFM/ChemDFM-R,5007,43.9984,44.7131,43.319,48.7318,12.0766,0.0,0.1811,9.0229,27.9592,2.7851,79.6038,1042.6275,2.6712,99.6006,,0.4958,,,,,,,,,,
+diagnosis,ChemDFM-R,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,OpenDFM/ChemDFM-R,500,35.0,34.9593,35.0394,49.2,17.1552,0.0,6.88,24.394,25.3022,0.368,86.385,851.282,0.4323,91.4,,1.3046,,,,,,,,,,
+diagnosis,ChemDFM-R,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,OpenDFM/ChemDFM-R,500,21.2,25.9259,14.2857,59.4,21.5302,0.0,4.96,13.875,47.104,0.196,68.5315,851.566,0.2302,93.8,,1.6381,,,,,,,,,,
+diagnosis,ChemDFM-R,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,OpenDFM/ChemDFM-R,500,41.4,44.1799,32.7869,75.6,14.1568,0.0,1.28,5.3066,35.6099,2.214,95.5134,841.486,2.6311,98.4,,1.3631,,,,,,,,,,
+diagnosis,ChemDFM-R,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,OpenDFM/ChemDFM-R,500,62.2,62.6943,60.5263,77.2,10.2829,0.0,4.0,3.3211,24.15,2.658,90.6548,976.006,2.7233,95.0,,0.9166,,,,,,,,,,
+diagnosis,ChemDFM-R,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,OpenDFM/ChemDFM-R,500,62.2,62.4113,61.039,84.6,9.5244,0.0,1.12,2.2547,24.8022,2.306,92.9839,855.354,2.696,98.6,,0.6015,,,,,,,,,,
+diagnosis,ChemDFM-R,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,OpenDFM/ChemDFM-R,500,69.0,70.9135,59.5238,83.2,6.9409,0.0,0.96,2.353,17.4648,2.856,92.4272,861.938,3.3135,98.8,,0.3423,,,,,,,,,,
+diagnosis,ChemDFM-R,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,OpenDFM/ChemDFM-R,500,68.4,75.0929,60.6061,53.8,9.6166,0.0,1.6,8.8634,19.9598,2.29,79.2936,864.082,2.6502,98.0,,1.5144,,,,,,,,,,
+diagnosis,ChemDFM-R,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,OpenDFM/ChemDFM-R,500,61.4,61.0619,62.1118,67.8,10.5245,0.006,2.24,5.6803,24.3701,2.222,85.4615,935.752,2.3746,97.2,,1.4421,,,,,,,,,,
+diagnosis,ChemDFM-R,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,OpenDFM/ChemDFM-R,500,38.6,39.3855,36.6197,71.6,10.0311,0.006,1.28,4.8263,24.2375,2.354,87.3794,1010.19,2.3303,98.4,,1.2793,,,,,,,,,,
+diagnosis,ChemDFM-R,bace,classification,MoleculeNet,moleculenet/bace/bace.csv,False,OpenDFM/ChemDFM-R,152,0.0,0.0,0.0,69.0789,19.3519,0.0,0.0,5.5651,51.3158,2.9539,89.6208,845.3684,3.4943,100.0,,0.0647,,,,,,,,,,
+diagnosis,ChemDFM-R,bbbp,classification,MoleculeNet,moleculenet/bbbp/bbbp.csv,False,OpenDFM/ChemDFM-R,204,0.0,0.0,0.0,65.6863,14.96,0.0,0.0,6.3105,38.2353,2.6029,88.3527,808.3284,3.2202,100.0,,0.2156,,,,,,,,,,
+diagnosis,ChemDFM-R,hiv,classification,MoleculeNet,moleculenet/hiv/hiv.csv,False,OpenDFM/ChemDFM-R,4113,0.0,0.0,0.0,56.5281,3.6138,0.0,0.0,10.2343,3.0148,1.9234,83.3878,817.5522,2.3526,100.0,,0.006,,,,,,,,,,
+diagnosis,ChemDFM-R,tox21,classification,MoleculeNet,moleculenet/tox21/tox21.csv,False,OpenDFM/ChemDFM-R,784,0.0,0.0,0.0,66.3265,17.205,0.0,0.0,6.8557,44.2602,2.4694,91.1488,835.9643,2.9539,100.0,,0.0033,,,,,,,,,,
+diagnosis,ChemDFM-R,clintox,classification,MoleculeNet,moleculenet/clintox/clintox.csv,False,OpenDFM/ChemDFM-R,148,0.0,0.0,0.0,67.5676,4.3508,0.0,0.0,6.9978,7.4324,2.2838,88.2507,822.6419,2.7762,100.0,,0.0392,,,,,,,,,,
+diagnosis,DeepSeek-R1-Distill,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,,3300,0.7879,1.4646,0.3863,37.2424,25.7518,42.5857,1.0954,14.4182,4.0339,3.4348,74.4597,11878.84,0.2892,6.0,0.3277,0.6137,,,,,,,,,,
+diagnosis,DeepSeek-R1-Distill,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,,3300,1.0673,0.9875,1.0769,10.7273,46.0635,49.1911,6.3788,20.0163,91.3514,3.7533,55.27,11878.2445,0.316,98.7879,,2.3026,,,,,,,,,,
+diagnosis,DeepSeek-R1-Distill,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,,5007,0.0,0.0,0.0,0.02,54.9879,17.8386,79.4822,33.7844,86.9693,5.0837,32.6459,15171.0529,0.3351,0.1398,,0.5082,,,,,,,,,,
+diagnosis,DeepSeek-R1-Distill,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,,500,9.0,21.1765,6.506,17.0,65.6761,47.4703,64.8,45.6262,84.0489,0.382,10.4429,10123.864,0.0377,19.0,,1.0928,,,,,,,,,,
+diagnosis,DeepSeek-R1-Distill,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,,500,10.2,35.1351,8.2073,7.4,63.5193,42.3095,64.96,40.4049,86.9784,0.112,5.2582,12337.142,0.0091,18.8,,0.7333,,,,,,,,,,
+diagnosis,DeepSeek-R1-Distill,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,,500,26.0,72.0,17.8824,15.0,51.241,47.209,49.6,29.5849,69.6095,2.178,48.8122,10000.014,0.2178,38.0,,1.1629,,,,,,,,,,
+diagnosis,DeepSeek-R1-Distill,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,,500,6.2,6.8966,6.1571,5.8,60.1857,25.2508,74.24,19.5804,94.1233,4.558,57.667,13516.668,0.3372,7.2,,0.5728,,,,,,,,,,
+diagnosis,DeepSeek-R1-Distill,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,,500,37.6,44.0476,36.2981,16.8,43.2766,25.3749,47.2,15.3184,68.116,3.716,63.5214,11252.908,0.3302,41.0,,0.9057,,,,,,,,,,
+diagnosis,DeepSeek-R1-Distill,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,,500,40.4,41.3043,40.1961,18.4,38.5786,17.6446,44.48,13.3819,61.3326,4.726,66.6949,9185.31,0.5145,44.4,,1.0651,,,,,,,,,,
+diagnosis,DeepSeek-R1-Distill,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,,500,20.4,66.6667,20.1207,0.6,53.4192,17.504,61.12,28.7977,80.8973,4.376,42.2231,13663.076,0.3203,23.6,,1.3536,,,,,,,,,,
+diagnosis,DeepSeek-R1-Distill,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,,500,9.0,40.0,8.6869,1.0,56.5103,17.837,66.4,27.6892,86.6066,4.026,42.0251,13934.362,0.2889,17.0,,1.2808,,,,,,,,,,
+diagnosis,DeepSeek-R1-Distill,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,,500,12.0,42.8571,11.5619,1.4,52.7659,15.0408,60.16,28.4515,81.0192,4.246,40.3535,13931.11,0.3048,24.8,,1.4657,,,,,,,,,,
+diagnosis,DeepSeek-R1-Distill,bace,classification,MoleculeNet,moleculenet/bace/bace.csv,False,,152,0.0,0.0,0.0,11.1842,20.772,1.8047,0.0,13.8474,48.6842,4.3158,68.6192,4152.6579,1.0393,100.0,,0.2427,,,,,,,,,,
+diagnosis,DeepSeek-R1-Distill,bbbp,classification,MoleculeNet,moleculenet/bbbp/bbbp.csv,False,,204,0.0,0.0,0.0,10.2941,22.1275,11.433,0.0,18.512,45.098,3.5392,57.1655,5803.5147,0.6098,100.0,,0.4413,,,,,,,,,,
+diagnosis,DeepSeek-R1-Distill,hiv,classification,MoleculeNet,moleculenet/hiv/hiv.csv,False,,4113,0.0,0.0,0.0,3.7685,38.4157,10.9801,1.1062,26.2787,84.8772,3.0494,39.9173,6292.8855,0.4846,98.4196,,0.2331,,,,,,,,,,
+diagnosis,DeepSeek-R1-Distill,tox21,classification,MoleculeNet,moleculenet/tox21/tox21.csv,False,,784,0.0,0.0,0.0,6.3776,26.4262,14.5441,2.0536,21.7206,51.148,3.4005,52.0703,6531.5217,0.5206,97.0663,,0.3511,,,,,,,,,,
+diagnosis,DeepSeek-R1-Distill,clintox,classification,MoleculeNet,moleculenet/clintox/clintox.csv,False,,148,0.0,0.0,0.0,4.7297,35.9768,8.2376,1.4189,21.1634,82.4324,3.6554,52.2201,5657.5676,0.6461,97.973,,0.1789,,,,,,,,,,
+diagnosis,ether-0,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,futurehouse/ether0,3300,30.8485,34.1808,24.8299,64.3636,17.2841,3.1842,11.0067,8.2149,32.7365,2.7803,85.6996,2763.1936,1.0062,86.5758,0.6219,1.1023,,,,,,,,,,
+diagnosis,ether-0,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,futurehouse/ether0,3300,0.1382,0.1399,0.1365,48.6667,49.9123,5.2797,44.9,9.8384,98.6127,2.5173,74.5959,2132.4185,1.1805,9.3333,,2.2798,,,,,,,,,,
+diagnosis,ether-0,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,futurehouse/ether0,5007,2.6763,2.1094,2.8709,25.5642,28.517,13.0723,12.0956,13.4928,58.3902,4.2866,71.6747,2757.0503,1.5548,72.3188,,0.9137,,,,,,,,,,
+diagnosis,ether-0,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,futurehouse/ether0,500,54.2,79.5181,49.1607,16.6,31.3303,48.765,17.44,37.262,28.5875,1.182,24.0049,5128.738,0.2305,78.2,,1.3112,,,,,,,,,,
+diagnosis,ether-0,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,futurehouse/ether0,500,13.6,12.6316,13.8272,19.0,37.341,53.3357,13.76,29.4469,51.4337,0.93,25.0674,5945.75,0.1564,82.8,,1.306,,,,,,,,,,
+diagnosis,ether-0,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,futurehouse/ether0,500,43.0,70.1754,39.5034,11.4,32.6665,55.068,12.0,27.8612,41.0111,2.798,45.8238,5932.194,0.4717,85.0,,1.4762,,,,,,,,,,
+diagnosis,ether-0,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,futurehouse/ether0,500,88.2,86.5385,88.9535,31.2,12.1383,8.734,4.64,11.0506,18.368,3.884,77.3397,2813.646,1.3804,94.2,,0.8038,,,,,,,,,,
+diagnosis,ether-0,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,futurehouse/ether0,500,75.6,78.534,73.7864,38.2,16.6284,12.618,6.56,10.9757,28.7391,3.4,76.6456,2651.062,1.2825,91.8,,0.826,,,,,,,,,,
+diagnosis,ether-0,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,futurehouse/ether0,500,78.8,84.5018,72.0524,54.2,8.1064,2.364,2.24,6.009,15.5227,4.034,85.6112,1602.616,2.5171,97.2,,0.366,,,,,,,,,,
+diagnosis,ether-0,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,futurehouse/ether0,500,95.6,76.3158,97.1861,7.6,12.5485,1.508,2.4,21.9002,16.9066,3.818,58.9016,2915.468,1.3096,97.0,,0.4691,,,,,,,,,,
+diagnosis,ether-0,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,futurehouse/ether0,500,47.8,42.8571,48.4234,11.2,12.7158,5.032,2.72,20.1817,17.0567,3.752,60.3604,3143.216,1.1937,96.6,,1.053,,,,,,,,,,
+diagnosis,ether-0,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,futurehouse/ether0,500,52.0,33.8983,54.4218,11.8,14.0287,3.7421,4.8,20.0887,18.8355,3.782,59.653,2955.694,1.2796,94.0,,0.9872,,,,,,,,,,
+diagnosis,ether-0,bace,classification,MoleculeNet,moleculenet/bace/bace.csv,False,futurehouse/ether0,152,0.0,0.0,0.0,34.2105,35.3419,3.3355,70.0,12.4038,0.0,2.9605,67.6692,1673.9079,1.7686,0.0,,0.0087,,,,,,,,,,
+diagnosis,ether-0,bbbp,classification,MoleculeNet,moleculenet/bbbp/bbbp.csv,False,futurehouse/ether0,204,0.0,0.0,0.0,36.7647,33.27,9.7451,66.2255,12.5373,1.9608,3.3578,73.1057,2410.8578,1.3928,5.3922,,0.0447,,,,,,,,,,
+diagnosis,ether-0,hiv,classification,MoleculeNet,moleculenet/hiv/hiv.csv,False,futurehouse/ether0,4113,0.0,0.0,0.0,34.5976,36.3209,3.2054,69.1831,14.7362,0.9725,2.1969,60.9675,1717.901,1.2788,1.167,,0.1063,,,,,,,,,,
+diagnosis,ether-0,tox21,classification,MoleculeNet,moleculenet/tox21/tox21.csv,False,futurehouse/ether0,784,0.0,0.0,0.0,22.3214,35.6079,6.5268,69.1071,17.4528,0.7653,3.0689,60.7729,2111.3686,1.4535,1.2755,,0.3835,,,,,,,,,,
+diagnosis,ether-0,clintox,classification,MoleculeNet,moleculenet/clintox/clintox.csv,False,futurehouse/ether0,148,0.0,0.0,0.0,21.6216,35.185,4.7162,64.7973,16.3072,6.7568,3.0811,65.6115,1910.9122,1.6124,7.4324,,0.2335,,,,,,,,,,
+origin ladder (base-a (pre-SFT)),base-a (pre-SFT),(3 translation tasks),translation,(multiple),,True,meta-llama/Llama-3.1-8B-Instruct,16107,4.525716485073927,,,44.93698392003477,,,,16.88288694356491,,,,,,,,,3.482833550630161,0.34653641841063854,0.48066058235549763,0.01061650214192587,0.3708461354130141,,,,,
+origin ladder (SFT),SFT,(3 translation tasks),translation,(multiple),,True,<released separately: Chem-R SFT checkpoint>,16107,42.31513198889381,,,38.28770099956541,,,,11.61318929657913,,,,,,,,,6.0114236046439435,0.20569888253155144,0.7759359284783014,0.0003104240392375986,0.3047207221451566,,,,,
+origin ladder (+process),+process,(3 translation tasks),translation,(multiple),,True,<released separately: Chem-R process-reward variant>,16107,51.724172849817464,,,81.71602408890544,,,,2.4302340597255845,,,,,,,,,6.51114422300863,0.037215733015494634,0.7715899919289749,0.0,0.33536095188384596,,,,,
+origin ladder (+coupled),Chem-R-Faithful,(3 translation tasks),translation,(multiple),,True,<released separately: Chem-R-Faithful weights>,16107,51.449651623709734,,,88.04867448935245,,,,1.7294524119947843,,,,,,,,,6.337865524306202,0.025743505348536498,0.7850003104240393,0.0,0.30824968080413,,,,,
+origin ladder (off-the-shelf GRPO),Chem-R,(3 translation tasks),translation,(multiple),,True,weidawang/Chem-R-8B,16107,50.08504450741595,,,40.6282982554169,,,,10.5956677221084,,,,,,,,,6.049109083007388,0.19341496207650385,0.7676786490345813,0.00012416961569503942,0.3156566995583833,,,,,
+conditional entropy,+process,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,<released separately: Chem-R process-reward variant>,13567,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,+process,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,<released separately: Chem-R process-reward variant>,13567,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,+process,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,<released separately: Chem-R process-reward variant>,13567,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,+process,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,<released separately: Chem-R process-reward variant>,13567,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,+process,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,<released separately: Chem-R process-reward variant>,13567,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,+process,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,<released separately: Chem-R process-reward variant>,13567,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,+process,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,<released separately: Chem-R process-reward variant>,13567,,,,,,,,,,,,,,,,,,,,,,,,8,,
+CoT / draft perturbation,+process,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,<released separately: Chem-R process-reward variant>,13567,,,,,,,,,,,,,,,,,,,,,,5,0.494656150954522,,,
+CoT / draft perturbation,+process,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,<released separately: Chem-R process-reward variant>,13567,,,,,,,,,,,,,,,,,,,,,,5,0.494656150954522,,,
+CoT / draft perturbation,+process,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,<released separately: Chem-R process-reward variant>,13567,,,,,,,,,,,,,,,,,,,,,,5,0.494656150954522,,,
+CoT / draft perturbation,+process,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,<released separately: Chem-R process-reward variant>,13567,,,,,,,,,,,,,,,,,,,,,,5,0.494656150954522,,,
+CoT / draft perturbation,+process,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,<released separately: Chem-R process-reward variant>,13567,,,,,,,,,,,,,,,,,,,,,,5,0.494656150954522,,,
+CoT / draft perturbation,+process,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,<released separately: Chem-R process-reward variant>,13567,,,,,,,,,,,,,,,,,,,,,,5,0.494656150954522,,,
+CoT / draft perturbation,+process,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,<released separately: Chem-R process-reward variant>,13567,,,,,,,,,,,,,,,,,,,,,,5,0.494656150954522,,,
+conditional entropy,Chem-R,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,weidawang/Chem-R-8B,13560,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,Chem-R,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,weidawang/Chem-R-8B,13560,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,Chem-R,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,weidawang/Chem-R-8B,13560,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,Chem-R,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,weidawang/Chem-R-8B,13560,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,Chem-R,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,weidawang/Chem-R-8B,13560,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,Chem-R,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,weidawang/Chem-R-8B,13560,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,Chem-R,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,weidawang/Chem-R-8B,13560,,,,,,,,,,,,,,,,,,,,,,,,8,,
+CoT / draft perturbation,Chem-R,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,weidawang/Chem-R-8B,13560,,,,,,,,,,,,,,,,,,,,,,8,0.4724188790560472,,,
+CoT / draft perturbation,Chem-R,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,weidawang/Chem-R-8B,13560,,,,,,,,,,,,,,,,,,,,,,8,0.4724188790560472,,,
+CoT / draft perturbation,Chem-R,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,weidawang/Chem-R-8B,13560,,,,,,,,,,,,,,,,,,,,,,8,0.4724188790560472,,,
+CoT / draft perturbation,Chem-R,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,weidawang/Chem-R-8B,13560,,,,,,,,,,,,,,,,,,,,,,8,0.4724188790560472,,,
+CoT / draft perturbation,Chem-R,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,weidawang/Chem-R-8B,13560,,,,,,,,,,,,,,,,,,,,,,8,0.4724188790560472,,,
+CoT / draft perturbation,Chem-R,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,weidawang/Chem-R-8B,13560,,,,,,,,,,,,,,,,,,,,,,8,0.4724188790560472,,,
+CoT / draft perturbation,Chem-R,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,weidawang/Chem-R-8B,13560,,,,,,,,,,,,,,,,,,,,,,8,0.4724188790560472,,,
+gradient x input saliency,Chem-R,(pooled),,(multiple),,True,weidawang/Chem-R-8B,16103,,,,,,,,,,,,,,,,,,,,,,,,,,
+region attention + Dlogp + matched-token,Chem-R,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,weidawang/Chem-R-8B,16100,,,,,,,,,,,,,,,,,,,,,,,,,300,2182
+region attention + Dlogp + matched-token,Chem-R,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,weidawang/Chem-R-8B,16100,,,,,,,,,,,,,,,,,,,,,,,,,300,2182
+region attention + Dlogp + matched-token,Chem-R,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,weidawang/Chem-R-8B,16100,,,,,,,,,,,,,,,,,,,,,,,,,300,2182
+region attention + Dlogp + matched-token,Chem-R,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,weidawang/Chem-R-8B,16100,,,,,,,,,,,,,,,,,,,,,,,,,300,2182
+region attention + Dlogp + matched-token,Chem-R,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,weidawang/Chem-R-8B,16100,,,,,,,,,,,,,,,,,,,,,,,,,300,2182
+region attention + Dlogp + matched-token,Chem-R,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,weidawang/Chem-R-8B,16100,,,,,,,,,,,,,,,,,,,,,,,,,300,2182
+region attention + Dlogp + matched-token,Chem-R,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,weidawang/Chem-R-8B,16100,,,,,,,,,,,,,,,,,,,,,,,,,300,2182
+region attention + Dlogp + matched-token,Chem-R,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,weidawang/Chem-R-8B,16100,,,,,,,,,,,,,,,,,,,,,,,,,300,2182
+region attention + Dlogp + matched-token,Chem-R,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,weidawang/Chem-R-8B,16100,,,,,,,,,,,,,,,,,,,,,,,,,300,2182
+region attention + Dlogp + matched-token,Chem-R,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,weidawang/Chem-R-8B,16100,,,,,,,,,,,,,,,,,,,,,,,,,300,2182
+region attention + Dlogp + matched-token,Chem-R,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,weidawang/Chem-R-8B,16100,,,,,,,,,,,,,,,,,,,,,,,,,300,2182
+region attention + Dlogp + matched-token,Chem-R,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,weidawang/Chem-R-8B,16100,,,,,,,,,,,,,,,,,,,,,,,,,300,2182
+conditional entropy,Chem-R-Faithful,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,<released separately: Chem-R-Faithful weights>,13555,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,Chem-R-Faithful,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,<released separately: Chem-R-Faithful weights>,13555,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,Chem-R-Faithful,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,<released separately: Chem-R-Faithful weights>,13555,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,Chem-R-Faithful,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,<released separately: Chem-R-Faithful weights>,13555,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,Chem-R-Faithful,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,<released separately: Chem-R-Faithful weights>,13555,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,Chem-R-Faithful,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,<released separately: Chem-R-Faithful weights>,13555,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,Chem-R-Faithful,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,<released separately: Chem-R-Faithful weights>,13555,,,,,,,,,,,,,,,,,,,,,,,,8,,
+CoT / draft perturbation,Chem-R-Faithful,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,<released separately: Chem-R-Faithful weights>,13555,,,,,,,,,,,,,,,,,,,,,,8,0.4903725562523054,,,
+CoT / draft perturbation,Chem-R-Faithful,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,<released separately: Chem-R-Faithful weights>,13555,,,,,,,,,,,,,,,,,,,,,,8,0.4903725562523054,,,
+CoT / draft perturbation,Chem-R-Faithful,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,<released separately: Chem-R-Faithful weights>,13555,,,,,,,,,,,,,,,,,,,,,,8,0.4903725562523054,,,
+CoT / draft perturbation,Chem-R-Faithful,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,<released separately: Chem-R-Faithful weights>,13555,,,,,,,,,,,,,,,,,,,,,,8,0.4903725562523054,,,
+CoT / draft perturbation,Chem-R-Faithful,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,<released separately: Chem-R-Faithful weights>,13555,,,,,,,,,,,,,,,,,,,,,,8,0.4903725562523054,,,
+CoT / draft perturbation,Chem-R-Faithful,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,<released separately: Chem-R-Faithful weights>,13555,,,,,,,,,,,,,,,,,,,,,,8,0.4903725562523054,,,
+CoT / draft perturbation,Chem-R-Faithful,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,<released separately: Chem-R-Faithful weights>,13555,,,,,,,,,,,,,,,,,,,,,,8,0.4903725562523054,,,
+gradient x input saliency,Chem-R-Faithful,(pooled),,(multiple),,True,<released separately: Chem-R-Faithful weights>,16100,,,,,,,,,,,,,,,,,,,,,,,,,,
+region attention + Dlogp + matched-token,Chem-R-Faithful,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,<released separately: Chem-R-Faithful weights>,16098,,,,,,,,,,,,,,,,,,,,,,,,,300,5292
+region attention + Dlogp + matched-token,Chem-R-Faithful,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,<released separately: Chem-R-Faithful weights>,16098,,,,,,,,,,,,,,,,,,,,,,,,,300,5292
+region attention + Dlogp + matched-token,Chem-R-Faithful,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,<released separately: Chem-R-Faithful weights>,16098,,,,,,,,,,,,,,,,,,,,,,,,,300,5292
+region attention + Dlogp + matched-token,Chem-R-Faithful,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,<released separately: Chem-R-Faithful weights>,16098,,,,,,,,,,,,,,,,,,,,,,,,,300,5292
+region attention + Dlogp + matched-token,Chem-R-Faithful,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,<released separately: Chem-R-Faithful weights>,16098,,,,,,,,,,,,,,,,,,,,,,,,,300,5292
+region attention + Dlogp + matched-token,Chem-R-Faithful,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,<released separately: Chem-R-Faithful weights>,16098,,,,,,,,,,,,,,,,,,,,,,,,,300,5292
+region attention + Dlogp + matched-token,Chem-R-Faithful,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,<released separately: Chem-R-Faithful weights>,16098,,,,,,,,,,,,,,,,,,,,,,,,,300,5292
+region attention + Dlogp + matched-token,Chem-R-Faithful,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,<released separately: Chem-R-Faithful weights>,16098,,,,,,,,,,,,,,,,,,,,,,,,,300,5292
+region attention + Dlogp + matched-token,Chem-R-Faithful,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,<released separately: Chem-R-Faithful weights>,16098,,,,,,,,,,,,,,,,,,,,,,,,,300,5292
+region attention + Dlogp + matched-token,Chem-R-Faithful,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,<released separately: Chem-R-Faithful weights>,16098,,,,,,,,,,,,,,,,,,,,,,,,,300,5292
+region attention + Dlogp + matched-token,Chem-R-Faithful,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,<released separately: Chem-R-Faithful weights>,16098,,,,,,,,,,,,,,,,,,,,,,,,,300,5292
+region attention + Dlogp + matched-token,Chem-R-Faithful,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,<released separately: Chem-R-Faithful weights>,16098,,,,,,,,,,,,,,,,,,,,,,,,,300,5292
+conditional entropy,ChemDFM-R,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,OpenDFM/ChemDFM-R,13451,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,ChemDFM-R,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,OpenDFM/ChemDFM-R,13451,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,ChemDFM-R,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,OpenDFM/ChemDFM-R,13451,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,ChemDFM-R,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,OpenDFM/ChemDFM-R,13451,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,ChemDFM-R,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,OpenDFM/ChemDFM-R,13451,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,ChemDFM-R,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,OpenDFM/ChemDFM-R,13451,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,ChemDFM-R,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,OpenDFM/ChemDFM-R,13451,,,,,,,,,,,,,,,,,,,,,,,,8,,
+CoT / draft perturbation,ChemDFM-R,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,OpenDFM/ChemDFM-R,13451,,,,,,,,,,,,,,,,,,,,,,8,0.3903055534904468,,,
+CoT / draft perturbation,ChemDFM-R,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,OpenDFM/ChemDFM-R,13451,,,,,,,,,,,,,,,,,,,,,,8,0.3903055534904468,,,
+CoT / draft perturbation,ChemDFM-R,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,OpenDFM/ChemDFM-R,13451,,,,,,,,,,,,,,,,,,,,,,8,0.3903055534904468,,,
+CoT / draft perturbation,ChemDFM-R,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,OpenDFM/ChemDFM-R,13451,,,,,,,,,,,,,,,,,,,,,,8,0.3903055534904468,,,
+CoT / draft perturbation,ChemDFM-R,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,OpenDFM/ChemDFM-R,13451,,,,,,,,,,,,,,,,,,,,,,8,0.3903055534904468,,,
+CoT / draft perturbation,ChemDFM-R,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,OpenDFM/ChemDFM-R,13451,,,,,,,,,,,,,,,,,,,,,,8,0.3903055534904468,,,
+CoT / draft perturbation,ChemDFM-R,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,OpenDFM/ChemDFM-R,13451,,,,,,,,,,,,,,,,,,,,,,8,0.3903055534904468,,,
+gradient x input saliency,ChemDFM-R,(pooled),,(multiple),,True,OpenDFM/ChemDFM-R,16064,,,,,,,,,,,,,,,,,,,,,,,,,,
+region attention + Dlogp + matched-token,ChemDFM-R,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,OpenDFM/ChemDFM-R,16061,,,,,,,,,,,,,,,,,,,,,,,,,300,3300
+region attention + Dlogp + matched-token,ChemDFM-R,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,OpenDFM/ChemDFM-R,16061,,,,,,,,,,,,,,,,,,,,,,,,,300,3300
+region attention + Dlogp + matched-token,ChemDFM-R,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,OpenDFM/ChemDFM-R,16061,,,,,,,,,,,,,,,,,,,,,,,,,300,3300
+region attention + Dlogp + matched-token,ChemDFM-R,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,OpenDFM/ChemDFM-R,16061,,,,,,,,,,,,,,,,,,,,,,,,,300,3300
+region attention + Dlogp + matched-token,ChemDFM-R,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,OpenDFM/ChemDFM-R,16061,,,,,,,,,,,,,,,,,,,,,,,,,300,3300
+region attention + Dlogp + matched-token,ChemDFM-R,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,OpenDFM/ChemDFM-R,16061,,,,,,,,,,,,,,,,,,,,,,,,,300,3300
+region attention + Dlogp + matched-token,ChemDFM-R,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,OpenDFM/ChemDFM-R,16061,,,,,,,,,,,,,,,,,,,,,,,,,300,3300
+region attention + Dlogp + matched-token,ChemDFM-R,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,OpenDFM/ChemDFM-R,16061,,,,,,,,,,,,,,,,,,,,,,,,,300,3300
+region attention + Dlogp + matched-token,ChemDFM-R,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,OpenDFM/ChemDFM-R,16061,,,,,,,,,,,,,,,,,,,,,,,,,300,3300
+region attention + Dlogp + matched-token,ChemDFM-R,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,OpenDFM/ChemDFM-R,16061,,,,,,,,,,,,,,,,,,,,,,,,,300,3300
+region attention + Dlogp + matched-token,ChemDFM-R,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,OpenDFM/ChemDFM-R,16061,,,,,,,,,,,,,,,,,,,,,,,,,300,3300
+region attention + Dlogp + matched-token,ChemDFM-R,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,OpenDFM/ChemDFM-R,16061,,,,,,,,,,,,,,,,,,,,,,,,,300,3300
+conditional entropy,SFT,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,<released separately: Chem-R SFT checkpoint>,13549,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,SFT,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,<released separately: Chem-R SFT checkpoint>,13549,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,SFT,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,<released separately: Chem-R SFT checkpoint>,13549,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,SFT,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,<released separately: Chem-R SFT checkpoint>,13549,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,SFT,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,<released separately: Chem-R SFT checkpoint>,13549,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,SFT,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,<released separately: Chem-R SFT checkpoint>,13549,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,SFT,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,<released separately: Chem-R SFT checkpoint>,13549,,,,,,,,,,,,,,,,,,,,,,,,8,,
+CoT / draft perturbation,SFT,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,<released separately: Chem-R SFT checkpoint>,13549,,,,,,,,,,,,,,,,,,,,,,6,0.3543434939847959,,,
+CoT / draft perturbation,SFT,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,<released separately: Chem-R SFT checkpoint>,13549,,,,,,,,,,,,,,,,,,,,,,6,0.3543434939847959,,,
+CoT / draft perturbation,SFT,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,<released separately: Chem-R SFT checkpoint>,13549,,,,,,,,,,,,,,,,,,,,,,6,0.3543434939847959,,,
+CoT / draft perturbation,SFT,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,<released separately: Chem-R SFT checkpoint>,13549,,,,,,,,,,,,,,,,,,,,,,6,0.3543434939847959,,,
+CoT / draft perturbation,SFT,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,<released separately: Chem-R SFT checkpoint>,13549,,,,,,,,,,,,,,,,,,,,,,6,0.3543434939847959,,,
+CoT / draft perturbation,SFT,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,<released separately: Chem-R SFT checkpoint>,13549,,,,,,,,,,,,,,,,,,,,,,6,0.3543434939847959,,,
+CoT / draft perturbation,SFT,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,<released separately: Chem-R SFT checkpoint>,13549,,,,,,,,,,,,,,,,,,,,,,6,0.3543434939847959,,,
+conditional entropy,base-a (pre-SFT),cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,meta-llama/Llama-3.1-8B-Instruct,7041,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,base-a (pre-SFT),mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,meta-llama/Llama-3.1-8B-Instruct,7041,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,base-a (pre-SFT),retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,meta-llama/Llama-3.1-8B-Instruct,7041,,,,,,,,,,,,,,,,,,,,,,,,8,,
+CoT / draft perturbation,base-a (pre-SFT),cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,meta-llama/Llama-3.1-8B-Instruct,7041,,,,,,,,,,,,,,,,,,,,,,5,0.0019883539269990058,,,
+CoT / draft perturbation,base-a (pre-SFT),mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,meta-llama/Llama-3.1-8B-Instruct,7041,,,,,,,,,,,,,,,,,,,,,,5,0.0019883539269990058,,,
+CoT / draft perturbation,base-a (pre-SFT),retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,meta-llama/Llama-3.1-8B-Instruct,7041,,,,,,,,,,,,,,,,,,,,,,5,0.0019883539269990058,,,
+conditional entropy,ether-0,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,futurehouse/ether0,12973,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,ether-0,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,futurehouse/ether0,12973,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,ether-0,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,futurehouse/ether0,12973,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,ether-0,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,futurehouse/ether0,12973,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,ether-0,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,futurehouse/ether0,12973,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,ether-0,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,futurehouse/ether0,12973,,,,,,,,,,,,,,,,,,,,,,,,8,,
+conditional entropy,ether-0,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,futurehouse/ether0,12973,,,,,,,,,,,,,,,,,,,,,,,,8,,
+CoT / draft perturbation,ether-0,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,futurehouse/ether0,12973,,,,,,,,,,,,,,,,,,,,,,5,0.19717875587759193,,,
+CoT / draft perturbation,ether-0,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,futurehouse/ether0,12973,,,,,,,,,,,,,,,,,,,,,,5,0.19717875587759193,,,
+CoT / draft perturbation,ether-0,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,futurehouse/ether0,12973,,,,,,,,,,,,,,,,,,,,,,5,0.19717875587759193,,,
+CoT / draft perturbation,ether-0,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,futurehouse/ether0,12973,,,,,,,,,,,,,,,,,,,,,,5,0.19717875587759193,,,
+CoT / draft perturbation,ether-0,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,futurehouse/ether0,12973,,,,,,,,,,,,,,,,,,,,,,5,0.19717875587759193,,,
+CoT / draft perturbation,ether-0,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,futurehouse/ether0,12973,,,,,,,,,,,,,,,,,,,,,,5,0.19717875587759193,,,
+CoT / draft perturbation,ether-0,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,futurehouse/ether0,12973,,,,,,,,,,,,,,,,,,,,,,5,0.19717875587759193,,,
+gradient x input saliency,ether-0,(pooled),,(multiple),,True,futurehouse/ether0,1500,,,,,,,,,,,,,,,,,,,,,,,,,,
+region attention + Dlogp + matched-token,ether-0,cap2mol,translation,ChEBI-20,chebi-20/test.txt,True,futurehouse/ether0,15386,,,,,,,,,,,,,,,,,,,,,,,,,288,815
+region attention + Dlogp + matched-token,ether-0,mol2cap,translation,ChEBI-20,chebi-20/test.txt,True,futurehouse/ether0,15386,,,,,,,,,,,,,,,,,,,,,,,,,288,815
+region attention + Dlogp + matched-token,ether-0,retrosynthesis,translation,USPTO-50k,uspto50k/USPTO_50K.csv,True,futurehouse/ether0,15386,,,,,,,,,,,,,,,,,,,,,,,,,288,815
+region attention + Dlogp + matched-token,ether-0,s2_MolCustom_AtomNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_AtomNum.csv,True,futurehouse/ether0,15386,,,,,,,,,,,,,,,,,,,,,,,,,288,815
+region attention + Dlogp + matched-token,ether-0,s2_MolCustom_BondNum,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_BondNum.csv,True,futurehouse/ether0,15386,,,,,,,,,,,,,,,,,,,,,,,,,288,815
+region attention + Dlogp + matched-token,ether-0,s2_MolCustom_FunctionalGroup,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolCustom_FunctionalGroup.csv,True,futurehouse/ether0,15386,,,,,,,,,,,,,,,,,,,,,,,,,288,815
+region attention + Dlogp + matched-token,ether-0,s2_MolEdit_AddComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_AddComponent.csv,True,futurehouse/ether0,15386,,,,,,,,,,,,,,,,,,,,,,,,,288,815
+region attention + Dlogp + matched-token,ether-0,s2_MolEdit_DelComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_DelComponent.csv,True,futurehouse/ether0,15386,,,,,,,,,,,,,,,,,,,,,,,,,288,815
+region attention + Dlogp + matched-token,ether-0,s2_MolEdit_SubComponent,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolEdit_SubComponent.csv,True,futurehouse/ether0,15386,,,,,,,,,,,,,,,,,,,,,,,,,288,815
+region attention + Dlogp + matched-token,ether-0,s2_MolOpt_LogP,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_LogP.csv,True,futurehouse/ether0,15386,,,,,,,,,,,,,,,,,,,,,,,,,288,815
+region attention + Dlogp + matched-token,ether-0,s2_MolOpt_MR,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_MR.csv,True,futurehouse/ether0,15386,,,,,,,,,,,,,,,,,,,,,,,,,288,815
+region attention + Dlogp + matched-token,ether-0,s2_MolOpt_QED,S2 instruction-following,S2-TOMG-Bench,s2-bench/MolOpt_QED.csv,True,futurehouse/ether0,15386,,,,,,,,,,,,,,,,,,,,,,,,,288,815

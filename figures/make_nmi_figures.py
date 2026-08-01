@@ -717,11 +717,13 @@ def fig6_draft() -> None:
 def ed_fig1_ladder() -> None:
     d = sheet("R1_stage_ladder").set_index("stage")
     # The released Chem-R is a fully-trained answer-only GRPO model scored on the full
-    # task suite (n=11607); it is the answer-only point.  The separate acc-only
-    # ablation is omitted -- it was scored on cap2mol only (n=3300), so its per-claim
-    # rate is not comparable to the other stages.
-    lin = ["base-a (pre-SFT)", "SFT", "off-the-shelf GRPO", "+process", "+coupled"]
-    labs = ["base\n(pre-SFT)", "SFT", "Chem-R\n(answer-only)", "+process", "+coupled"]
+    # task suite; it is the answer-only point.  The separate acc-only ablation is
+    # omitted -- it was scored on cap2mol only (n=3300), so its per-claim rate is not
+    # comparable to the other stages.  The +process arm is likewise not shown: it is
+    # not reported anywhere in the manuscript, so plotting it here would introduce a
+    # rung the text never discusses.
+    lin = ["base-a (pre-SFT)", "SFT", "off-the-shelf GRPO", "+coupled"]
+    labs = ["base\n(pre-SFT)", "SFT", "Chem-R\n(answer-only)", "+coupled"]
     fab = [float(d.loc[s, "perclaim_fab_rate"]) * 100 for s in lin]
     perf = [float(d.loc[s, "perf"]) for s in lin]
     x = np.arange(len(lin))

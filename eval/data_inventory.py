@@ -186,29 +186,30 @@ def main():
                 rec["n_samples"] = d.get("n_samples")
 
     # ---------- 3. write CSV (one row per model x task x experiment) ----------------------
+    metric_cols = [c for c in diag[0] if c not in ("model", "task")]
     rows = []
     for r in diag:
         ds, dsf = dataset_of(r["task"])
-        rows.append({
+        row = {
             "experiment": "diagnosis", "model": r["model"], "task": r["task"],
             "task_family": task_family(r["task"]), "dataset": ds, "dataset_file": dsf,
-            "reported_in_paper": r["task"] in IN_PAPER,
-            "n": r["n"], "performance": r["perf"], "ER": r["ER"],
-            "overall_hallucination": r["overall"], "pct_ER0": r["pct_er0"],
-            "claim_precision": r.get("cp", ""), "semantic_entropy": r.get("semantic_entropy", ""),
-            "weights": weights(r["model"]),
-        })
+            "reported_in_paper": r["task"] in IN_PAPER, "weights": weights(r["model"]),
+        }
+        row.update({c: r[c] for c in metric_cols})
+        rows.append(row)
     for r in ladder:
         for t in (ladder_basis or ["(3 translation tasks)"]):
             ds, dsf = dataset_of(t) if t in by_task_n else ("(multiple)", "")
             rows.append({
                 "experiment": "origin ladder (%s)" % r["stage"], "model": canon(r["model"]), "task": t,
                 "task_family": "translation", "dataset": ds, "dataset_file": dsf,
-                "reported_in_paper": True,
+                "reported_in_paper": True, "weights": weights(canon(r["model"])),
                 "n": max(by_task_n[t]) if t in by_task_n else r["n_resp"],
-                "performance": r["perf"], "ER": r["ER"], "overall_hallucination": "",
-                "pct_ER0": r["pct_er0"], "claim_precision": "", "semantic_entropy": "",
-                "weights": weights(canon(r["model"])),
+                "perf": r["perf"], "ER": r["ER"], "pct_er0": r["pct_er0"],
+                "claims_per_resp": r["claims_per_resp"],
+                "perclaim_fab_rate": r["perclaim_fab_rate"],
+                "hedge_rate": r["hedge_rate"], "abstain_rate": r["abstain_rate"],
+                "fab_position": r["fab_position"],
             })
     for (label, kind), rec in sorted(mech.items()):
         for t in (rec["tasks"] or ["(pooled)"]):
@@ -218,15 +219,18 @@ def main():
                 "task_family": task_family(t) if t != "(pooled)" else "",
                 "dataset": ds, "dataset_file": dsf,
                 "reported_in_paper": t in IN_PAPER if t != "(pooled)" else True,
-                "n": rec.get("n"), "performance": "", "ER": "",
-                "overall_hallucination": "", "pct_ER0": "", "claim_precision": "",
-                "semantic_entropy": "", "weights": weights(label),
+                "n": rec.get("n"), "weights": weights(label),
+                "n_conditions": len(rec.get("conditions") or []) or "",
+                "base_accuracy": rec.get("base_acc", ""),
+                "samples_per_response": rec.get("n_samples", ""),
+                "n_matched_token": rec.get("n_matched", ""),
+                "n_dlogp": rec.get("n_perturb", ""),
             })
-    cols = ["experiment", "model", "task", "task_family", "dataset", "dataset_file",
-            "reported_in_paper", "n", "performance", "ER", "overall_hallucination", "pct_ER0",
-            "claim_precision", "semantic_entropy", "weights"]
+    fixed = ["experiment", "model", "task", "task_family", "dataset", "dataset_file",
+             "reported_in_paper", "weights"]
+    cols = fixed + [c for c in dict.fromkeys(k for r in rows for k in r) if c not in fixed]
     with open(os.path.join(D, "data_inventory.csv"), "w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=cols)
+        w = csv.DictWriter(f, fieldnames=cols, restval="")
         w.writeheader()
         w.writerows(rows)
 
@@ -297,6 +301,13 @@ def main():
             r["model"], r["task"], ds, r["n"], fmt(num(r["perf"])), fmt(num(r["ER"])),
             fmt(num(r["overall"])), fmt(num(r["pct_er0"])), fmt(num(r.get("cp"))),
             fmt(num(r.get("semantic_entropy")), 4)))
+
+    A("\n## 3b. Complete metric matrix (every column of stats_per_model_task.csv)\n")
+    A("| model | task | " + " | ".join(metric_cols) + " |")
+    A("|" + "---|" * (len(metric_cols) + 2))
+    for r in sorted(diag, key=lambda r: (r["model"], task_family(r["task"]), r["task"])):
+        A("| %s | %s | %s |" % (r["model"], r["task"],
+                                " | ".join((r[c] or "") for c in metric_cols)))
 
     A("\n## 4. Mechanism experiments: coverage and volume\n")
     A("| experiment | model | responses | tasks | extra |")
