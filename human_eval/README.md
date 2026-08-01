@@ -56,3 +56,44 @@ Source data: reasoning traces in `../se_results/<model>/<task>/output.json` (or
 `../results/...` for collaborator runs), auto-diagnoses in
 `../results/<model>/<task>/*hallucination_details.jsonl`. Highlights use the
 detector's `fabricated_fgs` (red) and `verified_fgs` (green).
+
+## What the shipped annotation files contain
+
+All annotation records ship unmodified, including the identifiers used while the
+study was run. Two things about them are worth stating plainly, because neither
+is what the released figures use.
+
+**Internal training codenames.** `claims_key.json` keys models as
+`Chem-R-v8`, `Chem-R-v8-coupled`, `ChemDFM-R-14B` and
+`DeepSeek-R1-Distill-Llama-8B`. These are the internal training names; the
+release display names are, respectively, `+process`, `Chem-R-Faithful`,
+`ChemDFM-R` and `DeepSeek-R1-Distill` (the same mapping as `data/raw/README.md`).
+The records were left as collected rather than renamed after the fact, so that
+what is published is exactly what the annotator scored.
+
+**The arena set spans more models than the paper reports.** `samples.json` and
+`annotations*.json` come from a blind forced-choice round that also included
+`Mol-R1`, `MolReasoner`, `Chem-R-Merged` and an earlier `Chem-R-Faithful`
+checkpoint. None of these are part of the released study: the earlier
+`Chem-R-Faithful` is a superseded checkpoint that happens to share the name with
+the released model, and the other three were dropped before the analyses reported
+here. They remain in the raw records because removing panels from a forced-choice
+comparison would change what the annotator was actually choosing between. No
+figure or number in the paper is computed from them.
+
+**Annotator field.** `annotator` holds the initials of the chemist who scored the
+set. The per-claim audit was scored by one annotator; `annotations.json` and
+`annotations-2.json` are two passes over the same 400 prompts.
+
+### Reproducing the paper's extraction-precision number
+
+```bash
+cd human_eval && python score_claims.py
+# claims scored: 300 ...
+# overall extraction precision = 0.973
+```
+
+This is the $97.3\%$ pooled extraction precision quoted in the Limitations
+section. `claims_key.json` and `claim_annotations_RL.json` are a matched pair —
+the key indexes exactly the 300 claims that were annotated, so replacing either
+one alone will silently drop records and change the number.

@@ -1,0 +1,1208 @@
+{
+ "annotator": "JL",
+ "exported": "2026-06-19T17:18:16.466Z",
+ "scheme": "forced choice: least-hallucinatory model per prompt (anonymized)",
+ "n_prompts": 400,
+ "annotations": {
+  "retrosynthesis|uspto_test_4659": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|72715817": {
+   "chosen": "MolReasoner (mol-specialized)"
+  },
+  "mol2cap|9543115": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_435": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|6440428": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|25245732": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_233": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|20849025": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|4095": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "retrosynthesis|uspto_test_4974": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_243": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|15222911": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_174": {
+   "chosen": "DeepSeek-Distill (8B, general)"
+  },
+  "retrosynthesis|uspto_test_3197": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_3391": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_123": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_4000": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_4984": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|91666449": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|57262456": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|24900162": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "mol2cap|449688": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_2038": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_2892": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_282": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|76965883": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|93486": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|151842": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "cap2mol|184900": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|6101829": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_252": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_15": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_184": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_1615": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|49866746": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_2802": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|91825631": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|185588": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "cap2mol|70680290": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "cap2mol|15257197": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "cap2mol|92136131": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|23615571": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|5281701": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|24778518": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|3611": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "cap2mol|16617": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_139": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|91856782": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|139036279": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "cap2mol|71581037": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "mol2cap|785072": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_394": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_3619": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|480787": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_424": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_4626": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|89101936": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|49792034": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|58067884": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_3058": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|23724539": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|52937073": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "mol2cap|70680290": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_14": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_228": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|71508666": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|22419": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_274": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|129659": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_3205": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|25164050": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|18134": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|52937073": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|24778759": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|90659076": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|7700": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_198": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_2362": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_3345": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_216": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_1039": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "retrosynthesis|uspto_test_2658": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|86289836": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_168": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_2560": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_2059": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|5702609": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|44191464": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|15942884": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|136041719": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_403": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_2690": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_1525": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_262": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_253": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|47499": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_468": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|440235": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "mol2cap|8292": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_445": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_4886": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_357": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_384": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|5280693": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_154": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|11546620": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_395": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|49852318": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|2145": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_2266": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|86289647": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_1457": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "retrosynthesis|uspto_test_2351": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|102026334": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|5281674": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_122": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|71581128": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|12590335": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_266": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|439392": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "mol2cap|39186": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_1593": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_223": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_88": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|10241": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "cap2mol|546": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_232": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|129626615": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_189": {
+   "chosen": "DeepSeek-Distill (8B, general)"
+  },
+  "retrosynthesis|uspto_test_638": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|131801258": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|231352": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_1128": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_96": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_290": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_3402": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|57339289": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_127": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|91854726": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "mol2cap|71768081": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|5459389": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_238": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|54690912": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "cap2mol|21126521": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|11859618": {
+   "chosen": "MolReasoner (mol-specialized)"
+  },
+  "retrosynthesis|uspto_test_347": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|5372065": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "mol2cap|6440522": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|16212738": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "mol2cap|25200557": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_2866": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|443356": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|122391286": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|167305": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|2730": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_18": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|11883": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "cap2mol|89101936": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_303": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|53262277": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_153": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_2599": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_90": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|135886618": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_4801": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_1417": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|167161": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|10477690": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_3318": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|92136120": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|6971305": {
+   "chosen": "MolReasoner (mol-specialized)"
+  },
+  "cap2mol|86290136": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|36687778": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_1233": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_191": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_436": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_52": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|441284": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_200": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "cap2mol|5517": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "retrosynthesis|uspto_test_687": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_1429": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|91828275": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|695679": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|529": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_35": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_438": {
+   "chosen": "DeepSeek-Distill (8B, general)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_147": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_4797": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_2247": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|987": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_244": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_2338": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_492": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_219": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_1159": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_1870": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "retrosynthesis|uspto_test_2188": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|11053": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|12444628": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|572": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "retrosynthesis|uspto_test_1711": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|16059194": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_111": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_319": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|6917852": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_166": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|6436246": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_1842": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_347": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_4134": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|121412669": {
+   "chosen": "MolReasoner (mol-specialized)"
+  },
+  "mol2cap|71581051": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|439774": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_364": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_2373": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_2735": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_178": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_343": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|176155": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|6205": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "retrosynthesis|uspto_test_1292": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_826": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|20984": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|7368": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|91850668": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|14057236": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|11213569": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|91972223": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_1561": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|25164049": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "cap2mol|7945": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "retrosynthesis|uspto_test_4599": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_44": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_399": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|11953795": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_494": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_239": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "cap2mol|104881": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_170": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_420": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_128": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_4664": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_3797": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|53714398": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_4135": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|3858": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_3775": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_432": {
+   "chosen": "DeepSeek-Distill (8B, general)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_53": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_3409": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_4245": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_2799": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|135515530": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|5280719": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_493": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|129900403": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|52940203": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|57412271": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_4390": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|91826524": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_44": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|6857381": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_101": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_132": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_122": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_498": {
+   "chosen": "DeepSeek-Distill (8B, general)"
+  },
+  "retrosynthesis|uspto_test_4403": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|10358776": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_3059": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_158": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_4224": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|92097": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|53262360": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_109": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|91825578": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "retrosynthesis|uspto_test_2108": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_2894": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_350": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_351": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|449171": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "mol2cap|24892748": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|5320945": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_473": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|71668339": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_244": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_341": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_195": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_65": {
+   "chosen": "DeepSeek-Distill (8B, general)"
+  },
+  "mol2cap|440405": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_2855": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|639636": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_356": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|53359463": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|134692103": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_224": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|12473": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|460602": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_698": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|5460887": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|448825": {
+   "chosen": "MolReasoner (mol-specialized)"
+  },
+  "mol2cap|21953369": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_205": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|10363838": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_20": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|91825610": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|54580211": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_103": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_3053": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_1759": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_1664": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_331": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "cap2mol|156228": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "mol2cap|134131607": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|5702692": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|59693782": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_110": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_4590": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "cap2mol|2859799": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_45": {
+   "chosen": "DeepSeek-Distill (8B, general)"
+  },
+  "retrosynthesis|uspto_test_1232": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_1684": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_125": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|70679009": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_325": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_146": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_931": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_2587": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_1682": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|91826539": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|81466": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|44229137": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|25201398": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_303": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_301": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|86583436": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_466": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|49859627": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_269": {
+   "chosen": "DeepSeek-Distill (8B, general)"
+  },
+  "mol2cap|6540644": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_1057": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_1336": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_3340": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|1752": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|10880539": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_4637": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_92": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|18343309": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|121596240": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|10648": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_3874": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "mol2cap|51520704": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|3485262": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_472": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_3679": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|72551476": {
+   "chosen": "Mol-R1 (mol-specialized)"
+  },
+  "retrosynthesis|uspto_test_4321": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|5706736": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_3484": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_3413": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|5282310": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|6205": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_133": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|121225506": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|53860028": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|25246222": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|91666321": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|69413": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_2224": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|45479628": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|11619632": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_477": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_11": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|71581248": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|440184": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_448": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|71768108": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|56927974": {
+   "chosen": "MolReasoner (mol-specialized)"
+  },
+  "cap2mol|46878531": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_160": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_345": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|56845520": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|73416432": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|376": {
+   "chosen": "MolReasoner (mol-specialized)"
+  },
+  "mol2cap|86583463": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_358": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_829": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "cap2mol|15938961": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "cap2mol|6736": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_4": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_2694": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|70698323": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "mol2cap|86289847": {
+   "chosen": "Chem-R (8B, chem)"
+  },
+  "retrosynthesis|uspto_test_1240": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "s2_MolCustom_FunctionalGroup|s2_MolCustom_FunctionalGroup_388": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|151730": {
+   "chosen": "ether-0 (24B, general)"
+  },
+  "mol2cap|71768071": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "cap2mol|442439": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "mol2cap|3032615": {
+   "chosen": "ChemDFM-R (14B, chem)"
+  },
+  "retrosynthesis|uspto_test_562": {
+   "chosen": "Chem-R (8B, chem)"
+  }
+ }
+}

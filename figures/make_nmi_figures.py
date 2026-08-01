@@ -3,7 +3,11 @@
 
 ``main()`` produces every plotted figure shipped in this folder:
 fig1_measures, fig2_widespread, fig3_accuracy_gap, fig4_mechanism,
-fig_scratchpad (fig5), fig_draft (fig6), ed_fig1_ladder, ed_fig2_arena.
+fig_scratchpad (fig5) and fig_draft (fig6).
+
+ed_fig1_ladder() and ed_fig2_arena() are kept but are no longer produced by main():
+neither Extended Data figure is part of the manuscript. The training ladder they
+showed is in Fig. 2e; the detector-chemist arena is not currently reported.
 
 Only the conceptual-framework schematic (fig1_framework) is drawn by hand by the
 authors and is not produced here; it is not shipped in this folder either.
@@ -798,8 +802,6 @@ def main() -> None:
     fig4_mechanism()
     fig5_scratchpad()
     fig6_draft()
-    ed_fig1_ladder()
-    ed_fig2_arena()
 
 
 if __name__ == "__main__":
