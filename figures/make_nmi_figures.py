@@ -231,12 +231,12 @@ def fig2_widespread() -> None:
         axe.text(xi, v + 1.4, f"{v:.0f}", ha="center", fontsize=5.0, color=C_BAD)
     axe.set_ylabel("per-claim fabrication (%)", color=C_BAD)
     axe.tick_params(axis="y", labelcolor=C_BAD)
-    axe.set_ylim(0, 34)
+    axe.set_ylim(0, _headroom(fabv))
     axr = axe.twinx()
     axr.plot(xx, perf, "-s", color=C_GOOD, ms=3, lw=1.3)
     axr.set_ylabel("performance (%)", color=C_GOOD)
     axr.tick_params(axis="y", labelcolor=C_GOOD)
-    axr.set_ylim(0, 60)
+    axr.set_ylim(0, _headroom(perf))
     axr.spines["right"].set_visible(True)
     axr.spines["right"].set_color(C_GOOD)
     axr.spines["top"].set_visible(False)
@@ -737,8 +737,8 @@ def ed_fig1_ladder() -> None:
         axa.text(xi, v + 1.1, f"{v:.0f}", ha="center", fontsize=5.4, color=C_BAD)
     axa.set_xticks(x); axa.set_xticklabels(labs, fontsize=5.4)
     axa.set_ylabel("per-claim fabrication (%)")
-    axa.set_ylim(0, 34)
-    axa.annotate("base fabricates most\n(at 0.3% accuracy)", (0.30, 0.84),
+    axa.set_ylim(0, _headroom(fab))
+    axa.annotate("base fabricates most\n(at %.1f%% accuracy)" % perf[0], (0.30, 0.84),
                  xycoords="axes fraction", fontsize=5.0, color=GRAYREF, va="top")
     title(axa, "Only a grounded reward cuts fabrication")
 
@@ -747,12 +747,12 @@ def ed_fig1_ladder() -> None:
     axb.plot(x, perf, "-o", color=C_GOOD, ms=4, lw=1.3)
     axb.set_ylabel("task performance (%)", color=C_GOOD)
     axb.tick_params(axis="y", labelcolor=C_GOOD)
-    axb.set_ylim(0, 60)
+    axb.set_ylim(0, _headroom(perf))
     axr = axb.twinx()
     axr.plot(x, fab, "-s", color=C_BAD, ms=3.5, lw=1.3)
     axr.set_ylabel("per-claim fabrication (%)", color=C_BAD)
     axr.tick_params(axis="y", labelcolor=C_BAD)
-    axr.set_ylim(0, 34)
+    axr.set_ylim(0, _headroom(fab))
     axr.spines["right"].set_visible(True)
     axr.spines["right"].set_color(C_BAD)
     axr.spines["top"].set_visible(False)
@@ -783,6 +783,12 @@ def ed_fig2_arena() -> None:
     ax.set_title("Automatic detector matches an expert chemist\n($n = 400$ prompts)",
                  fontsize=7, fontweight="bold")
     save(fig, "ed_fig2_arena")
+
+
+def _headroom(vals, pad=3.0, step=5.0):
+    """Upper y-limit that leaves room for the value labels drawn just above each point.
+    Derived from the data so a rung growing past a hardcoded limit cannot clip the series."""
+    return float(np.ceil((max(vals) + pad) / step) * step)
 
 
 def main() -> None:
