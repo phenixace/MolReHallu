@@ -1,20 +1,19 @@
 # Source data bundle (download this whole `data/` folder)
 
 Everything needed to reproduce every **figure** is in this folder (~84 MB). Verified 2026-07-30:
-all eight plotted figures regenerate with byte-identical drawing operators from this folder alone
+all plotted figures regenerate with byte-identical drawing operators from this folder alone
 (see `../figures/`).
 
 ## Top-level deliverable
 - **`source_data.xlsx`** — NMI-style Source Data workbook, **18 sheets**: 8 back a plotted figure
-  panel, 9 are supporting data behind statements in the text, plus a `README` index sheet.
+  panel, the rest are supporting data behind statements in the text, plus a `README` index sheet.
   Sheet `README` inside it lists every sheet + metric definitions + N.
 
 ## Layout
 ```
 data/
   source_data.xlsx            # << the workbook (all figures, editable)
-  RESULTS.md                  # verified results narrative (R1-R5) + caveats
-  STORYLINE.md                # how the results compose into the paper's argument
+  DATA_INVENTORY.md           # model x dataset x experiment coverage, with volumes
   stats_per_model_task.csv    # diagnosis: per (model,task)
   stats_per_family.csv        # diagnosis: per (model,family)
   stage_ladder.csv            # R1 origin-of-hallucination ladder
@@ -56,7 +55,7 @@ evaluation tree (`results/`, `se_results/`), which is not part of this release.
 - **R2 flip_to_wrong** = among originally-correct responses (`base_correct=1`), fraction that turn
   incorrect (`dperf=-1`) after perturbing the reasoning. This is NOT the JSON `summary.drift_rate`
   (which is *any* answer change over *all* examples — a different, larger quantity). Recomputed from
-  `per_example`; reproduces RESULTS.md R2 (e.g. Chem-R translate all_wrong 7.1%, drop 25.8%, swap 32.7%).
+  `per_example` (e.g. Chem-R translate all_wrong 7.1%, drop 25.8%, swap 32.7%).
 - **R3** plots the **mean-over-tasks** aggregation of the info-gains (not the pooled-over-all-examples
   value). The workbook gives both, clearly labeled, plus per-task granular rows.
 - **Fig 4a,c** use the **middle** transformer layer (`_mid`) and the `cap2mol` subset only. Averaging
@@ -70,7 +69,7 @@ PY=python
 $PY eval/pull_fullvol.py            # token_examples/r5_gradient.csv, r5_region.csv, fullvol.txt
 $PY eval/verify_paper_metric.py     # re-derives the R2/R3 headline numbers and prints them
 
-# Figures — reproduces all eight shipped PDFs/PNGs from source_data.xlsx:
+# Figures — reproduces the six shipped main-display PDFs/PNGs from source_data.xlsx:
 cd figures && $PY -c "import make_nmi_figures as m; m.main()"
 ```
 The three scripts that **rewrite** files in this folder (`eval/export_stats.py`,

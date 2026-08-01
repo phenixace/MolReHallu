@@ -20,10 +20,10 @@ This repo holds the essential code and the data results behind the figures.
 - `figures/make_nmi_figures.py` (+ `nature_figures.py`) — regenerates the main figures from
   `data/`.  Reproduce:  `cd figures && python -c "import make_nmi_figures as m; m.main()"`.
 - `human_eval/` — per-claim reliability set builder, blind-annotation scorer, arena, κ.
-- `data/` — `source_data.xlsx` and CSVs (the plotted series), `RESULTS.md` (cross-checked
-  numbers), `STORYLINE.md`, `SOURCE_DATA.md` (the bundle's own manifest), `raw/` (the per-model
-  JSONs the R2/R3/R5 sheets are computed from), and `data/results/…` diagnosis details used
-  by the figures.
+- `data/` — `source_data.xlsx` and CSVs (the plotted series), `SOURCE_DATA.md` (the bundle's
+  own manifest), `DATA_INVENTORY.md` (which model was measured on which dataset, at what
+  volume, in which experiment), `raw/` (the per-model JSONs the R2/R3/R5 sheets are computed
+  from), and `data/results/…` diagnosis details used by the figures.
 
 ## Reproducing
 `pip install -r requirements.txt` covers everything; the figure path alone needs only
