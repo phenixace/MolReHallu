@@ -26,6 +26,7 @@ from collections import Counter
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BASE)
 import prompts as P  # noqa: E402
+import io_utils as IO  # noqa: E402  (gz-aware, se_results/ -> data/responses/)
 from rdkit import Chem, RDLogger  # noqa: E402
 RDLogger.DisableLog("rdApp.*")
 
@@ -103,15 +104,15 @@ def main():
 
     rows = []
     for task in args.tasks:
-        of = glob.glob(f"{BASE}/se_results/{args.model}/{task}/output.json")
+        of = IO.find(f"{BASE}/se_results/{args.model}/{task}/output.json")
         if not of:
             continue
-        items = json.load(open(of[0]))
+        items = IO.load_json(of[0])
         items = items if isinstance(items, list) else items.get("results", [])
-        df = glob.glob(f"{BASE}/data/results/{args.model}/{task}/*hallucination_details.jsonl")
+        df = IO.find(f"{BASE}/data/results/{args.model}/{task}/*hallucination_details.jsonl")
         er_of = {}
         if df:
-            for l in open(df[0]):
+            for l in IO.open_text(df[0]):
                 d = json.loads(l); er_of[str(d["id"])] = d["hallucination_scores"]["ER_factual_fabrication"]
         items = items[:args.max_per_task]
         base = [tok.apply_chat_template(P.build_messages(task, s.get("question", "")),

@@ -57,18 +57,18 @@ def main():
     # stage prefixes for 3 conditions per example
     jobs, meta = [], {}   # jobs: (uid, cond, prompt); meta[uid]=task
     for task in args.tasks:
-        of = glob.glob(f"{BASE}/se_results/{args.model}/{task}/output.json")
+        of = IO.find(f"{BASE}/se_results/{args.model}/{task}/output.json")
         if not of:
             continue
-        items = json.load(open(of[0]))
+        items = IO.load_json(of[0])
         items = items if isinstance(items, list) else items.get("results", [])
         cot_pool = [c for c in (CD.extract_cot(s.get("answer", ""), mk) for s in items) if c and c.strip()]
         # ER label per id (to stratify swap analysis by clean ER=0 vs fabricating ER>0)
         import glob as _g
-        df = _g.glob(f"{BASE}/data/results/{args.model}/{task}/*hallucination_details.jsonl")
+        df = IO.find(f"{BASE}/data/results/{args.model}/{task}/*hallucination_details.jsonl")
         er_of = {}
         if df:
-            for l in open(df[0]):
+            for l in IO.open_text(df[0]):
                 d = json.loads(l); er_of[str(d["id"])] = d["hallucination_scores"]["ER_factual_fabrication"]
         n = 0
         for s in items:

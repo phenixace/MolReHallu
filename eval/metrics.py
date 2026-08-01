@@ -25,6 +25,7 @@ for p in (BASE,):
         sys.path.insert(0, p)
 
 from diagnose_hallucination import GENERIC_FG_NAMES as GENERIC  # noqa: E402
+import io_utils as IO  # noqa: E402  (gz-aware, se_results/ -> data/responses/)
 from s2_success import s2_success  # noqa: E402
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction  # noqa: E402
 from nltk.tokenize import wordpunct_tokenize  # noqa: E402
@@ -38,26 +39,26 @@ S2 = ["s2_MolCustom_AtomNum", "s2_MolCustom_BondNum", "s2_MolCustom_FunctionalGr
 
 
 def _items(path):
-    d = json.load(open(path))
+    d = IO.load_json(path)
     return d if isinstance(d, list) else d.get("results", d)
 
 
 def details(model, task):
-    f = glob.glob(f"{BASE}/data/results/{model}/{task}/*hallucination_details.jsonl")
+    f = IO.find(f"{BASE}/data/results/{model}/{task}/*hallucination_details.jsonl")
     if not f:
         return {}
-    return {str(json.loads(l)["id"]): json.loads(l) for l in open(f[0])}
+    return {str(json.loads(l)["id"]): json.loads(l) for l in IO.open_text(f[0])}
 
 
 def outputs(model, task):
     """{id: {answer, gt, question, metadata}} with S2 metadata merged from completions."""
-    of = (glob.glob(f"{BASE}/se_results/{model}/{task}/output.json")
-          or glob.glob(f"{BASE}/data/results/{model}/{task}/output.json"))
+    of = (IO.find(f"{BASE}/se_results/{model}/{task}/output.json")
+          or IO.find(f"{BASE}/data/results/{model}/{task}/output.json"))
     if not of:
         return {}
     items = _items(of[0])
     mm = {}
-    cf = glob.glob(f"{BASE}/se_results/{model}/{task}/completions.json")
+    cf = IO.find(f"{BASE}/se_results/{model}/{task}/completions.json")
     if cf:
         mm = {str(s.get("id")): (s.get("metadata") or {}) for s in _items(cf[0])}
     res = {}

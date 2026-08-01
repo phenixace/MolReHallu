@@ -54,6 +54,7 @@ sys.path.insert(0, os.path.join(BASE, "eval"))
 sys.path.insert(0, BASE)
 import metrics as MX  # noqa: E402
 from diagnose_hallucination import GENERIC_FG_NAMES as GENERIC  # noqa: E402
+import io_utils as IO  # noqa: E402  (gz-aware, se_results/ -> data/responses/)
 
 
 def _alias(label):
@@ -74,7 +75,7 @@ def _alias(label):
 
 def _find(model, task):
     for name in _alias(model):
-        fs = glob.glob(f"{BASE}/data/results/{name}/{task}/*hallucination_details.jsonl")
+        fs = IO.find(f"{BASE}/data/results/{name}/{task}/*hallucination_details.jsonl")
         if fs:
             return name, fs
     return model, []
@@ -115,12 +116,12 @@ def _load_text(model, task):
     """id -> think-segment text, from output.json."""
     fs = []
     for name in _alias(model):
-        fs = glob.glob(f"{BASE}/se_results/{name}/{task}/output.json")
+        fs = IO.find(f"{BASE}/se_results/{name}/{task}/output.json")
         if fs:
             break
     if not fs:
         return {}
-    o = json.load(open(fs[0]))
+    o = IO.load_json(fs[0])
     recs = o if isinstance(o, list) else o.get("results", o.get("samples", []))
     out = {}
     for r in recs:
@@ -157,7 +158,7 @@ def mechanism_stats(model):
             continue
         texts = txt_cache[task]
         ver_spec = fab_spec = 0
-        for line in open(fs[0]):
+        for line in IO.open_text(fs[0]):
             d = json.loads(line)
             er = d.get("details", {}).get("ER", {})
             claimed = er.get("claimed_fgs", []) or []
@@ -208,7 +209,7 @@ def main():
         # has data -- otherwise perf/ER come back NaN for any rung whose directory uses the
         # other naming convention, while the mechanism stats above succeed.
         resolved = next((n for n in _alias(model)
-                         if glob.glob(f"{BASE}/data/results/{n}/{GEN_TASKS[0]}/*hallucination_details.jsonl")),
+                         if IO.find(f"{BASE}/data/results/{n}/{GEN_TASKS[0]}/*hallucination_details.jsonl")),
                         model)
         agg = MX.family_stats(resolved, GEN_TASKS) if hasattr(MX, "family_stats") else None
         perf = agg["perf"] if agg else float("nan")

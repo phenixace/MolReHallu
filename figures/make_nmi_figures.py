@@ -314,8 +314,10 @@ def fig1_measures() -> None:
 # Fig 3 — decoupled from correctness
 # --------------------------------------------------------------------------- #
 def _chemr_cap2mol():
-    p = REPRO / "Chem-R" / "cap2mol" / "Chem-R_cap2mol_hallucination_details.jsonl"
-    recs = [json.loads(l) for l in p.read_text().splitlines() if l.strip()]
+    import sys as _s; _s.path.insert(0, str(PROJ))
+    import io_utils as IO
+    p = IO.find(str(REPRO / "Chem-R" / "cap2mol" / "*hallucination_details.jsonl"))[0]
+    recs = list(IO.iter_jsonl(p))
     er = np.array([r["hallucination_scores"]["ER_factual_fabrication"] for r in recs], float)
     exact = np.array([1 if r.get("exact_match") else 0 for r in recs])
     return er, exact

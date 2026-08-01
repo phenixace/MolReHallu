@@ -39,6 +39,7 @@ BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BASE)
 import diagnose_hallucination as DH  # noqa: E402
 import prompts as P  # noqa: E402
+import io_utils as IO  # noqa: E402  (gz-aware, se_results/ -> data/responses/)
 
 HF = {"Chem-R": "weidawang/Chem-R-8B",
       "ChemDFM-R": "OpenDFM/ChemDFM-R",
@@ -73,11 +74,11 @@ def _is_correct(task, d):
 
 
 def load_examples(model, task="cap2mol"):
-    of = glob.glob(f"{BASE}/se_results/{model}/{task}/output.json")
-    df = glob.glob(f"{BASE}/data/results/{model}/{task}/*hallucination_details.jsonl")
+    of = IO.find(f"{BASE}/se_results/{model}/{task}/output.json")
+    df = IO.find(f"{BASE}/data/results/{model}/{task}/*hallucination_details.jsonl")
     if not of or not df:
         return []
-    items = json.load(open(of[0]))
+    items = IO.load_json(of[0])
     items = items if isinstance(items, list) else items.get("results", [])
     det = {str(json.loads(l)["id"]): json.loads(l) for l in open(df[0])}
     out = []

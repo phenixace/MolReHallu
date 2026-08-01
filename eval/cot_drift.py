@@ -35,6 +35,7 @@ BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BASE)
 import diagnose_hallucination as DH  # noqa: E402
 import prompts as P  # noqa: E402
+import io_utils as IO  # noqa: E402  (gz-aware, se_results/ -> data/responses/)
 from s2_success import s2_success  # noqa: E402  official S2-TOMG success (constraint satisfaction)
 from rdkit import Chem, RDLogger  # noqa: E402
 RDLogger.DisableLog("rdApp.*")
@@ -296,24 +297,24 @@ def main():
     # collect (uid, cond, prompt_str, task) across all examples
     jobs, meta = [], {}
     for task in args.tasks:
-        of = glob.glob(f"{BASE}/se_results/{args.model}/{task}/output.json")
+        of = IO.find(f"{BASE}/se_results/{args.model}/{task}/output.json")
         if not of:
             continue
-        items = json.load(open(of[0]))
+        items = IO.load_json(of[0])
         items = items if isinstance(items, list) else items.get("results", [])
         # ER label per id (full set, NO filtering -- just for the ER-stratified stats)
-        df = glob.glob(f"{BASE}/data/results/{args.model}/{task}/*hallucination_details.jsonl")
+        df = IO.find(f"{BASE}/data/results/{args.model}/{task}/*hallucination_details.jsonl")
         er_of = {}
         if df:
-            for l in open(df[0]):
+            for l in IO.open_text(df[0]):
                 d = json.loads(l)
                 er_of[str(d["id"])] = d["hallucination_scores"]["ER_factual_fabrication"]
         # S2 constraint metadata (source_molecule/added_group/target/... ) for s2_success
         s2meta = {}
         if task.startswith("s2_"):
-            cf = glob.glob(f"{BASE}/se_results/{args.model}/{task}/completions.json")
+            cf = IO.find(f"{BASE}/se_results/{args.model}/{task}/completions.json")
             if cf:
-                for r in json.load(open(cf[0])):
+                for r in IO.load_json(cf[0]):
                     s2meta[str(r["id"])] = r.get("metadata", {})
         # donor pool: all real inner-CoTs for this task (for the swap_cot control)
         cot_pool = [c for c in (extract_cot(s.get("answer", ""), mk) for s in items) if c and c.strip()]
