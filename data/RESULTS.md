@@ -9,7 +9,7 @@ Every number below is cross-checked against the raw output files. For each block
 | Block | N | notes |
 |---|---|---|
 | Diagnosis test sets (per model) | cap2mol 3300, mol2cap 3300, retro 5007, each s2 subtask 500 (×9) | same sets for all models |
-| Stage ladder (per-claim rates) | n_resp 11,607 over 3 GEN tasks; denominators = total claimed FGs (44k–78k) | **answer-only = cap2mol only, n_resp 3300** (see caveat) |
+| Stage ladder (per-claim rates) | n_resp 16,107 over all 12 task variants; denominators = total claimed FGs (44k–78k) | **answer-only = cap2mol only, n_resp 3300** (see caveat) |
 | Drift (per model) | ~13,500 total; originally-correct: translate ~4–5k, s2 ~1.1–1.5k | base-a only 14 correct (perf≈0 → uninformative) |
 | Draft-SMILES perturbation (R2b) | subset = originally-correct WITH a drafted SMILES: Chem-R 4602, coupled 4298, ChemDFM 430 | ChemDFM 8% coverage = negative control |
 | Cond-entropy (3-cond) | ~13,500 examples × **8 samples** × 3 prefixes/model | metric-free |
@@ -47,7 +47,7 @@ Every number below is cross-checked against the raw output files. For each block
 
 ---
 
-## R1. Stage ladder (origin of hallucination) — 3 GEN tasks, n_resp 11,607 (answer-only: cap2mol 3300)
+## R1. Stage ladder (origin of hallucination) — all 12 task variants, n_resp 16,107 (answer-only: cap2mol 3300)
 | stage | perf | ER | %ER=0 | claims/resp | per-claim fab | hedge% | abstain% |
 |---|---|---|---|---|---|---|---|
 | base-a (pre-SFT) | 0.3 | 13.09 | 48 | 3.85 | 28.9% | 51.9% | 1.5% |

@@ -52,7 +52,12 @@ LADDER = [
     ("Chem-R-Faithful",          "+coupled"),
     ("Chem-R",                     "off-the-shelf GRPO"),
 ]
-GEN_TASKS = ["cap2mol", "mol2cap", "retrosynthesis"]
+# All 12 task variants the paper reports. The pre-SFT base rung was backfilled on the nine
+# S2 subtasks, so every rung is now scored on the same full suite (n_resp = 16,107).
+GEN_TASKS = ["cap2mol", "mol2cap", "retrosynthesis",
+             "s2_MolCustom_AtomNum", "s2_MolCustom_BondNum", "s2_MolCustom_FunctionalGroup",
+             "s2_MolEdit_AddComponent", "s2_MolEdit_DelComponent", "s2_MolEdit_SubComponent",
+             "s2_MolOpt_LogP", "s2_MolOpt_MR", "s2_MolOpt_QED"]
 
 _HEDGE = re.compile(
     r"\b(may|might|maybe|perhaps|possibly|possible|probabl|likely|appears?|"
@@ -151,7 +156,7 @@ def main():
         if mech is None:
             print(f"{label:22s}  <no results yet>")
             continue
-        # official perf/ER over the 3 generative families (comparable across stages)
+        # official perf/ER over all 12 task variants (comparable across stages)
         agg = MX.family_stats(model, GEN_TASKS) if hasattr(MX, "family_stats") else None
         perf = agg["perf"] if agg else float("nan")
         er = agg["ER"] if agg else float("nan")

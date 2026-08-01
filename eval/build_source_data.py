@@ -146,7 +146,7 @@ readme = pd.DataFrame([
     ["README", "this index + metric definitions + N", "", "—"],
     ["Diagnosis_model_task", "per (model,task): perf, ER=0/ER>0, 2x2, GC/CP, entropy", "test sets: cap2mol/mol2cap 3300, retro 5007, s2 500x9", "eval/export_stats.py"],
     ["Diagnosis_family", "per (model,family) sample-weighted aggregates", "same", "eval/export_stats.py"],
-    ["R1_stage_ladder", "origin-of-hallucination ladder: per-claim fab, hedge/abstain, claims/resp", "n_resp 11,607 (3 GEN); answer-only=cap2mol 3300", "eval/stage_ladder_metrics.py"],
+    ["R1_stage_ladder", "origin-of-hallucination ladder: per-claim fab, hedge/abstain, claims/resp", "n_resp 16,107 (all 12 task variants)", "eval/stage_ladder_metrics.py"],
     ["R2_drift", "flip-to-wrong among ORIGINALLY-CORRECT, per condition x task-group (PAPER metric)", "n_orig_correct col (translate ~4-5k, s2 ~1.1-1.5k)", "eval/cot_drift.py -> drift_<m>.json (per_example)"],
     ["R2_drift_by_task", "same, per task", "n_orig_correct col", "eval/cot_drift.py"],
     ["R2_draft_perturbation", "DIRECT test of the structural-draft channel: mask/corrupt the drafted SMILES vs FG-name(all_wrong)/whole-CoT(swap); subset = correct WITH a draft; ChemDFM=neg ctrl", "n_correct_with_draft col", "eval/cot_drift.py (mask/corrupt_draft) -> eval/pull_draft.py"],
