@@ -304,9 +304,13 @@ def fig1_measures() -> None:
     axe.set_xticks(x); axe.set_xticklabels(xl, rotation=18, ha="right", fontsize=5.6)
     axe.set_ylabel("share of overall (%)")
     axe.set_ylim(0, 100)
-    axe.legend(ncol=4, fontsize=4.8, loc="upper center", bbox_to_anchor=(0.5, -0.24),
-               frameon=False, columnspacing=0.8, handlelength=0.9, handletextpad=0.4)
-    title(axe, "Hallucination composition")
+    # Legend above the axes, with the title lifted clear of it. The bars are a 100%
+    # stack, so there is no room inside; below the axes it collided with the rotated
+    # tick labels.
+    axe.legend(ncol=4, fontsize=5.0, loc="lower center", bbox_to_anchor=(0.5, 1.005),
+               frameon=False, columnspacing=1.0, handlelength=1.0, handletextpad=0.4,
+               borderpad=0.1, borderaxespad=0.0)
+    axe.set_title("Hallucination composition", fontsize=7, fontweight="bold", pad=13)
     save(fig, "fig1_measures")
 
 
@@ -431,7 +435,7 @@ def fig3_accuracy_gap() -> None:
 # Fig 4 — answer grounded in input; verbal claims inert
 # --------------------------------------------------------------------------- #
 def fig4_mechanism() -> None:
-    ap = pd.read_csv(DATA / "attention_perturbation.csv").set_index("model")
+    ap = sheet("Fig4_attention_perturbation").set_index("model")
     drift = sheet("R2_drift")
     fig = plt.figure(figsize=(nf.COL2, nf.COL2 * 0.36), layout="constrained")
     gs = fig.add_gridspec(1, 3, width_ratios=[1.15, 1.2, 0.85])
@@ -771,7 +775,7 @@ def ed_fig1_ladder() -> None:
 # Extended Data Fig. 2 — detector agrees with an expert chemist (arena)
 # --------------------------------------------------------------------------- #
 def ed_fig2_arena() -> None:
-    j = json.loads((DATA / "human_eval_agreement.json").read_text())
+    j = dict(sheet("Human_eval_agreement").values)
     fig, ax = nf.new_fig(nf.COL1, nf.COL1 * 0.74)
     conds = ["overall-\nhallucination pick", "ER-\nfabrication pick"]
     ag = [j["ag_ov"], j["ag_er"]]

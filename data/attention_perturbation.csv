@@ -1,7 +1,0 @@
-model,n_perturb,d_wrong_cot,d_syn_cot,d_wrong_input,n_matched,matched_attn_input_fg,matched_attn_cot_fg,matched_ratio_input_over_cot,pertoken_cot_share_ER0,pertoken_cot_share_ERpos,raw_cot_mass_share_ER0
-Chem-R-Faithful,1243,-0.0001,0.0002,-0.2154,233,0.0036,0.0002,20.6946,4.6942,4.4022,22.8445
-+process,1258,-0.0003,-0.0003,-0.2121,231,0.0036,0.0002,20.1147,4.6853,4.1468,22.125
-Chem-R,924,-0.0007,-0.0001,-0.1954,265,0.0038,0.0002,20.0633,5.0895,4.8349,23.0264
-ChemDFM-R,1297,-0.0002,-0.0002,-0.1265,255,0.004,0.0009,4.3373,11.7129,12.3601,23.9311
-DeepSeek-R1,17,-0.0001,-0.0001,-0.0,0,,,,,,
-ether-0,719,-0.0008,-0.0001,-0.0012,283,0.0007,0.0007,0.9939,48.9091,46.1981,91.048

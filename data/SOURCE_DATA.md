@@ -12,34 +12,33 @@ all plotted figures regenerate with byte-identical drawing operators from this f
 ## Layout
 ```
 data/
-  source_data.xlsx            # << the workbook (all figures, editable)
+  source_data.xlsx            # << the single source: every shipped table, 21 sheets
   DATA_INVENTORY.md           # model x dataset x experiment coverage, with volumes
-  stats_per_model_task.csv    # diagnosis: per (model,task)
-  stats_per_family.csv        # diagnosis: per (model,family)
-  stage_ladder.csv            # R1 origin-of-hallucination ladder
-  mitigation.csv              # R4 per-family mitigation
-  attention_perturbation.csv  # Fig 4a,c: cap2mol middle-layer Dlogp + matched-token ratio
-  human_eval_agreement.json   # detector-chemist agreement (n=400)
-  token_examples/
-    r5_gradient.csv           #   R5 gradient enrichment (model x stratum x token-type)
-    r5_region.csv             #   R5 region attention (model x stratum x region)
-  results/                    # per-response diagnosis details (Chem-R cap2mol; read by Fig 3a,b)
-  raw/                        # raw per-model JSONs backing R2/R3/R5 (see raw/README.md)
+  results/                    # per-response diagnosis records, 8 models x 12 tasks (.jsonl.gz)
+  responses/                  # the model generations themselves, same grid (.json.gz)
+  raw/                        # per-model JSONs backing R2/R3/R5 (see raw/README.md)
 ```
+
+The loose CSVs that used to sit here (`stats_per_model_task.csv`, `stats_per_family.csv`,
+`stage_ladder.csv`, `mitigation.csv`, `attention_perturbation.csv`, `human_eval_agreement.json`)
+were duplicates of workbook sheets and have been folded in: keeping the same numbers in two
+places is how the semantic-entropy column once drifted between the CSV and the sheet. The
+regeneration scripts still write them as intermediates when rebuilding from the full evaluation
+tree; they are simply not shipped.
 
 ## Figure -> workbook sheet -> raw file
 | result | sheet in source_data.xlsx | raw source in this folder |
 |---|---|---|
-| Diagnosis (perf/ER/2x2) | `Diagnosis_model_task`, `Diagnosis_family` | `stats_per_*.csv` (terminal) |
-| R1 origin ladder | `R1_stage_ladder` | `stage_ladder.csv` (terminal) |
+| Diagnosis (perf/ER/2x2) | `Diagnosis_model_task`, `Diagnosis_family` | terminal (rebuilt from `results/`) |
+| R1 origin ladder | `R1_stage_ladder` | terminal (rebuilt from `results/` + `responses/`) |
 | R2 FG-claim drift (flip-to-wrong among originally-correct) | `R2_drift`, `R2_drift_by_task` | `raw/drift_<model>.json` (`per_example`) |
 | R2b draft-SMILES perturbation (mask/corrupt vs FG-name/swap) | `R2_draft_perturbation` | `raw/drift_<model>.json` (`mask_draft`/`corrupt_draft`, `n_draft`) |
 | R3 metric-free entropy (ig_presence/content/swap) | `R3_condentropy`, `R3_condentropy_task` | `raw/condsent_<model>.json` |
-| R4 mitigation | `R4_mitigation` | `mitigation.csv` (a re-slice of `Diagnosis_family`) |
+| R4 mitigation | `R4_mitigation` | a re-slice of `Diagnosis_family` |
 | R5 gradient saliency by token type | `R5_grad_enrichment` | `raw/gradattr_<model>.json` |
 | R5 region attention + draft-copy | `R5_region_attention` | `raw/region_<model>.json` (`region_attr`) |
-| R5 per-token heatmap examples | `R5_token_examples` | terminal — the per-token bundle is not redistributed |
-| Fig 4a,c causal perturbation | (CSV, not a sheet) | `raw/region_<model>.json` (`perturb`, `matched`) |
+| R5 per-token heatmap examples | `R5_token_examples` | terminal — the sheet is the per-token data; the rendered heatmap bundle is an intermediate and is not shipped |
+| Fig 4a,c causal perturbation | `Fig4_attention_perturbation` | `raw/region_<model>.json` (`perturb`, `matched`) |
 
 Every sheet in the first eight rows above has been **recomputed from `raw/` and matches the shipped
 values exactly** (max deviation 0.0). `attention_perturbation.csv` likewise reproduces for the four
@@ -66,7 +65,7 @@ evaluation tree (`results/`, `se_results/`), which is not part of this release.
 PY=python
 
 # From raw/ alone — safe, no extra inputs, reproduces the shipped files byte-identically:
-$PY eval/pull_fullvol.py            # token_examples/r5_gradient.csv, r5_region.csv, fullvol.txt
+$PY eval/pull_fullvol.py            # recomputes the R5 tables from raw/ and prints them
 $PY eval/verify_paper_metric.py     # re-derives the R2/R3 headline numbers and prints them
 
 # Figures — reproduces the six shipped main-display PDFs/PNGs from source_data.xlsx:

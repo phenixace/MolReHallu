@@ -22,12 +22,13 @@ This repo holds the essential code and the data results behind the figures.
   dispatched per task at all. See `training/README.md`.
 - `figures/make_nmi_figures.py` (+ `nature_figures.py`) — regenerates the main figures from
   `data/`.  Reproduce:  `cd figures && python -c "import make_nmi_figures as m; m.main()"`.
+  The rendered PDFs are not stored here; they are in the paper.
 - `human_eval/` — per-claim reliability set builder, blind-annotation scorer, arena, κ.
-- `data/` — `source_data.xlsx` and CSVs (the plotted series), `SOURCE_DATA.md` (the bundle's
-  own manifest), `DATA_INVENTORY.md` (which model was measured on which dataset, at what
-  volume, in which experiment), `raw/` (the per-model JSONs the R2/R3/R5 sheets are computed
-  from), `results/` (per-response diagnosis records) and `responses/` (the model generations,
-  both gzipped — `io_utils.py` reads them transparently).
+- `data/` — `source_data.xlsx` is the single source for every shipped table (21 sheets);
+  `SOURCE_DATA.md` is the bundle's manifest and `DATA_INVENTORY.md` says which model was
+  measured on which dataset, at what volume, in which experiment. `raw/` holds the per-model
+  JSONs the R2/R3/R5 sheets are computed from; `results/` the per-response diagnosis records and
+  `responses/` the model generations, both gzipped (`io_utils.py` reads them transparently).
 
 ## Reproducing
 `pip install -r requirements.txt` covers everything; the figure path alone needs only

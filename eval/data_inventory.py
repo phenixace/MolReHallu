@@ -3,9 +3,8 @@
 volume, in every experiment reported in the paper.
 
 Nothing here is hardcoded. Models, tasks and counts are discovered from the shipped files:
-  data/stats_per_model_task.csv     -> diagnosis coverage + performance
+  data/source_data.xlsx             -> every shipped table (the loose CSVs were merged in)
   data/raw/{drift,condsent,gradattr,region}_<model>.json  -> mechanism-experiment coverage
-  data/attention_perturbation.csv   -> causal-perturbation / matched-token coverage
   data/raw/README.md                -> filename token <-> sheet label mapping (parsed, not assumed)
   eval/attention_attribution.py     -> model -> HF weights (imported, not copied)
 
@@ -17,7 +16,7 @@ Provenance: data_loaders.py PATHS/S2_FILES in the analysis repo --
   bace/bbbp/hiv/tox21/clintox <- MoleculeNet   (not used in the paper)
 
 Run: python eval/data_inventory.py
-Writes data/DATA_INVENTORY.md and data/data_inventory.csv.
+Writes data/DATA_INVENTORY.md and refreshes the Data_inventory sheet of source_data.xlsx.
 """
 import csv
 import glob
@@ -90,6 +89,29 @@ def read_csv(path):
         return list(csv.DictReader(f))
 
 
+def _write_sheet(name, cols, rows):
+    """Replace a sheet of source_data.xlsx in place; the workbook is the single source."""
+    import openpyxl
+    xl = os.path.join(D, "source_data.xlsx")
+    wb = openpyxl.load_workbook(xl)
+    if name in wb.sheetnames:
+        del wb[name]
+    ws = wb.create_sheet(name)
+    ws.append(cols)
+    for r in rows:
+        ws.append([r.get(c, "") for c in cols])
+    wb.save(xl)
+
+
+def read_sheet(name):
+    """Rows of a source_data.xlsx sheet as dicts of strings, like read_csv."""
+    import openpyxl
+    ws = openpyxl.load_workbook(os.path.join(D, "source_data.xlsx"), read_only=True)[name]
+    rows = ws.iter_rows(values_only=True)
+    hdr = [str(h) for h in next(rows)]
+    return [{h: ("" if v is None else str(v)) for h, v in zip(hdr, r)} for r in rows]
+
+
 def num(x):
     try:
         return float(x)
@@ -116,13 +138,10 @@ def main():
         """HF entry for a release label, falling back to its internal codename."""
         return hf_raw.get(label) or hf_raw.get(lab2int.get(label, ""), "")
 
-    diag = read_csv(os.path.join(D, "stats_per_model_task.csv"))
+    diag = read_sheet("Diagnosis_model_task")
 
-    # ---------- 0. origin-ladder rungs (they are not in stats_per_model_task.csv) ---------
-    ladder = []
-    lp = os.path.join(D, "stage_ladder.csv")
-    if os.path.exists(lp):
-        ladder = read_csv(lp)
+    # ---------- 0. origin-ladder rungs (they are not in the per-task diagnosis table) -----
+    ladder = read_sheet("R1_stage_ladder")
     # derive which tasks the ladder's n_resp corresponds to, instead of asserting it
     by_task_n = {}
     for r in diag:
@@ -229,10 +248,7 @@ def main():
     fixed = ["experiment", "model", "task", "task_family", "dataset", "dataset_file",
              "reported_in_paper", "weights"]
     cols = fixed + [c for c in dict.fromkeys(k for r in rows for k in r) if c not in fixed]
-    with open(os.path.join(D, "data_inventory.csv"), "w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=cols, restval="")
-        w.writeheader()
-        w.writerows(rows)
+    _write_sheet("Data_inventory", cols, rows)
 
     # ---------- 4. write markdown ---------------------------------------------------------
     L = []
@@ -302,7 +318,7 @@ def main():
             fmt(num(r["overall"])), fmt(num(r["pct_er0"])), fmt(num(r.get("cp"))),
             fmt(num(r.get("semantic_entropy")), 4)))
 
-    A("\n## 3b. Complete metric matrix (every column of stats_per_model_task.csv)\n")
+    A("\n## 3b. Complete metric matrix (every column of the diagnosis table)\n")
     A("| model | task | " + " | ".join(metric_cols) + " |")
     A("|" + "---|" * (len(metric_cols) + 2))
     for r in sorted(diag, key=lambda r: (r["model"], task_family(r["task"]), r["task"])):
@@ -334,10 +350,9 @@ def main():
             EXP[kind][0], label, rec["file"], rec["internal"],
             ", ".join(rec["tasks"]) if rec["tasks"] else "(pooled, no per-task breakdown)"))
 
-    ap = os.path.join(D, "attention_perturbation.csv")
-    if os.path.exists(ap):
+    r0 = read_sheet("Fig4_attention_perturbation")
+    if r0:
         A("\n## 5. Causal perturbation and matched-token attention (cap2mol, middle layer)\n")
-        r0 = read_csv(ap)
         cols5 = [c for c in r0[0] if c != "model"]
         A("| model | " + " | ".join(cols5) + " |")
         A("|" + "---|" * (len(cols5) + 1))
@@ -347,7 +362,7 @@ def main():
     A("")
     out = os.path.join(D, "DATA_INVENTORY.md")
     open(out, "w").write("\n".join(L))
-    print("wrote %s (%d lines) and data/data_inventory.csv (%d rows)" % (out, len(L), len(rows)))
+    print("wrote %s (%d lines) and the Data_inventory sheet (%d rows)" % (out, len(L), len(rows)))
 
 
 if __name__ == "__main__":

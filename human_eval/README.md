@@ -85,6 +85,10 @@ figure or number in the paper is computed from them.
 set. The per-claim audit was scored by one annotator; `annotations.json` and
 `annotations-2.json` are two passes over the same 400 prompts.
 
+The per-claim audit is scored from `claim_annotations_RL.json` against
+`claims_key.json` by `score_claims.py`; there is no separate annotation page to
+open for it.
+
 ### Reproducing the paper's extraction-precision number
 
 ```bash
