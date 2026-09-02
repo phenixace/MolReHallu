@@ -11,18 +11,6 @@ python human_eval/score_claims.py
 # overall extraction precision = 0.973
 ```
 
-## What was being checked, and what was not
-
-The detector decides two things about a functional-group claim, and they are not equally
-fallible. Whether the group is **structurally present** in a molecule is decided by RDKit
-SMARTS, which is deterministic and is not what this audit questions. The error-prone step
-is **extraction**: does the model's reasoning actually assert that the *answer* molecule
-contains group X, as opposed to negating it, raising it hypothetically, or discussing a
-different molecule? That is what a chemist checked.
-
-So the audit measures extraction precision, not detection accuracy, and **recall is not
-estimable from it** — the sample contains only claims the detector already extracted, so
-claims it silently missed cannot appear.
 
 ## The files
 
@@ -49,12 +37,3 @@ over all 300 sampled claims, so dropping its rows would stop the number reproduc
 annotation round asked a different question -- whether a group is structurally present
 rather than whether the model asserts it -- and is not part of any number in the paper, so
 it is not shipped.
-
-## Not included
-
-The blind forced-choice arena, whose agreement figures are the `Human_eval_agreement`
-sheet of `data/source_data.xlsx` (n=400, overall agreement 54.75%, Cohen's kappa 0.41).
-Its 20 MB sample pool and the scoring script were written against different versions of
-each other and no longer run together, so shipping them would add a broken artefact
-rather than a reproducible one. That sheet stays a reported result; the 97.3% here does
-not have to be taken on trust.

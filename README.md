@@ -1,23 +1,13 @@
 # MolReHallu
 
-Reasoning hallucination in chemical reasoning models, made structurally checkable. A chemical
+Official Repository of Paper "Chemical Chain-of-Thought Functions as a Hallucination-Prone Molecular Scratchpad".
+
+In this paper, we made reasoning hallucination in chemical reasoning models structurally checkable. A chemical
 chain-of-thought states functional-group claims that can be decided against the molecular graph,
 so the rationale can be audited claim by claim rather than judged as fluent text.
 
 This repository holds the detector, the analysis pipeline, the verification-grounded training
 recipe, and the data behind every figure and number in the paper.
-
-## What the paper finds, and where each finding lives here
-
-The study evaluates four reasoning model families on twelve chemistry task variants
-(16,107 responses per model) and reports four things. Each maps to code and shipped data:
-
-| finding | evidence in this repo |
-|---|---|
-| Fabrication is **widespread**: chemical traces routinely assert functional groups that are in neither the input nor the answer molecule. | `diagnose_hallucination.py` decides each claim against the molecular graph by RDKit SMARTS; `data/results/` holds the per-response verdicts, `eval/metrics.py` aggregates them. |
-| It is **largely decoupled from correctness**: a right answer often arrives through a fabricating trace. | `Diagnosis_model_task` / `Diagnosis_family` in `data/source_data.xlsx`, plotted as Figures 2 and 3. |
-| The trace is still **not inert**. Corrupting a verified functional-group *claim* barely moves the answer, but corrupting the *drafted SMILES* degrades it — a scratchpad, in model-specific form. | the perturbation and attribution probes in `eval/` (`cot_drift.py`, `cot_info_gain.py`, `attention_attribution.py`, `attr_probe.py`), Figures 4-6. |
-| Fabrication **originates before chemistry fine-tuning** and answer-only RL does not remove it; a reward that pays accuracy only on a verified trace does. | `eval/stage_ladder_metrics.py` over one lineage (base -> SFT -> Chem-R -> Chem-R-Faithful); the reward is `reward/verification_grounded_reward.py`, the run is `training/`. |
 
 Reproducing the reported numbers needs nothing but this repository. The benchmark corpora
 are not shipped as corpora (`data/CORPORA.md` says where to get them); you need them only to
@@ -25,7 +15,7 @@ regenerate responses from scratch.
 
 ---
 
-## Two things you can verify in under a minute, on a CPU, with no data and no weights
+## Two things you can verify on CPU-only, with no data and no model weights
 
 ```bash
 pip install -r requirements.txt
@@ -60,7 +50,7 @@ print(s['accuracy'], s['accuracy_raw'])
   benchmark corpora                    ChEBI-20 · USPTO-50k · S²-Bench
   (not shipped as corpora)             cited in Methods, fetched from their own sources
           |
-          |  data_loaders.py        task registry, splits, 18 tasks
+          |  data_loaders.py        task registry, splits, 12 tasks
           |  prompts.py             per-task instruction templates
           v
   [1] GENERATION                     run_multitask_se.py            GPU + model weights
