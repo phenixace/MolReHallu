@@ -83,7 +83,7 @@ with open(f"{OUT}/stats_per_family.csv", "w", newline="") as f:
                         rnd(s["IR"]), rnd(s["IO"]), rnd(s["gc"]), rnd(s["cp"]), rnd(s["length"])])
 
 # ---- 3. mitigation comparison (baseline / process / Chem-R-Faithful) -----------------
-MIT = [("Chem-R", "baseline"), ("+process", "process"), ("Chem-R-Faithful", "coupled")]
+MIT = [("Chem-R", "baseline"), ("Chem-R-Faithful", "coupled")]
 with open(f"{OUT}/mitigation.csv", "w", newline="") as f:
     w = csv.writer(f)
     w.writerow(["family", "variant", "perf", "ER", "pct_er0", "decoupling_gap", "overall", "cp", "gc"])

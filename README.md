@@ -154,6 +154,72 @@ data/raw/{drift,condsent,gradattr,region}_<model>.json         mechanism-probe o
 Eight models × twelve task variants. `data/raw/README.md` maps the release display names to the
 internal training codenames. `data/DATA_INVENTORY.md` is the full coverage table.
 
+### The fields
+
+**`data/responses/<model>/<task>/output.json.gz`** — one record per prompt, the generation as it
+was produced:
+
+| field | meaning |
+|---|---|
+| `id` | instance id, stable across every artefact below |
+| `question` | the prompt the model saw (already instruction-formatted) |
+| `gt` | reference answer from the benchmark |
+| `answer` | the model's full response, `<think>…</think><answer>…</answer>` |
+| `model`, `task` | provenance |
+
+`metadata.json.gz` sits next to it for the nine S² subtasks only: `{id: {constraints…}}` with the
+instance's constraint set and source molecule. `s2_success` needs it; without it every S²
+performance number is 0.
+
+**`data/results/<model>/<task>/*_hallucination_details.jsonl.gz`** — one record per response, the
+detector's verdict:
+
+| field | meaning |
+|---|---|
+| `pred_smiles`, `pred_valid` | the parsed answer and whether RDKit accepts it |
+| `exact_match`, `tanimoto` | answer-level correctness |
+| `hallucination_scores` | the 2×2: `IR_self_contradiction`, `IO_structural_invalidity`, `ER_factual_fabrication`, `EO_phantom_structure`, each 0–100 |
+| `overall_hallucination_score` | the weighted aggregate |
+| `details.ER` | `claimed_fgs`, `verified_fgs`, `fabricated_fgs`, and the `penalties`/`checks` the ER score is computed from |
+| `details.IO` | validity and the molecular formula |
+| `reasoning_length` | characters inside `<think>` |
+
+**`data/raw/drift_<model>.json`** — the perturbation experiment. `per_example` has one record per
+instance with `uid`, `task`, `er`, `base_correct` (was the unperturbed answer right?), `n_draft`
+(did the trace draft a SMILES?), and then for each condition a `_drift` flag (did the answer
+change at all?) and a `_dperf` (−1 means it turned wrong). Conditions: `syn_cot` synonym control,
+`wrong_cot` one claim corrupted, `all_wrong_cot` every claim corrupted, `drop_cot` empty trace,
+`swap_cot` another molecule's trace, `mask_draft` and `corrupt_draft` for the drafted SMILES, and
+`wrong_input` — the same corruption applied to the *input* instead of the trace, which is the
+positive control the paper contrasts against.
+**The paper's flip-to-wrong is `dperf == −1` among `base_correct == 1`**, not the `_drift` flag.
+
+**`data/raw/condsent_<model>.json`** — conditional entropy. `per_example` gives `H_realCoT`,
+`H_noCoT`, `H_corrCoT`, `H_swapCoT` (answer entropy under each trace condition) and the
+information gains `ig_presence`, `ig_content`, `ig_swap`. `per_task` holds the per-task means;
+the paper plots the **unweighted mean over tasks**.
+
+**`data/raw/region_<model>.json`** — attention and the causal perturbation. `region_attr` is
+full-volume, one record per response: `input` and `trace` attention mass, `draft_copy` (did the
+answer copy a SMILES the trace drafted?), plus `task`, `er`, `exact`. `matched` is the
+matched-token control and `perturb` the teacher-forced Δlog p, both on cap2mol only, both stored
+**per layer** — read index `L//2`, the middle layer, as `eval/export_stats.py` does.
+
+**`data/raw/gradattr_<model>.json`** — gradient×input saliency, aggregated rather than
+per-response: `n`, `n_by_stratum` and `skipped_long`/`skipped_fmt` for the volume, then
+`trace_saliency_frac` and `token_counts` each keyed by stratum (`all`, `er0`, `erpos`) and within
+that by token type — SMILES fragment, functional-group word, position digit, other word,
+punctuation, space. Enrichment is the saliency share of a type divided by its share of tokens, so
+above 1 means that type carries more answer-sensitivity per token than the average trace token.
+
+**Workbook columns.** `Diagnosis_model_task` is per (model, task): `n`, `perf`, `perf_er0` and
+`perf_erpos` (performance on clean vs fabricating traces), `pct_er0` (share of clean traces), the
+four taxonomy scores, `overall`, `gc` grounded claims, `cp` claim precision, `length`, `validity`,
+`tanimoto`, `semantic_entropy`. `R1_stage_ladder` adds `claims_per_resp`, `perclaim_fab_rate`
+(fabricated over verified+fabricated **specific** groups, per task then averaged),
+`hedge_rate`, `abstain_rate` and `fab_position` (where in the trace the first fabrication appears,
+0 = start, 1 = end). Every other sheet is described in `data/SOURCE_DATA.md`.
+
 Three scripts **rewrite** files in `data/` and need the full evaluation tree, so they refuse to
 run unless you set `MOLREHALLU_REGEN=1`: `eval/export_stats.py`, `eval/stage_ladder_metrics.py`,
 `eval/build_source_data.py`. Against the released subset they would silently replace the
@@ -173,12 +239,10 @@ submitted numbers with incomplete ones.
   | base-a (pre-SFT) | `meta-llama/Llama-3.1-8B-Instruct` |
   | **Chem-R-Faithful** | released with the paper |
   | **SFT** | not released — internal checkpoint |
-  | **+process** | not released — an ablation arm, not reported in the paper |
 
-  So the five public models and Chem-R-Faithful can be re-probed; the SFT and `+process` rungs
-  cannot. Their measured outputs are still here (`data/raw/`, `data/results/`,
-  `data/responses/`), so every number that depends on them is auditable even though the probe
-  cannot be re-run.
+  So the five public models and Chem-R-Faithful can be re-probed; the SFT rung cannot. Its
+  measured outputs are still here (`data/raw/`, `data/results/`, `data/responses/`), so every
+  number that depends on it is auditable even though the probe cannot be re-run.
 - **The benchmark corpora** are not redistributed. `data_loaders.PATHS` shows the layout expected.
 - **The RL run** needs an EasyR1 checkout with `training/verl_patch/` applied. Without that patch
   the reward silently scores every task with the caption-to-molecule verifier.

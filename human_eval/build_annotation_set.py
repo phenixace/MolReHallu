@@ -31,8 +31,7 @@ MODELS = [("Chem-R", "Chem-R (8B, chem)"),
 # Additive panels: shown alongside the core models but EXCLUDED from the
 # shared-prompt intersection, so adding them does not change which prompts (uids)
 # are selected and any prior annotations on the core set stay aligned.
-EXTRA = [("+process", "Chem-R-process (ablation, ours)"),
-         ("Chem-R-Faithful", "Chem-R-Faithful (ours)")]
+EXTRA = [         ("Chem-R-Faithful", "Chem-R-Faithful (ours)")]
 TASKS = [("cap2mol", "cap2mol"), ("mol2cap", "mol2cap"),
          ("retrosynthesis", "retrosynthesis"),
          ("s2_MolCustom_FunctionalGroup", "s2 functional-group")]

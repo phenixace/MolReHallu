@@ -84,7 +84,6 @@ def _find(model, task):
 LADDER = [
     ("Llama-3.1-8B-Instruct-base", "base-a (pre-SFT)"),
     ("Chem-R-SFT",                 "SFT"),
-    ("+process",                  "+process"),
     ("Chem-R-Faithful",          "+coupled"),
     ("Chem-R",                     "off-the-shelf GRPO"),
 ]

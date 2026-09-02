@@ -64,7 +64,6 @@ HF = {"Chem-R": "weidawang/Chem-R-8B",
       "ChemDFM-R": "OpenDFM/ChemDFM-R",
       "ether-0": "futurehouse/ether0",
       "DeepSeek-R1": "deepseek-ai/DeepSeek-R1",
-      "+process": "<not released: ablation arm, not reported in the paper>",
       "Chem-R-Faithful": "<released with the paper; replace with the HuggingFace id once uploaded>",
       # stage-ladder: does the model rely on its CoT BEFORE our GRPO?
       "Llama-3.1-8B-Instruct-base": "meta-llama/Llama-3.1-8B-Instruct",

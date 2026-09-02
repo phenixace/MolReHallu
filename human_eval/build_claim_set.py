@@ -46,7 +46,7 @@ _DELIMS = (("<|think_start|>", "<think>"), ("<|think_end|>", "</think>"),
            ("<|answer_start|>", "<answer>"), ("<|answer_end|>", "</answer>"))
 
 # models + tasks to sample claims from
-MODELS = ["Chem-R", "ChemDFM-R", "+process", "Chem-R-Faithful",
+MODELS = ["Chem-R", "ChemDFM-R", "Chem-R-Faithful",
           "DeepSeek-R1", "ether-0"]
 TASKS = ["cap2mol", "mol2cap", "retrosynthesis"]
 TARGET_PER_LABEL = 150       # aim ~150 fabricated + ~150 verified = ~300 claims

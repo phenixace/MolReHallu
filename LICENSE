@@ -40,8 +40,9 @@ distributed separately:
     own upstream license and terms of use. No benchmark corpus is redistributed
     here.
   * The evaluated model weights are not distributed here. The public models are
-    obtained from their own repositories under their own licenses; the three
-    trained arms (Chem-R-Faithful, +process, Chem-R-SFT) are released separately.
+    obtained from their own repositories under their own licenses. Chem-R-Faithful
+    is released with the paper; the SFT initialisation is an internal checkpoint
+    and is not released.
   * reward/chem_merged_v8_ours.py is written to plug into EasyR1/verl, which is
     distributed under its own license and is not included here.
 

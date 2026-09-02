@@ -1,28 +1,27 @@
 # Training — verification-grounded GRPO
 
 Everything needed to reproduce the RL stage that turns the released Chem-R checkpoint into
-Chem-R-Faithful, and the `+process` ablation it is compared against.
+Chem-R-Faithful.
 
 The reward itself is `../reward/chem_merged_v8_ours.py`; it is the only part of this that runs
 without a GPU, and `../README.md` shows how to exercise the ER=0 gate on CPU in a few seconds.
 
-## What the two runs are
+## The run
 
-| config | `COUPLED` | release name | what it optimises |
-|---|---|---|---|
-| `configs/config_merged_v8_coupled.yaml` | `1` | **Chem-R-Faithful** | accuracy is paid only when the trace is clean (ER = 0) |
-| `configs/config_merged_v8.yaml` | unset | **+process** | the same process reward without the gate |
+`configs/config_merged_v8_coupled.yaml` with `COUPLED=1` is the run that produced
+**Chem-R-Faithful**: the same process reward as an ordinary run, except that the accuracy term is
+paid only when the trace is clean (ER = 0). Setting `COUPLED` to anything else removes the gate,
+which is how the ablation in the paper was produced.
 
-The `v8` in the filenames is the internal training codename; the mapping to release names is the
-one in `../data/raw/README.md`. Filenames are left as they were run so that the configs, the
-checkpoints and the logs still line up with each other.
+The `v8` in the filenames is the internal training codename, kept so the configs, the checkpoints
+and the logs still line up with each other.
 
 ## Layout
 
 ```
 training/
-  configs/         the two GRPO configs (grpo, lr 1e-6, kl_coef 1e-2, rollout n=5, 4 GPUs, 3 epochs)
-  jobs/            the submission scripts as run, with site paths replaced by shell variables
+  configs/         the GRPO config (grpo, lr 1e-6, kl_coef 1e-2, rollout n=5, 4 GPUs, 3 epochs)
+  jobs/            the submission script as run, with site paths replaced by shell variables
   dataset/         parquet builders + the exact train/test parquets the runs consumed
   format_prompt/   blank_format.jinja, referenced by both configs
   verl_patch/      three EasyR1 files that must replace the upstream ones -- see below
@@ -57,7 +56,7 @@ verl_patch/trainer_data_loader.py  -> verl/trainer/data_loader.py
 ```
 
 They carry a `task_key` from the config through the dataset and the data loader into the reward
-call. `data.task_key: task` in both configs is what selects the column.
+call. `data.task_key: task` in the config is what selects the column.
 
 ## Running
 
@@ -94,14 +93,9 @@ rather than as scripts that only ran on one cluster.
 ## What is not here
 
 The trained weights. **Chem-R-Faithful is released with the paper.** The SFT initialisation is
-an internal checkpoint and is not released, and `+process` is not released either — it is an
-ablation arm that the paper does not report, kept here because it is what isolates the accuracy
-gate. Both configs point at the public `weidawang/Chem-R-8B`, which is what the runs actually
-began from, so the coupled run is reproducible end to end; the `+process` run is reproducible as
-a recipe but its resulting weights are not published.
+an internal checkpoint and is not released. The config points at the public
+`weidawang/Chem-R-8B`, which is what the run actually began from, so it is reproducible end to
+end.
 
-Compute: the Chem-R-Faithful run was 936 steps on 4 NVIDIA H200 GPUs, 26.6 hours wall-clock
-(about 106 GPU-hours), measured from the job's start timestamp to the mtime of
-`global_step_936`. The `+process` run used the same configuration and the same 936 steps, so
-its cost is comparable, but its start timestamp was not preserved and the figure above should
-not be read as a second measurement.
+Compute: 936 steps on 4 NVIDIA H200 GPUs, 26.6 hours wall-clock (about 106 GPU-hours),
+measured from the job's start timestamp to the mtime of `global_step_936`.

@@ -66,7 +66,7 @@ is what the released figures use.
 **Internal training codenames.** `claims_key.json` keys models as
 `Chem-R-v8`, `Chem-R-v8-coupled`, `ChemDFM-R-14B` and
 `DeepSeek-R1-Distill-Llama-8B`. These are the internal training names; the
-release display names are, respectively, `+process`, `Chem-R-Faithful`,
+release display names are, respectively, `Chem-R-Faithful`,
 `ChemDFM-R` and `DeepSeek-R1-Distill` (the same mapping as `data/raw/README.md`).
 The records were left as collected rather than renamed after the fact, so that
 what is published is exactly what the annotator scored.

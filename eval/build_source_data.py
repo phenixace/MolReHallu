@@ -26,7 +26,7 @@ if os.environ.get("MOLREHALLU_REGEN") != "1":
 # labels written into the workbook. Keep both in sync with data/raw/README.md — keying this
 # on the internal codenames instead silently drops the models whose file stem differs.
 LABEL = {"base-a": "base-a (pre-SFT)", "SFT": "SFT",
-         "process": "+process", "Chem-R-Faithful": "Chem-R-Faithful", "Chem-R": "Chem-R",
+         "Chem-R-Faithful": "Chem-R-Faithful", "Chem-R": "Chem-R",
          "ChemDFM-R": "ChemDFM-R", "ether-0": "ether-0"}
 CONDS = ["syn_cot", "wrong_cot", "all_wrong_cot", "drop_cot", "swap_cot", "wrong_input"]
 COND_DESC = {"syn_cot": "synonym (control)", "wrong_cot": "1 FG-name corrupted",
@@ -152,7 +152,7 @@ readme = pd.DataFrame([
     ["R2_draft_perturbation", "DIRECT test of the structural-draft channel: mask/corrupt the drafted SMILES vs FG-name(all_wrong)/whole-CoT(swap); subset = correct WITH a draft; ChemDFM=neg ctrl", "n_correct_with_draft col", "eval/cot_drift.py (mask/corrupt_draft) -> eval/pull_draft.py"],
     ["R3_condentropy", "metric-free info-gains; mean_over_tasks row = PLOTTED, + pooled + ER=0/ER>0", "~13,560 x 8 samples", "eval/cot_condsent.py -> condsent_<m>.json"],
     ["R3_condentropy_task", "same, per task (granular; reproduces mean_over_tasks)", "n col", "eval/cot_condsent.py"],
-    ["R4_mitigation", "baseline vs +process vs +coupled, per family", "per family", "eval/export_stats.py"],
+    ["R4_mitigation", "baseline vs verification-grounded, per family", "per family", "eval/export_stats.py"],
     ["R5_grad_enrichment", "gradient x input saliency per token TYPE (share + enrichment)", "FULL ~16,100/model", "eval/attr_probe.py + eval/pull_fullvol.py"],
     ["R5_region_attention", "answer->token attention, INPUT vs TRACE region + draft-copy", "FULL ~16,100/model", "eval/attention_attribution.py --regions_only"],
     ["R5_token_examples", "per-token saliency+attention for the heatmap example figure", "12 curated examples (3 models x 4 tasks)", "eval/token_examples.py"],
