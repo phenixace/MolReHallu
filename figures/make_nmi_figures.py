@@ -232,7 +232,9 @@ def fig2_widespread() -> None:
     xx = np.arange(len(lin))
     axe.plot(xx, fabv, "-o", color=C_BAD, ms=3.5, lw=1.3)
     for xi, v in zip(xx, fabv):
-        axe.text(xi, v + 1.4, f"{v:.0f}", ha="center", fontsize=5.0, color=C_BAD)
+        # One decimal, matching the rates quoted in the text; panel c stays integral
+        # because the ranking it supports is quoted there as integers.
+        axe.text(xi, v + 1.4, f"{v:.1f}", ha="center", fontsize=5.0, color=C_BAD)
     axe.set_ylabel("per-claim fabrication (%)", color=C_BAD)
     axe.tick_params(axis="y", labelcolor=C_BAD)
     axe.set_ylim(0, _headroom(fabv))
