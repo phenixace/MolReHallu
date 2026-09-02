@@ -282,6 +282,11 @@ def main():
     A("\n## 2. Datasets and volume\n")
     A("`reported` marks the task set the paper analyses, taken from `GEN12` in "
       "`figures/make_nmi_figures.py`.\n")
+    A("`n per model` is the number of prompts evaluated, not the size of the corpus. "
+      "cap2mol, mol2cap and retrosynthesis use the full test split. Each S2 subtask uses "
+      "the **first 500 rows** of its CSV in distributed file order -- not the separate "
+      "`S2-TOMG-Bench-mini` release, which is a different 500. `data/CORPORA.md` states "
+      "the rule and the evidence for it.\n")
     A("| dataset | source file | task | task family | n per model | models | reported |")
     A("|---|---|---|---|---|---|---|")
     for t in sorted(tasks, key=lambda x: (task_family(x), x)):

@@ -48,7 +48,7 @@ PATHS = {
 
 def _read_chebi20(path: str) -> List[Dict[str, str]]:
     rows = []
-    with open(path, "r", encoding="utf-8") as f:
+    with open(_require(path), "r", encoding="utf-8") as f:
         f.readline()
         for line in f:
             parts = line.rstrip("\n").split("\t", 2)
@@ -109,8 +109,24 @@ MOLNET_LABEL_COLS = {
 }
 
 
+def _require(path: str) -> str:
+    """Fail with the fix, not just the errno.
+
+    The benchmark corpora are not shipped with this release, so a missing file here is
+    the normal state of a fresh clone rather than a broken install.
+    """
+    if not os.path.exists(path):
+        raise FileNotFoundError(
+            f"{path} is missing. The benchmark corpora (ChEBI-20, USPTO-50k, S2-Bench) "
+            "are not shipped with this release; data/CORPORA.md says where to get "
+            "each one and the exact layout to unpack it into. You do not need them to "
+            "reproduce the reported numbers -- the prompts, responses and diagnosis "
+            "records are all shipped under data/.")
+    return path
+
+
 def _read_csv_rows(path: str) -> List[Dict[str, str]]:
-    with open(path, "r", encoding="utf-8") as f:
+    with open(_require(path), "r", encoding="utf-8") as f:
         return list(csv.DictReader(f))
 
 
