@@ -80,8 +80,10 @@ trainer:
   logger: ["console"]
   nnodes: 1
   n_gpus_per_node: 4
-  val_freq: 25
-  val_before_train: true
+  # Validation off. data.val_files above must still point at a real file: the patched
+  # data loader builds the validation dataset unconditionally and asserts it is non-empty.
+  val_freq: -1
+  val_before_train: false
   val_only: false
   val_generations_to_log: 5
   save_freq: 25

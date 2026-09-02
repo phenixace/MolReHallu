@@ -37,7 +37,9 @@ fi
 PROJ=$PROJECT_DIR
 EASYR1=$PROJ/EasyR1-main
 CKPT_BASE=$CKPT_ROOT/chem-r-faithful
-NAME=Chem-R-v8-coupled
+# Release display name. The internal training codename for this run was
+# Chem-R-v8-coupled; data/raw/README.md maps the two.
+NAME=Chem-R-Faithful
 GEN="cap2mol mol2cap retrosynthesis"
 S2="s2_MolCustom_AtomNum s2_MolCustom_BondNum s2_MolCustom_FunctionalGroup s2_MolEdit_AddComponent s2_MolEdit_DelComponent s2_MolEdit_SubComponent s2_MolOpt_LogP s2_MolOpt_MR s2_MolOpt_QED"
 
@@ -77,7 +79,7 @@ echo "=== decoupling comparison: baseline vs verification-grounded ==="
 $SEPY - <<'PY'
 import sys; sys.path.insert(0, "eval")
 import metrics as MX
-for m, lbl in [("Chem-R","baseline"), ("Chem-R-v8","v8-agnostic"), ("Chem-R-v8-coupled","v8-coupled")]:
+for m, lbl in [("Chem-R", "baseline"), ("Chem-R-Faithful", "verification-grounded")]:
     for fam, ts in MX.FAMILIES:
         s = MX.family_stats(m, ts)
         if s: print(f"  {lbl:13s} {fam:7s} perf={s['perf']:5.1f} ER={s['ER']:5.2f} overall={s['overall']:5.2f} %ER0={s['pct_er0']:4.0f}")

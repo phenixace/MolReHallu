@@ -30,10 +30,47 @@ training/
   requirements.txt EasyR1's own dependency pins (the repo root has the analysis-side ones)
 ```
 
-`dataset/train.parquet` (12 MB) and `dataset/test.parquet` are the actual training data, so the
-run is reproducible without rebuilding them. `dataset/make_*_parquet.py` are the builders, kept
-so the construction is inspectable; they read the benchmark corpora, which this repository does
-not redistribute.
+`dataset/train.parquet` (12 MB) is the actual training data and `dataset/test.parquet` the
+file the trainer expects alongside it, so the run is reproducible without rebuilding them. `dataset/make_*_parquet.py` are the builders, kept
+so the construction is inspectable; they read the benchmark corpora, which are not shipped as
+corpora anywhere in this repository.
+
+Note that these two parquets are the one place the release does carry corpus content: the
+prompts and targets inside them come from the ChEBI-20 and USPTO-50k training splits and from
+OpenMolIns. `LICENSE`, THIRD-PARTY MATERIAL, states the amounts and whose licence governs
+their use.
+
+### What the training set is made of
+
+80,000 prompts, four equal families of 20,000, mixed by `make_merged_parquet.py` with
+`--seed 42` and shuffled:
+
+| family | rows | source | built by |
+|---|---|---|---|
+| cap2mol | 20,000 | ChEBI-20 **train** split | `make_task_parquet.py` / `make_chebi_parquet.py` |
+| mol2cap | 20,000 | ChEBI-20 **train** split | `make_task_parquet.py` |
+| retrosynthesis | 20,000 | USPTO-50k **train** split (rows before the derived valid/test tail) | `make_task_parquet.py` |
+| the nine `s2_*` subtasks | 20,000 total, 2,170-2,288 each | **OpenMolIns** (`phenixace/OpenMolIns-*`, 45k rows, TOMG-shaped), *not* S²-Bench | `make_openmolins_parquet.py` |
+
+The equal 20,000 cap is deliberate: uncapped, retrosynthesis and S² would swamp the two
+ChEBI tasks. Within the S² block the nine subtasks land unevenly because the 20,000 are
+sampled from the merged OpenMolIns pool rather than quota-filled per subtask.
+
+Each row is `problem` (system prompt + the task template from `prompts.py` with the
+instruction substituted), `answer`, and `task`. For the S² subtasks `answer` is JSON
+carrying `{task, metadata, gt}`, because the reward's EO dimension needs the parsed
+numeric constraints or source molecule; `make_openmolins_parquet.py` recovers those from
+the instruction prose, since OpenMolIns ships only `[SubTask, Instruction, molecule]`.
+For the other three `answer` is the plain target. `data.task_key: task` is what routes
+each row to the right branch of the reward, which is why the verl patch is required.
+
+`dataset/test.parquet` (800 rows, 200 per family) is the file EasyR1 expects at
+`data.val_files`. The name is that loader's filename convention, not a reference to the
+paper's test set -- the evaluation set is a different thing entirely, described in
+`data/CORPORA.md`. Its rows only ever fed the trainer's periodic monitoring generations,
+never the training signal, and validation is off in the shipped config, so it is not read
+at all; the path still has to resolve, because the patched data loader builds the
+validation dataset unconditionally and asserts it is non-empty.
 
 ## The verl patch — required, not optional
 
