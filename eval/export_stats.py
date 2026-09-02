@@ -145,15 +145,10 @@ if attn_rows:
         w.writeheader()
         w.writerows(attn_rows)
 
-# ---- 5. human-eval detector agreement --------------------------------------
-try:
-    sys.path.insert(0, MX.BASE)
-    import make_latex_tables as MT
-    h = MT._human_agreement()
-    if h:
-        json.dump(h, open(f"{OUT}/human_eval_agreement.json", "w"), indent=1)
-except Exception:
-    pass
+# The two human-validation tables (Human_eval_agreement, Human_eval_extraction) are not
+# regenerated here. They are terminal data: the chemist annotation records they were computed
+# from are not part of this release, so the tables ship in data/source_data.xlsx as results.
+# See data/SOURCE_DATA.md. Nothing downstream reads them from this directory.
 
 # ---- README ----------------------------------------------------------------
 open(f"{OUT}/README.md", "w").write(
@@ -171,7 +166,6 @@ open(f"{OUT}/README.md", "w").write(
     "- `attention_perturbation.csv` — R3 mechanism: causal-perturbation Δlogp "
     "(corrupt CoT / synonym control / corrupt input), matched-token attention "
     "(same FG word, input vs CoT) and ratio, per-token CoT attention share.\n"
-    "- `human_eval_agreement.json` — detector-vs-chemist agreement and Cohen's kappa.\n\n"
     "Metrics: cap2mol/retro = exact match; mol2cap = BLEU-4; s2 = official S2-TOMG "
     "success. ER counts category-deduplicated specific functional groups; a claim is "
     "fabrication only if absent from both input and output (input-grounding rule).\n")

@@ -3,7 +3,7 @@
 # (Python 3.10). Install everything, or pick a tier below.
 
 # ---- tier 1: figures only ---------------------------------------------------
-# Reproduces all eight shipped PDFs/PNGs from data/source_data.xlsx.
+# Reproduces all six shipped figures from data/source_data.xlsx.
 matplotlib==3.10.9
 numpy==1.26.4
 pandas==2.3.3
