@@ -148,11 +148,19 @@ def new_fig(width=COL1, height=None, **kw):
 
 
 def save(fig, path, formats=("pdf", "png")):
-    """Save as vector PDF + 600-dpi PNG. Text stays selectable in the PDF."""
+    """Save as vector PDF + 600-dpi PNG. Text stays selectable in the PDF.
+
+    The PDF gets no CreationDate. Matplotlib stamps one by default, which makes an
+    otherwise identical rebuild differ byte for byte -- and since the rendered figures
+    are committed, that would dirty the tree on every regeneration and hide a real
+    change among six spurious ones. Without it, rebuilding from an unchanged workbook
+    reproduces all six files exactly.
+    """
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     for ext in formats:
-        fig.savefig(path.with_suffix(f".{ext}"))
+        meta = {"CreationDate": None} if ext == "pdf" else None
+        fig.savefig(path.with_suffix(f".{ext}"), metadata=meta)
     plt.close(fig)
     print("saved:", ", ".join(str(path.with_suffix("." + e)) for e in formats))
 

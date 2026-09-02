@@ -4,8 +4,8 @@ __pycache__/
 .DS_Store
 
 
-# figure PNG previews regenerate via make_nmi_figures.py; the PDF figures ship with the repo
-figures/*.png
+# Rendered figures ARE shipped, so the exact PDFs behind the paper are downloadable;
+# make_nmi_figures.py also rebuilds all six from data/source_data.xlsx alone.
 
 # scratch from workbook rebuilds
 data/_sd_new.xlsx
