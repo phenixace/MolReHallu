@@ -93,6 +93,15 @@ rather than as scripts that only ran on one cluster.
 
 ## What is not here
 
-The trained weights. Chem-R-Faithful, `+process` and the SFT initialisation are released
-separately; the configs point at the public `weidawang/Chem-R-8B` as the starting checkpoint,
-which is what the runs actually began from. The run was 936 steps on 4 GPUs.
+The trained weights. **Chem-R-Faithful is released with the paper.** The SFT initialisation is
+an internal checkpoint and is not released, and `+process` is not released either — it is an
+ablation arm that the paper does not report, kept here because it is what isolates the accuracy
+gate. Both configs point at the public `weidawang/Chem-R-8B`, which is what the runs actually
+began from, so the coupled run is reproducible end to end; the `+process` run is reproducible as
+a recipe but its resulting weights are not published.
+
+Compute: the Chem-R-Faithful run was 936 steps on 4 NVIDIA H200 GPUs, 26.6 hours wall-clock
+(about 106 GPU-hours), measured from the job's start timestamp to the mtime of
+`global_step_936`. The `+process` run used the same configuration and the same 936 steps, so
+its cost is comparable, but its start timestamp was not preserved and the figure above should
+not be read as a second measurement.

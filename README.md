@@ -161,9 +161,24 @@ submitted numbers with incomplete ones.
 
 ## What you cannot reproduce from this repository alone
 
-- **Generation and the mechanism probes** need GPUs and the model weights. The four surveyed
-  models are public (`data/DATA_INVENTORY.md` lists the HuggingFace ids); Chem-R-Faithful,
-  `+process` and the SFT checkpoint are released separately.
+- **Generation and the mechanism probes** need GPUs and the model weights. Which weights you can
+  get differs by model:
+
+  | model | weights |
+  |---|---|
+  | Chem-R | `weidawang/Chem-R-8B` |
+  | ChemDFM-R | `OpenDFM/ChemDFM-R` |
+  | ether-0 | `futurehouse/ether0` |
+  | DeepSeek-R1-Distill | `deepseek-ai/DeepSeek-R1-Distill-Llama-8B` |
+  | base-a (pre-SFT) | `meta-llama/Llama-3.1-8B-Instruct` |
+  | **Chem-R-Faithful** | released with the paper |
+  | **SFT** | not released — internal checkpoint |
+  | **+process** | not released — an ablation arm, not reported in the paper |
+
+  So the five public models and Chem-R-Faithful can be re-probed; the SFT and `+process` rungs
+  cannot. Their measured outputs are still here (`data/raw/`, `data/results/`,
+  `data/responses/`), so every number that depends on them is auditable even though the probe
+  cannot be re-run.
 - **The benchmark corpora** are not redistributed. `data_loaders.PATHS` shows the layout expected.
 - **The RL run** needs an EasyR1 checkout with `training/verl_patch/` applied. Without that patch
   the reward silently scores every task with the caption-to-molecule verifier.

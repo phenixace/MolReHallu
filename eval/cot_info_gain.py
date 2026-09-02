@@ -41,10 +41,10 @@ HF = {"Chem-R": "weidawang/Chem-R-8B",
       "ChemDFM-R": "OpenDFM/ChemDFM-R",
       "ether-0": "futurehouse/ether0",
       "DeepSeek-R1": "deepseek-ai/DeepSeek-R1",
-      "+process": "<released separately: Chem-R process-reward variant>",
-      "Chem-R-Faithful": "<released separately: Chem-R-Faithful weights>",
+      "+process": "<not released: ablation arm, not reported in the paper>",
+      "Chem-R-Faithful": "<released with the paper; replace with the HuggingFace id once uploaded>",
       "Llama-3.1-8B-Instruct-base": "meta-llama/Llama-3.1-8B-Instruct",
-      "Chem-R-SFT": "<released separately: Chem-R SFT checkpoint>"}
+      "Chem-R-SFT": "<not released: internal checkpoint>"}
 
 
 def canon(ans):

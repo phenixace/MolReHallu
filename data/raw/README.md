@@ -37,5 +37,5 @@ manuscript is computed from it**, and it is not plotted anywhere. It is kept bec
 arm of the study and because removing it would leave `mitigation.csv` — whose entire structure is
 baseline vs `+process` vs `+coupled` — without its middle column.
 
-Note that `+process` is *not* the retired process-reward variant from the earlier detector
-generation; that arm is not part of this release at all.
+Its weights are not released. Note also that `+process` is *not* the retired process-reward
+variant from the earlier detector generation; that arm is not part of this release at all.
