@@ -237,7 +237,7 @@ submitted numbers with incomplete ones.
   | ether-0 | `futurehouse/ether0` |
   | DeepSeek-R1-Distill | `deepseek-ai/DeepSeek-R1-Distill-Llama-8B` |
   | base-a (pre-SFT) | `meta-llama/Llama-3.1-8B-Instruct` |
-  | **Chem-R-Faithful** | released with the paper |
+  | **Chem-R-Faithful** | `phenixace/Chem-R-Faithful` |
   | **SFT** | not released — internal checkpoint |
 
   So the five public models and Chem-R-Faithful can be re-probed; the SFT rung cannot. Its

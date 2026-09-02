@@ -92,7 +92,7 @@ rather than as scripts that only ran on one cluster.
 
 ## What is not here
 
-The trained weights. **Chem-R-Faithful is released with the paper.** The SFT initialisation is
+The trained weights. **Chem-R-Faithful is at `phenixace/Chem-R-Faithful`.** The SFT initialisation is
 an internal checkpoint and is not released. The config points at the public
 `weidawang/Chem-R-8B`, which is what the run actually began from, so it is reproducible end to
 end.

@@ -45,7 +45,7 @@ HF = {"Chem-R": "weidawang/Chem-R-8B",
       "ChemDFM-R": "OpenDFM/ChemDFM-R",
       "ether-0": "futurehouse/ether0",
       "DeepSeek-R1-Distill": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
-      "Chem-R-Faithful": "<released with the paper; replace with the HuggingFace id once uploaded>",
+      "Chem-R-Faithful": "phenixace/Chem-R-Faithful",
       "Llama-3.1-8B-Instruct-base": "meta-llama/Llama-3.1-8B-Instruct",
       "Chem-R-SFT": "<not released: internal checkpoint>"}
 # normalize alternative think/answer markup (ether-0) to <think>/<answer>
