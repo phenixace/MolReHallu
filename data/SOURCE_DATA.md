@@ -45,10 +45,15 @@ values exactly** (max deviation 0.0). `attention_perturbation.csv` likewise repr
 models that have a `raw/region_*.json`.
 
 ### Human validation
-`Human_eval_agreement` holds the detector-versus-chemist forced-choice agreement (n=400) and
-`Human_eval_extraction` the per-claim extraction audit — 300 claims, 292 confirmed, the 97.3%
-pooled precision quoted in the Limitations. Only these two tables ship: the annotation records and
-the scoring scripts are not part of the release.
+`Human_eval_extraction` is the per-claim extraction audit — 300 claims, 292 confirmed, the
+97.3% pooled precision quoted in the Limitations. It is **recomputable**: the chemist's labels
+and the sampled claims ship in `human_eval/`, and `python human_eval/score_claims.py` prints
+the table from them. `human_eval/README.md` says what the annotator was asked and what the
+labels mean.
+
+`Human_eval_agreement` holds the blind forced-choice agreement (n=400). That one is a reported
+result: its sample pool and scoring script no longer run against each other, so shipping them
+would add a broken artefact rather than a reproducible one.
 
 ### Sheets with no producer in this repo (terminal data)
 `R5_token_examples`, `R2_restated_derived`, `R2b_flip_by_draftcopy` and `R2_paired_flips` ship as
