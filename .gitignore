@@ -12,3 +12,8 @@ figures/*.png
 # scratch from workbook rebuilds
 data/_sd_new.xlsx
 data/.source_data.xlsx.tmp
+
+# outputs of the read-only recompute scripts
+fullvol.txt
+verify_metric.txt
+data/token_examples/
