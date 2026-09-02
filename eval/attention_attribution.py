@@ -44,7 +44,7 @@ import io_utils as IO  # noqa: E402  (gz-aware, se_results/ -> data/responses/)
 HF = {"Chem-R": "weidawang/Chem-R-8B",
       "ChemDFM-R": "OpenDFM/ChemDFM-R",
       "ether-0": "futurehouse/ether0",
-      "DeepSeek-R1": "deepseek-ai/DeepSeek-R1",
+      "DeepSeek-R1-Distill": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
       "+process": "<released separately: Chem-R process-reward variant>",
       "Chem-R-Faithful": "<released separately: Chem-R-Faithful weights>",
       "Llama-3.1-8B-Instruct-base": "meta-llama/Llama-3.1-8B-Instruct",

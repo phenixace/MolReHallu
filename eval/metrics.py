@@ -61,6 +61,14 @@ def outputs(model, task):
     cf = IO.find(f"{BASE}/se_results/{model}/{task}/completions.json")
     if cf:
         mm = {str(s.get("id")): (s.get("metadata") or {}) for s in _items(cf[0])}
+    else:
+        # Released layout. s2_success needs each S2 instance's constraints and source
+        # molecule, and those live only inside completions.json, which is 1.77 GB across
+        # the nine S2 subtasks. The metadata alone is 985x smaller, so it ships as a
+        # sidecar next to the responses; without it every S2 performance number is 0.
+        sc = IO.find(f"{BASE}/se_results/{model}/{task}/metadata.json")
+        if sc:
+            mm = {str(k): (v or {}) for k, v in IO.load_json(sc[0]).items()}
     res = {}
     for s in items:
         s = dict(s)

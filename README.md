@@ -8,8 +8,11 @@ This repo holds the essential code and the data results behind the figures.
 ## Layout
 - `diagnose_hallucination.py`, `diagnose_multitask.py`, `s2_success.py` — the detector
   (2×2 IR/IO/ER/EO taxonomy; **ER** = extrinsic reasoning fabrication) and per-task wrappers.
-- `run_multitask_se.py` — vLLM generation harness (needs `data_loaders.py` /
-  `semantic_entropy.py`, which are not part of this release; kept here for reference).
+- `run_multitask_se.py` — vLLM generation harness, with `data_loaders.py` (task registry,
+  splits and prompt construction for all 18 tasks) and `semantic_entropy.py` (sampling and
+  task-aware clustering). The benchmark corpora themselves are not redistributed; the paths
+  `data_loaders.PATHS` expects are ChEBI-20, USPTO-50k, S2-Bench and MoleculeNet, all cited
+  in the Methods and available from their original sources.
 - `eval/` — `metrics.py` (metric source of truth) plus the mechanism analyses: drift
   (`cot_drift.py`), conditional entropy (`cot_info_gain.py`, `cot_condsent.py`),
   gradient/attention attribution (`attention_attribution.py`, `attr_probe.py`),
