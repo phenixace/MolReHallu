@@ -45,7 +45,7 @@ _ETHER_THINK_RE = re.compile(r"<\|think_start\|>(.*?)(?:<\|think_end\|>|\Z)", re
 
 
 def _maybe_selfies_to_smiles(smi):
-    """Convert SELFIES (e.g. MolReasoner's '[C][C][=O]...') to SMILES so
+    """Convert SELFIES (e.g. '[C][C][=O]...') to SMILES so
     downstream RDKit clustering works; pass SMILES through unchanged."""
     try:
         from diagnose_hallucination import _is_selfies, _selfies_to_smiles
