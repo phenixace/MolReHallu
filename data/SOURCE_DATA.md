@@ -45,8 +45,8 @@ values exactly** (max deviation 0.0). `attention_perturbation.csv` likewise repr
 models that have a `raw/region_*.json`.
 
 ### Human validation
-`Human_eval_extraction` is the per-claim extraction audit — 300 claims, 292 confirmed, the
-97.3% pooled precision quoted in the Limitations. It is **recomputable**: the chemist's labels
+`Human_eval_extraction` is the per-claim extraction audit — 257 claims from the five reported
+model variants, 249 confirmed, and the 96.9% pooled precision quoted in the Limitations. It is **recomputable**: the chemist's labels
 and the sampled claims ship in `human_eval/`, and `python human_eval/score_claims.py` prints
 the table from them. `human_eval/README.md` says what the annotator was asked and what the
 labels mean.

@@ -13,9 +13,10 @@ The human reads the model's wording (BLIND to the verdict) and labels:
   no_claim  -> the model does NOT assert it                          (extraction false positive)
   unsure    -> dropped
 
-Headline = detector FABRICATION precision: of the claims flagged fabricated, the
-fraction where the model truly makes the claim (absence is trusted from SMARTS, so a
-confirmed claim == a real fabrication):
+The paper reports pooled claim-extraction precision across both detector verdicts. We
+also print fabrication-specific precision: of the claims flagged fabricated, the fraction
+where the model truly makes the claim (absence is trusted from SMARTS, so a confirmed
+claim == a real fabrication):
     precision = TP / (TP + FP),  TP = fabricated & claims,  FP = fabricated & no_claim
 Recall is NOT estimable here: this set only contains claims the detector already
 extracted, so it cannot reveal assertions the detector missed.
@@ -67,8 +68,9 @@ def main(paths):
     if vt + vf:
         print(f"  VERIFIED-flagged:   claims={vt}  no_claim={vf}  extraction-agree = {vt / (vt + vf):.3f}")
     at, af = tp + vt, fp + vf
+    pooled = at / (at + af) if at + af else float("nan")
     if at + af:
-        print(f"  overall extraction precision = {at / (at + af):.3f}  (both verdicts pooled)")
+        print(f"  overall extraction precision = {pooled:.3f}  (both verdicts pooled)")
     print("  (recall is not estimable from this set -- it contains only extracted claims.)")
     if len(per_ann) > 1:
         print("\nper annotator [fabricated (claims,no_claim,unsure) | verified (...)]:")
@@ -76,7 +78,8 @@ def main(paths):
             print(f"  {who:16s} fab={tuple(c['fabricated'])}  ver={tuple(c['verified'])}")
 
     out = os.path.join(ROOT, "claim_reliability.json")
-    json.dump({"fabrication_precision": prec, "n_fabricated_scored": scored,
+    json.dump({"pooled_extraction_precision": pooled,
+               "fabrication_precision": prec, "n_fabricated_scored": scored,
                "fabricated": fab, "verified": ver, "unmatched": missing},
               open(out, "w"), indent=1)
     print(f"\nwrote {out}")

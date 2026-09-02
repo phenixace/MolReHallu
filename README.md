@@ -132,7 +132,7 @@ Separately, the training branch that produces Chem-R-Faithful:
 | `eval/attention_attribution.py` | Region attention (input span vs trace span), teacher-forced Δlog p, and the matched-token control. |
 | `eval/stage_ladder_metrics.py` | The origin ladder: base → SFT → answer-only GRPO → verification-grounded. |
 | `eval/pull_fullvol.py`, `eval/verify_paper_metric.py` | Recompute the R5 and R2/R3 headline numbers from `data/raw/` and print them. They write their own output (`fullvol.txt`, `verify_metric.txt`, `data/token_examples/r5_*.csv`) but never touch anything shipped, so they are safe to run against a fresh clone. |
-| `human_eval/score_claims.py` | The chemist audit of claim extraction. Reprints the 97.3% precision in the Limitations from the annotation records beside it; see `human_eval/README.md`. |
+| `human_eval/score_claims.py` | The chemist audit of claim extraction. Reprints the 96.9% precision in the Limitations from the annotation records beside it; see `human_eval/README.md`. |
 | `eval/redx_all.py` | Runs the detector again over every released response and compares each record against the shipped one. `--verify` is the reproducibility check: 84 (model, task) pairs, 112,749 records, writes nothing, exits non-zero on any mismatch. `--out DIR` writes fresh records instead; `--models a,b` restricts the run. |
 | `eval/data_inventory.py` | Regenerates `data/DATA_INVENTORY.md`: which model was measured on which dataset, at what volume, in which experiment. |
 | `io_utils.py` | Reads the released data whether it is gzipped or not, and whether it sits under `se_results/` or `data/responses/`. |
@@ -258,7 +258,7 @@ submitted numbers with incomplete ones.
   the reward silently scores every task with the caption-to-molecule verifier.
 
 Everything downstream of the released records — metrics, the workbook, all six figures, and the
-97.3% claim-extraction audit — reproduces from this repository with no GPU.
+96.9% claim-extraction audit — reproduces from this repository with no GPU.
 
 ## License
 CC BY 4.0 (`SPDX-License-Identifier: CC-BY-4.0`), see `LICENSE`. Model weights are not

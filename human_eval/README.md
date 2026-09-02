@@ -1,14 +1,14 @@
 # Chemist validation of the detector's claim extraction
 
 This directory holds the annotation records behind one number in the paper: the
-**97.3% claim-extraction precision** quoted in the Limitations. Everything needed to
+**96.9% claim-extraction precision** quoted in the Limitations. Everything needed to
 recompute it from the raw labels is here.
 
 ```bash
 python human_eval/score_claims.py
-# FABRICATED-flagged: claims=145  no_claim=5   precision = 0.967
-# VERIFIED-flagged:   claims=147  no_claim=3   agreement = 0.980
-# overall extraction precision = 0.973
+# FABRICATED-flagged: claims=126  no_claim=5   precision = 0.962
+# VERIFIED-flagged:   claims=123  no_claim=3   agreement = 0.976
+# overall extraction precision = 0.969
 ```
 
 
@@ -16,7 +16,7 @@ python human_eval/score_claims.py
 
 | file | what it is |
 |---|---|
-| `claims_key.json` | The sampled claims and the detector's verdict for each: 300 entries, deliberately balanced at 150 `fabricated` and 150 `verified`. Keys are `model\|task\|sample_id\|verdict\|functional_group`. |
+| `claims_key.json` | The sampled claims and the detector's verdict for each: 257 entries from the five model variants reported in the paper (131 `fabricated` and 126 `verified`). Keys are `model\|task\|sample_id\|verdict\|functional_group`. |
 | `claim_annotations_RL.json` | The chemist's labels, blind to the verdict. `annotator` records who labelled (initials). |
 | `score_claims.py` | Joins the two and prints the table. Runs from anywhere; writes `claim_reliability.json` beside itself. |
 
@@ -24,16 +24,7 @@ The annotator answered one question per claim: does the model really assert that
 answer molecule has this group? `claims` = yes, extraction correct. `no_claim` = no, the
 detector read an assertion that is not there. `unsure` = dropped.
 
-## One name you will not find elsewhere in this repository
-
-The 300 claims are spread over six model variants as they were named when the annotation
-was done: `Chem-R`, `Chem-R-Faithful`, `ChemDFM-R`, `DeepSeek-R1`, `ether-0`, and
-`+process` (43 claims). `+process` is a reward variant trained against an earlier version
-of the detector. It is not released, is not reported in the paper, and is not a
-contribution of this work; it appears here only because the published 97.3% is computed
-over all 300 sampled claims, so dropping its rows would stop the number reproducing.
-
-`claim_annotations_RL.json` is the export filtered to exactly these 300. An earlier
+`claim_annotations_RL.json` is the export filtered to exactly these 257 claims. An earlier
 annotation round asked a different question -- whether a group is structurally present
 rather than whether the model asserts it -- and is not part of any number in the paper, so
 it is not shipped.

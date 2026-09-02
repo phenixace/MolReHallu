@@ -82,7 +82,7 @@ with open(f"{OUT}/stats_per_family.csv", "w", newline="") as f:
                         rnd(gap), rnd(s["pct_er0"]), rnd(s["overall"]), rnd(s["ER"]), rnd(s["EO"]),
                         rnd(s["IR"]), rnd(s["IO"]), rnd(s["gc"]), rnd(s["cp"]), rnd(s["length"])])
 
-# ---- 3. mitigation comparison (baseline / process / Chem-R-Faithful) -----------------
+# ---- 3. mitigation comparison (baseline / Chem-R-Faithful) ---------------------------
 MIT = [("Chem-R", "baseline"), ("Chem-R-Faithful", "coupled")]
 with open(f"{OUT}/mitigation.csv", "w", newline="") as f:
     w = csv.writer(f)
@@ -145,7 +145,7 @@ if attn_rows:
         w.writeheader()
         w.writerows(attn_rows)
 
-# Human_eval_extraction is not regenerated here. Its 97.3% claim-extraction precision is
+# Human_eval_extraction is not regenerated here. Its 96.9% claim-extraction precision is
 # recomputed from the released annotation records by human_eval/score_claims.py; the resulting
 # table ships in data/source_data.xlsx. Nothing downstream reads it from this directory.
 
@@ -161,7 +161,7 @@ open(f"{OUT}/README.md", "w").write(
     "reasoning length, info density, validity, Tanimoto, semantic entropy.\n"
     "- `stats_per_family.csv` — per (model, family) sample-weighted aggregates "
     "incl. the decoupling gap (perf|ER=0 - perf|ER>0).\n"
-    "- `mitigation.csv` — baseline vs process vs coupled (Chem-R-Faithful), per family.\n"
+    "- `mitigation.csv` — baseline vs coupled (Chem-R-Faithful), per family.\n"
     "- `attention_perturbation.csv` — R3 mechanism: causal-perturbation Δlogp "
     "(corrupt CoT / synonym control / corrupt input), matched-token attention "
     "(same FG word, input vs CoT) and ratio, per-token CoT attention share.\n"
