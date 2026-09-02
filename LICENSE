@@ -37,12 +37,23 @@ distributed separately:
     released models on public benchmarks. The prompts and reference answers
     originate from ChEBI-20, USPTO-50k and S2-TOMG-Bench; the
     generations originate from the evaluated models. Each remains subject to its
-    own upstream license and terms of use. No benchmark corpus is redistributed
-    here.
+    own upstream license and terms of use. The benchmark corpora themselves are
+    not redistributed as corpora: data/ carries the prompts that were evaluated
+    and what the models returned, and data/CORPORA.md points at the upstream
+    sources instead of copying them.
+  * training/dataset/*.parquet is the exception, and is called out here because it
+    does carry corpus content. The GRPO training set embeds 20,000 ChEBI-20
+    training captions with their target SMILES in each direction (about 76% of that
+    split), 20,000 USPTO-50k training reactions (about 50% of that split), and
+    20,000 OpenMolIns instructions, each rewritten into a prompt/answer pair. It
+    ships so the training run is reproducible without rebuilding it. Use of that
+    content remains governed by the upstream licenses of ChEBI-20, USPTO-50k and
+    OpenMolIns, not by this license, and the builders in the same directory
+    reconstruct it from the originals if redistribution is not acceptable to you.
   * The evaluated model weights are not distributed here. The public models are
     obtained from their own repositories under their own licenses. Chem-R-Faithful
-    is released with the paper; the SFT initialisation is an internal checkpoint
-    and is not released.
+    is released with the paper, and the SFT rung of the training-stage ladder is
+    the public checkpoint slayertear/llama-3.1-8b-stage2.
   * reward/verification_grounded_reward.py is written to plug into EasyR1/verl, which is
     distributed under its own license and is not included here.
 

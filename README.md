@@ -7,6 +7,22 @@ so the rationale can be audited claim by claim rather than judged as fluent text
 This repository holds the detector, the analysis pipeline, the verification-grounded training
 recipe, and the data behind every figure and number in the paper.
 
+## What the paper finds, and where each finding lives here
+
+The study evaluates four reasoning model families on twelve chemistry task variants
+(16,107 responses per model) and reports four things. Each maps to code and shipped data:
+
+| finding | evidence in this repo |
+|---|---|
+| Fabrication is **widespread**: chemical traces routinely assert functional groups that are in neither the input nor the answer molecule. | `diagnose_hallucination.py` decides each claim against the molecular graph by RDKit SMARTS; `data/results/` holds the per-response verdicts, `eval/metrics.py` aggregates them. |
+| It is **largely decoupled from correctness**: a right answer often arrives through a fabricating trace. | `Diagnosis_model_task` / `Diagnosis_family` in `data/source_data.xlsx`, plotted as Figures 2 and 3. |
+| The trace is still **not inert**. Corrupting a verified functional-group *claim* barely moves the answer, but corrupting the *drafted SMILES* degrades it — a scratchpad, in model-specific form. | the perturbation and attribution probes in `eval/` (`cot_drift.py`, `cot_info_gain.py`, `attention_attribution.py`, `attr_probe.py`), Figures 4-6. |
+| Fabrication **originates before chemistry fine-tuning** and answer-only RL does not remove it; a reward that pays accuracy only on a verified trace does. | `eval/stage_ladder_metrics.py` over one lineage (base -> SFT -> Chem-R -> Chem-R-Faithful); the reward is `reward/verification_grounded_reward.py`, the run is `training/`. |
+
+Reproducing the reported numbers needs nothing but this repository. The benchmark corpora
+are not shipped as corpora (`data/CORPORA.md` says where to get them); you need them only to
+regenerate responses from scratch.
+
 ---
 
 ## Two things you can verify in under a minute, on a CPU, with no data and no weights
@@ -42,7 +58,7 @@ print(s['accuracy'], s['accuracy_raw'])
 
 ```
   benchmark corpora                    ChEBI-20 · USPTO-50k · S²-Bench
-  (not redistributed)                  cited in Methods, fetched from their own sources
+  (not shipped as corpora)             cited in Methods, fetched from their own sources
           |
           |  data_loaders.py        task registry, splits, 18 tasks
           |  prompts.py             per-task instruction templates
@@ -113,7 +129,7 @@ Separately, the training branch that produces Chem-R-Faithful:
 | file | what it does |
 |---|---|
 | `run_multitask_se.py` | vLLM harness. Samples responses per prompt and writes `output.json`. Needs a GPU and the model weights. |
-| `data_loaders.py` | Task registry: which corpus, which split, how a prompt is built. 18 tasks. |
+| `data_loaders.py` | Task registry: which corpus, which split, how a prompt is built. 18 tasks (the twelve reported, plus five MoleculeNet classification tasks and forward reaction prediction, which the paper does not report). Splits are derived in code and deterministic; see `data/CORPORA.md` for the corpora it expects and where they go. |
 | `semantic_entropy.py` | Multi-sample sampling and task-aware clustering for the semantic-entropy measure. |
 
 ### Analysis
@@ -126,13 +142,14 @@ Separately, the training branch that produces Chem-R-Faithful:
 | `eval/attention_attribution.py` | Region attention (input span vs trace span), teacher-forced Δlog p, and the matched-token control. |
 | `eval/stage_ladder_metrics.py` | The origin ladder: base → SFT → answer-only GRPO → verification-grounded. |
 | `eval/pull_fullvol.py`, `eval/verify_paper_metric.py` | Recompute the R5 and R2/R3 headline numbers from `data/raw/` and print them. They write their own output (`fullvol.txt`, `verify_metric.txt`, `data/token_examples/r5_*.csv`) but never touch anything shipped, so they are safe to run against a fresh clone. |
+| `eval/redx_all.py` | Runs the detector again over every released response and compares each record against the shipped one. `--verify` is the reproducibility check: 84 (model, task) pairs, 112,749 records, writes nothing, exits non-zero on any mismatch. `--out DIR` writes fresh records instead; `--models a,b` restricts the run. |
 | `eval/data_inventory.py` | Regenerates `data/DATA_INVENTORY.md`: which model was measured on which dataset, at what volume, in which experiment. |
 | `io_utils.py` | Reads the released data whether it is gzipped or not, and whether it sits under `se_results/` or `data/responses/`. |
 
 ### Figures and training
 | file | what it does |
 |---|---|
-| `figures/make_nmi_figures.py` | `main()` regenerates all six main-display figures from `data/source_data.xlsx` alone. The rendered PDFs are not stored here; they are in the paper. |
+| `figures/make_nmi_figures.py` | `main()` regenerates all six main-display figures from `data/source_data.xlsx` alone. The rendered output is committed alongside it — `figures/*.pdf` are the exact files in the paper, `figures/*.png` are previews. |
 | `reward/verification_grounded_reward.py` | The process reward. `0.1·format + 0.4·accuracy + 0.4·(1−hallucination) + 0.2·grounded`, and with `COUPLED=1` **the accuracy term is paid only when ER = 0**. |
 | `training/` | Both GRPO configs, the submission scripts as run, the dataset builders, the exact parquets, and the three EasyR1 files that must be patched. See `training/README.md`. |
 
@@ -140,7 +157,7 @@ Separately, the training branch that produces Chem-R-Faithful:
 
 ## Data
 
-`data/source_data.xlsx` is the single source for every shipped table — 21 sheets, described in
+`data/source_data.xlsx` is the single source for every shipped table — 22 sheets, described in
 `data/SOURCE_DATA.md`. Alongside it:
 
 ```
@@ -150,8 +167,10 @@ data/responses/<model>/<task>/metadata.json.gz                 S² constraints (
 data/raw/{drift,condsent,gradattr,region}_<model>.json         mechanism-probe outputs
 ```
 
-Eight models × twelve task variants. `data/raw/README.md` maps the release display names to the
-internal training codenames. `data/DATA_INVENTORY.md` is the full coverage table.
+Seven models × twelve task variants. `data/raw/README.md` maps the release display names to the
+internal training codenames, `data/DATA_INVENTORY.md` is the full coverage table, and
+`data/CORPORA.md` says where to obtain the three benchmark corpora, which are not shipped
+here as corpora.
 
 ### The fields
 
@@ -241,7 +260,9 @@ submitted numbers with incomplete ones.
 
   Every model the mechanism probes accept can now be fetched by id, so each probe is
   re-runnable given the GPUs.
-- **The benchmark corpora** are not redistributed. `data_loaders.PATHS` shows the layout expected.
+- **The benchmark corpora** are not shipped as corpora; `data_loaders.PATHS` shows the layout
+  expected and `data/CORPORA.md` where to get each one. `training/dataset/*.parquet` is the one
+  file that does carry corpus content — see `LICENSE`, THIRD-PARTY MATERIAL.
 - **The RL run** needs an EasyR1 checkout with `training/verl_patch/` applied. Without that patch
   the reward silently scores every task with the caption-to-molecule verifier.
 
@@ -249,5 +270,7 @@ Everything downstream of the released records — metrics, the workbook, all six
 human-eval numbers — reproduces from this repository with no GPU.
 
 ## License
-CC BY 4.0 (`SPDX-License-Identifier: CC-BY-4.0`), see `LICENSE`. Upstream corpora and model
-weights are not redistributed and remain under their own licenses.
+CC BY 4.0 (`SPDX-License-Identifier: CC-BY-4.0`), see `LICENSE`. Model weights are not
+redistributed. The benchmark corpora are not shipped as corpora, with one stated exception —
+`training/dataset/*.parquet` — and everything upstream remains under its own licence; `LICENSE`,
+THIRD-PARTY MATERIAL, spells this out.
