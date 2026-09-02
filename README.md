@@ -148,7 +148,7 @@ Separately, the training branch that produces Chem-R-Faithful:
 
 ## Data
 
-`data/source_data.xlsx` is the single source for every shipped table — 22 sheets, described in
+`data/source_data.xlsx` is the single source for every shipped table — 21 sheets, described in
 `data/SOURCE_DATA.md`. Alongside it:
 
 ```
@@ -257,8 +257,8 @@ submitted numbers with incomplete ones.
 - **The RL run** needs an EasyR1 checkout with `training/verl_patch/` applied. Without that patch
   the reward silently scores every task with the caption-to-molecule verifier.
 
-Everything downstream of the released records — metrics, the workbook, all six figures, the
-human-eval numbers — reproduces from this repository with no GPU.
+Everything downstream of the released records — metrics, the workbook, all six figures, and the
+97.3% claim-extraction audit — reproduces from this repository with no GPU.
 
 ## License
 CC BY 4.0 (`SPDX-License-Identifier: CC-BY-4.0`), see `LICENSE`. Model weights are not

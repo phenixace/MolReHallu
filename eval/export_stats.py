@@ -145,10 +145,9 @@ if attn_rows:
         w.writeheader()
         w.writerows(attn_rows)
 
-# The two human-validation tables (Human_eval_agreement, Human_eval_extraction) are not
-# regenerated here. They are terminal data: the chemist annotation records they were computed
-# from are not part of this release, so the tables ship in data/source_data.xlsx as results.
-# See data/SOURCE_DATA.md. Nothing downstream reads them from this directory.
+# Human_eval_extraction is not regenerated here. Its 97.3% claim-extraction precision is
+# recomputed from the released annotation records by human_eval/score_claims.py; the resulting
+# table ships in data/source_data.xlsx. Nothing downstream reads it from this directory.
 
 # ---- README ----------------------------------------------------------------
 open(f"{OUT}/README.md", "w").write(

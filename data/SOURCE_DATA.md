@@ -5,7 +5,7 @@ all plotted figures regenerate with byte-identical drawing operators from this f
 (see `../figures/`).
 
 ## Top-level deliverable
-- **`source_data.xlsx`** — NMI-style Source Data workbook, **18 sheets**: 8 back a plotted figure
+- **`source_data.xlsx`** — NMI-style Source Data workbook, **21 sheets**: 8 back a plotted figure
   panel, the rest are supporting data behind statements in the text, plus a `README` index sheet.
   Sheet `README` inside it lists every sheet + metric definitions + N.
 
@@ -20,7 +20,7 @@ data/
 ```
 
 The loose CSVs that used to sit here (`stats_per_model_task.csv`, `stats_per_family.csv`,
-`stage_ladder.csv`, `mitigation.csv`, `attention_perturbation.csv`, `human_eval_agreement.json`)
+`stage_ladder.csv`, `mitigation.csv`, `attention_perturbation.csv`)
 were duplicates of workbook sheets and have been folded in: keeping the same numbers in two
 places is how the semantic-entropy column once drifted between the CSV and the sheet. The
 regeneration scripts still write them as intermediates when rebuilding from the full evaluation
@@ -50,10 +50,6 @@ models that have a `raw/region_*.json`.
 and the sampled claims ship in `human_eval/`, and `python human_eval/score_claims.py` prints
 the table from them. `human_eval/README.md` says what the annotator was asked and what the
 labels mean.
-
-`Human_eval_agreement` holds the blind forced-choice agreement (n=400). That one is a reported
-result: its sample pool and scoring script no longer run against each other, so shipping them
-would add a broken artefact rather than a reproducible one.
 
 ### Sheets with no producer in this repo (terminal data)
 `R5_token_examples`, `R2_restated_derived`, `R2b_flip_by_draftcopy` and `R2_paired_flips` ship as

@@ -5,9 +5,8 @@
 fig1_measures, fig2_widespread, fig3_accuracy_gap, fig4_mechanism,
 fig_scratchpad (fig5) and fig_draft (fig6).
 
-ed_fig1_ladder() and ed_fig2_arena() are kept but are no longer produced by main():
-neither Extended Data figure is part of the manuscript. The training ladder they
-showed is in Fig. 2e; the detector-chemist arena is not currently reported.
+ed_fig1_ladder() is kept but is no longer produced by main(): the training ladder
+it showed is now in Fig. 2e.
 
 Only the conceptual-framework schematic (fig1_framework) is drawn by hand by the
 authors and is not produced here; it is not shipped in this folder either.
@@ -769,30 +768,6 @@ def ed_fig1_ladder() -> None:
     axb.set_xticks(x); axb.set_xticklabels(labs, fontsize=5.4)
     title(axb, "Accuracy saturates; grounding cuts fabrication")
     save(fig, "ed_fig1_ladder")
-
-
-# --------------------------------------------------------------------------- #
-# Extended Data Fig. 2 — detector agrees with an expert chemist (arena)
-# --------------------------------------------------------------------------- #
-def ed_fig2_arena() -> None:
-    j = dict(sheet("Human_eval_agreement").values)
-    fig, ax = nf.new_fig(nf.COL1, nf.COL1 * 0.74)
-    conds = ["overall-\nhallucination pick", "ER-\nfabrication pick"]
-    ag = [j["ag_ov"], j["ag_er"]]
-    ks = [j["k_ov"], j["k_er"]]
-    x = np.arange(2)
-    ax.bar(x, ag, 0.55, color=[C_SMILES, C_FG])
-    ax.axhline(j["rand"], color=GRAYREF, ls=(0, (4, 3)), lw=0.8)
-    ax.text(1.42, j["rand"] + 1.6, f"random {j['rand']:.0f}%", ha="right", fontsize=5.6,
-            color=GRAYREF)
-    for xi, a, k in zip(x, ag, ks):
-        ax.text(xi, a + 1.6, f"{a:.0f}%\n$\\kappa$ = {k:.2f}", ha="center", fontsize=6)
-    ax.set_xticks(x); ax.set_xticklabels(conds, fontsize=6)
-    ax.set_ylabel("chemist agrees with detector's\nlowest-hallucination model (%)")
-    ax.set_ylim(0, 70)
-    ax.set_title("Automatic detector matches an expert chemist\n($n = 400$ prompts)",
-                 fontsize=7, fontweight="bold")
-    save(fig, "ed_fig2_arena")
 
 
 def _headroom(vals, pad=3.0, step=5.0):
