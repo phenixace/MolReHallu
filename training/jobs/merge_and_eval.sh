@@ -1,5 +1,5 @@
 #!/bin/bash
-#PBS -N meval_v8c
+#PBS -N merge-and-eval
 #PBS -P <your-project-code>
 #PBS -q auto
 #PBS -l walltime=24:00:00
@@ -36,14 +36,14 @@ fi
 
 PROJ=$PROJECT_DIR
 EASYR1=$PROJ/EasyR1-main
-CKPT_BASE=$CKPT_ROOT/easyr1_merged_v8_coupled
+CKPT_BASE=$CKPT_ROOT/chem-r-faithful
 NAME=Chem-R-v8-coupled
 GEN="cap2mol mol2cap retrosynthesis"
 S2="s2_MolCustom_AtomNum s2_MolCustom_BondNum s2_MolCustom_FunctionalGroup s2_MolEdit_AddComponent s2_MolEdit_DelComponent s2_MolEdit_SubComponent s2_MolOpt_LogP s2_MolOpt_MR s2_MolOpt_QED"
 
 STEP=$(cat "$CKPT_BASE/latest_global_step.txt" 2>/dev/null || ls "$CKPT_BASE" | grep -oE 'global_step_[0-9]+' | sed 's/global_step_//' | sort -n | tail -1)
 CKPT="$CKPT_BASE/global_step_$STEP/actor"
-echo "=== Merge + eval v8 (coupled / decoupling-aware) step $STEP on $(hostname) @ $(date) ==="
+echo "=== Merge + eval Chem-R-Faithful step $STEP on $(hostname) @ $(date) ==="
 echo "CKPT=$CKPT"
 
 conda activate "$EASYR1_ENV"
@@ -73,7 +73,7 @@ for t in $GEN $S2; do
 done
 
 echo ""
-echo "=== decoupling ablation: baseline vs v8 (agnostic) vs v8-coupled ==="
+echo "=== decoupling comparison: baseline vs verification-grounded ==="
 $SEPY - <<'PY'
 import sys; sys.path.insert(0, "eval")
 import metrics as MX

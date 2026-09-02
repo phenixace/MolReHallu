@@ -1,5 +1,5 @@
 #!/bin/bash
-#PBS -N easyr1_merged_v8_coupled
+#PBS -N chem-r-faithful
 #PBS -P <your-project-code>
 #PBS -q auto
 #PBS -l walltime=48:00:00
@@ -36,6 +36,6 @@ if [[ "$CUDA_VISIBLE_DEVICES" == GPU-* ]]; then
     [[ "$NGPU" -gt 0 ]] && export CUDA_VISIBLE_DEVICES=$(seq -s, 0 $((NGPU-1)))
 fi
 cd "$MOLLM_PROJECT_DIR/EasyR1-main"
-echo "=== merged_v8_coupled (COUPLED=$COUPLED) reward=chem_merged_v8_ours.py on $(hostname) @ $(date) ==="
-python3 -m verl.trainer.main config=examples/config_merged_v8_coupled.yaml
+echo "=== Chem-R-Faithful (COUPLED=$COUPLED) reward=verification_grounded_reward.py on $(hostname) @ $(date) ==="
+python3 -m verl.trainer.main config=examples/chem_r_faithful.yaml
 echo "=== DONE @ $(date) ==="

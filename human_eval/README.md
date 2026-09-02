@@ -89,6 +89,18 @@ The per-claim audit is scored from `claim_annotations_RL.json` against
 `claims_key.json` by `score_claims.py`; there is no separate annotation page to
 open for it.
 
+**Why `+process` appears in the audit keys.** 43 of the 300 audited claims are
+labelled `+process`. That was an ablation of the released training recipe with the
+accuracy gate switched off. It is **not a contribution of this work** and the
+paper does not report it: no figure, table or number in the manuscript comes from
+that model, its weights are not released, and its evaluation data is not part of
+this repository. The claims stay in the audit because the audit is a record of
+what a chemist actually annotated. It sampled claims across the models as they
+existed at annotation time, and the 97.3% extraction precision reported in the
+Limitations is the figure over all 300 of them; dropping a stratum after the fact
+would change a completed measurement (it would read 96.9% over n=257). Treat
+`+process` here as a provenance tag on a claim, not as a model the paper studies.
+
 ### Reproducing the paper's extraction-precision number
 
 ```bash

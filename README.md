@@ -28,7 +28,7 @@ PY
 # 2. the reward that fixes it: accuracy is paid only when the trace is clean
 COUPLED=1 python -c "
 import sys; sys.path[:0]=['.','reward']
-from chem_merged_v8_ours import compute_score
+from verification_grounded_reward import compute_score
 A='CC(=O)Oc1ccccc1C(=O)O'
 s=compute_score(['<think>It contains an azide.</think><answer>%s</answer>'%A],[A],['cap2mol'],['Description: aspirin'])[0]
 print(s['accuracy'], s['accuracy_raw'])
@@ -91,7 +91,7 @@ Separately, the training branch that produces Chem-R-Faithful:
 ```
   training/dataset/make_*_parquet.py  ->  training/dataset/{train,test}.parquet   SHIPPED
                                               |
-  reward/chem_merged_v8_ours.py  ------------>|  GRPO with COUPLED=1
+  reward/verification_grounded_reward.py  ------------>|  GRPO with COUPLED=1
   training/verl_patch/  (required)  --------->|  EasyR1 + 4 GPUs, 936 steps
                                               v
                                         Chem-R-Faithful
@@ -133,7 +133,7 @@ Separately, the training branch that produces Chem-R-Faithful:
 | file | what it does |
 |---|---|
 | `figures/make_nmi_figures.py` | `main()` regenerates all six main-display figures from `data/source_data.xlsx` alone. The rendered PDFs are not stored here; they are in the paper. |
-| `reward/chem_merged_v8_ours.py` | The process reward. `0.1·format + 0.4·accuracy + 0.4·(1−hallucination) + 0.2·grounded`, and with `COUPLED=1` **the accuracy term is paid only when ER = 0**. |
+| `reward/verification_grounded_reward.py` | The process reward. `0.1·format + 0.4·accuracy + 0.4·(1−hallucination) + 0.2·grounded`, and with `COUPLED=1` **the accuracy term is paid only when ER = 0**. |
 | `training/` | Both GRPO configs, the submission scripts as run, the dataset builders, the exact parquets, and the three EasyR1 files that must be patched. See `training/README.md`. |
 | `human_eval/` | The chemist validation: per-claim audit (`human_eval/score_claims.py` reproduces the 97.3% extraction precision) and the blind forced-choice arena. |
 

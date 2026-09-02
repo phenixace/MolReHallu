@@ -70,13 +70,13 @@ worker:
 
   reward:
     reward_type: batch
-    reward_function: ./examples/reward_function/chem_merged_v8_ours.py:compute_score
+    reward_function: ./examples/reward_function/verification_grounded_reward.py:compute_score
 
 trainer:
   total_epochs: 3
   max_steps: null
   project_name: mollm_hallucination
-  experiment_name: ChemR-GRPO-v8coupled-merged
+  experiment_name: chem-r-faithful
   logger: ["console"]
   nnodes: 1
   n_gpus_per_node: 4

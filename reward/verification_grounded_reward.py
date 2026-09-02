@@ -1,4 +1,4 @@
-"""merged_v8 reward: task-correct accuracy + anti-hallucination + grounded(count x precision).
+"""Verification-grounded process reward: task accuracy + anti-hallucination + grounded claims.
 
 Accuracy is the TRUE per-task metric (not the broken proxies):
   cap2mol / retrosynthesis -> exact match (1/0)
@@ -40,8 +40,8 @@ _INPUT_MARKER = {
 W_FMT, W_ACC, W_ANTI, W_GROUND = 0.1, 0.4, 0.4, 0.2
 GROUNDED_CAP = 5
 COUPLED = os.environ.get("COUPLED", "0") == "1"
-# Thinking-length bonus (RL-from-base / "zero" runs only; 0 => off, so v8/coupled
-# are unchanged). Rewards LONGER reasoning inside <think>...</think> so a model
+# Thinking-length bonus (RL-from-base / "zero" runs only; 0 => off, so the published
+# run is unchanged). Rewards LONGER reasoning inside <think>...</think> so a model
 # initialized from the base (no SFT) learns to actually reason. Anti-hacking: the
 # bonus SATURATES at LEN_TARGET chars (no benefit to rambling), is paid ONLY on a
 # valid <think>/<answer> format, and coexists with the anti-hallucination + grounded

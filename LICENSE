@@ -43,7 +43,7 @@ distributed separately:
     obtained from their own repositories under their own licenses. Chem-R-Faithful
     is released with the paper; the SFT initialisation is an internal checkpoint
     and is not released.
-  * reward/chem_merged_v8_ours.py is written to plug into EasyR1/verl, which is
+  * reward/verification_grounded_reward.py is written to plug into EasyR1/verl, which is
     distributed under its own license and is not included here.
 
 NOTE ON SOFTWARE: Creative Commons does not recommend CC licenses for software,

@@ -3,18 +3,18 @@
 Everything needed to reproduce the RL stage that turns the released Chem-R checkpoint into
 Chem-R-Faithful.
 
-The reward itself is `../reward/chem_merged_v8_ours.py`; it is the only part of this that runs
+The reward itself is `../reward/verification_grounded_reward.py`; it is the only part of this that runs
 without a GPU, and `../README.md` shows how to exercise the ER=0 gate on CPU in a few seconds.
 
 ## The run
 
-`configs/config_merged_v8_coupled.yaml` with `COUPLED=1` is the run that produced
+`configs/chem_r_faithful.yaml` with `COUPLED=1` is the run that produced
 **Chem-R-Faithful**: the same process reward as an ordinary run, except that the accuracy term is
 paid only when the trace is clean (ER = 0). Setting `COUPLED` to anything else removes the gate,
 which is how the ablation in the paper was produced.
 
-The `v8` in the filenames is the internal training codename, kept so the configs, the checkpoints
-and the logs still line up with each other.
+The internal training codename for this run was `Chem-R-v8-coupled`; `data/raw/README.md` keeps
+that mapping so the shipped records, the checkpoints and the logs still line up with each other.
 
 ## Layout
 
@@ -69,17 +69,17 @@ cp <this repo>/training/verl_patch/trainer_data_loader.py verl/trainer/data_load
 
 # 2. the reward has to sit where the config points
 mkdir -p examples/reward_function
-cp <this repo>/reward/chem_merged_v8_ours.py examples/reward_function/
+cp <this repo>/reward/verification_grounded_reward.py examples/reward_function/
 cp <this repo>/s2_success.py <this repo>/s2_official_eval.py examples/reward_function/
 cp <this repo>/diagnose_hallucination.py <this repo>/diagnose_multitask.py .
 
 # 3. data and config
 mkdir -p data/merged_4task && cp <this repo>/training/dataset/*.parquet data/merged_4task/
 cp -r <this repo>/training/format_prompt examples/
-cp <this repo>/training/configs/config_merged_v8_coupled.yaml examples/
+cp <this repo>/training/configs/chem_r_faithful.yaml examples/
 
 # 4. train (COUPLED=1 is what makes it Chem-R-Faithful)
-COUPLED=1 MOLLM_PROJECT_DIR=$PWD python3 -m verl.trainer.main config=examples/config_merged_v8_coupled.yaml
+COUPLED=1 MOLLM_PROJECT_DIR=$PWD python3 -m verl.trainer.main config=examples/chem_r_faithful.yaml
 
 # 5. FSDP shards -> HuggingFace format
 python3 scripts/model_merger.py --local_dir checkpoints/chem-r-faithful/global_step_936/actor

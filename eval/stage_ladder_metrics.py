@@ -18,7 +18,7 @@ the specific hypothesis that SFT installs obligatory fixed-slot generation:
                                      always, so counting them would dilute the rate in favour of
                                      verbose models -- the opposite of the verbosity-invariance
                                      this metric is for. eval/metrics.py and the training reward
-                                     (reward/chem_merged_v8_ours.py::_er_count) both exclude them.
+                                     (reward/verification_grounded_reward.py::_er_count) both exclude them.
   hedge_rate                      -- frac of traces that hedge ("may/likely/appears/not sure")
   abstain_rate                    -- frac of traces that abstain ("cannot determine/unknown")
   fab_position                    -- mean normalized position (0=start,1=end) of the
