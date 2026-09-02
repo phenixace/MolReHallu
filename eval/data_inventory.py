@@ -291,8 +291,7 @@ def main():
             ds, dsf, t, task_family(t),
             str(ns[0]) if len(ns) == 1 else "%d-%d" % (ns[0], ns[-1]),
             len(tasks[t]["models"]), "yes" if t in IN_PAPER else "**no**"))
-    A("\n> The MoleculeNet classification tasks were diagnosed but are **not** reported in the "
-      "paper; they are listed here only because the shipped statistics table contains them.")
+
 
     if ladder:
         A("\n## 2b. Origin ladder\n")

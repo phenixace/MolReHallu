@@ -35,7 +35,7 @@ distributed separately:
 
   * The diagnosed model outputs in data/ were produced by running publicly
     released models on public benchmarks. The prompts and reference answers
-    originate from ChEBI-20, USPTO-50k, MoleculeNet and S2-TOMG-Bench; the
+    originate from ChEBI-20, USPTO-50k and S2-TOMG-Bench; the
     generations originate from the evaluated models. Each remains subject to its
     own upstream license and terms of use. No benchmark corpus is redistributed
     here.

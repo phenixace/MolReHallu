@@ -67,7 +67,7 @@ HF = {"Chem-R": "weidawang/Chem-R-8B",
       "Chem-R-Faithful": "phenixace/Chem-R-Faithful",
       # stage-ladder: does the model rely on its CoT BEFORE our GRPO?
       "Llama-3.1-8B-Instruct-base": "meta-llama/Llama-3.1-8B-Instruct",
-      "Chem-R-SFT": "<not released: internal checkpoint>"}
+      "Chem-R-SFT": "slayertear/llama-3.1-8b-stage2"}
 
 
 def _norm(t):

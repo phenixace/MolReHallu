@@ -43,7 +43,7 @@ HF = {"Chem-R": "weidawang/Chem-R-8B",
       "DeepSeek-R1": "deepseek-ai/DeepSeek-R1",
       "Chem-R-Faithful": "phenixace/Chem-R-Faithful",
       "Llama-3.1-8B-Instruct-base": "meta-llama/Llama-3.1-8B-Instruct",
-      "Chem-R-SFT": "<not released: internal checkpoint>"}
+      "Chem-R-SFT": "slayertear/llama-3.1-8b-stage2"}
 
 
 def canon(ans):

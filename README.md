@@ -41,7 +41,7 @@ print(s['accuracy'], s['accuracy_raw'])
 ## The pipeline
 
 ```
-  benchmark corpora                    ChEBI-20 · USPTO-50k · S²-Bench · MoleculeNet
+  benchmark corpora                    ChEBI-20 · USPTO-50k · S²-Bench
   (not redistributed)                  cited in Methods, fetched from their own sources
           |
           |  data_loaders.py        task registry, splits, 18 tasks
@@ -135,7 +135,6 @@ Separately, the training branch that produces Chem-R-Faithful:
 | `figures/make_nmi_figures.py` | `main()` regenerates all six main-display figures from `data/source_data.xlsx` alone. The rendered PDFs are not stored here; they are in the paper. |
 | `reward/verification_grounded_reward.py` | The process reward. `0.1·format + 0.4·accuracy + 0.4·(1−hallucination) + 0.2·grounded`, and with `COUPLED=1` **the accuracy term is paid only when ER = 0**. |
 | `training/` | Both GRPO configs, the submission scripts as run, the dataset builders, the exact parquets, and the three EasyR1 files that must be patched. See `training/README.md`. |
-| `human_eval/` | The chemist validation: per-claim audit (`human_eval/score_claims.py` reproduces the 97.3% extraction precision) and the blind forced-choice arena. |
 
 ---
 
@@ -238,11 +237,10 @@ submitted numbers with incomplete ones.
   | DeepSeek-R1-Distill | `deepseek-ai/DeepSeek-R1-Distill-Llama-8B` |
   | base-a (pre-SFT) | `meta-llama/Llama-3.1-8B-Instruct` |
   | **Chem-R-Faithful** | `phenixace/Chem-R-Faithful` |
-  | **SFT** | not released — internal checkpoint |
+  | **SFT** | `slayertear/llama-3.1-8b-stage2` |
 
-  So the five public models and Chem-R-Faithful can be re-probed; the SFT rung cannot. Its
-  measured outputs are still here (`data/raw/`, `data/results/`, `data/responses/`), so every
-  number that depends on it is auditable even though the probe cannot be re-run.
+  Every model the mechanism probes accept can now be fetched by id, so each probe is
+  re-runnable given the GPUs.
 - **The benchmark corpora** are not redistributed. `data_loaders.PATHS` shows the layout expected.
 - **The RL run** needs an EasyR1 checkout with `training/verl_patch/` applied. Without that patch
   the reward silently scores every task with the caption-to-molecule verifier.

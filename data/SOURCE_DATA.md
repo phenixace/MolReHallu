@@ -44,6 +44,12 @@ Every sheet in the first eight rows above has been **recomputed from `raw/` and 
 values exactly** (max deviation 0.0). `attention_perturbation.csv` likewise reproduces for the four
 models that have a `raw/region_*.json`.
 
+### Human validation
+`Human_eval_agreement` holds the detector-versus-chemist forced-choice agreement (n=400) and
+`Human_eval_extraction` the per-claim extraction audit — 300 claims, 292 confirmed, the 97.3%
+pooled precision quoted in the Limitations. Only these two tables ship: the annotation records and
+the scoring scripts are not part of the release.
+
 ### Sheets with no producer in this repo (terminal data)
 `R5_token_examples`, `R2_restated_derived`, `R2b_flip_by_draftcopy`, `Fig3_decoupling_perresponse`,
 `R2_paired_flips`, `Fig1_hallucination_by_model`, and the four `Diagnosis_*`/`R1`/`R4` tables ship as

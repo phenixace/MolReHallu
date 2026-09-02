@@ -92,10 +92,11 @@ rather than as scripts that only ran on one cluster.
 
 ## What is not here
 
-The trained weights. **Chem-R-Faithful is at `phenixace/Chem-R-Faithful`.** The SFT initialisation is
-an internal checkpoint and is not released. The config points at the public
-`weidawang/Chem-R-8B`, which is what the run actually began from, so it is reproducible end to
-end.
+The trained weights. **Chem-R-Faithful is at `phenixace/Chem-R-Faithful`.** The two-stage SFT
+lineage behind the ladder's SFT rung is at `slayertear/llama-3.1-8b-stage1` and
+`slayertear/llama-3.1-8b-stage2`; stage2 is the one the paper evaluates. The config points at the
+public `weidawang/Chem-R-8B`, which is what this run actually began from, so it is reproducible
+end to end.
 
 Compute: 936 steps on 4 NVIDIA H200 GPUs, 26.6 hours wall-clock (about 106 GPU-hours),
 measured from the job's start timestamp to the mtime of `global_step_936`.
